@@ -6,8 +6,6 @@
 
 //=================================
 // Included Dependencies
-#include <vector>
-#include <string>
 #include "character.h"
 #include "item.h"
 
@@ -16,15 +14,15 @@ class Enemy : public Character {
 
     public:
 
-        Enemy(std::string _name, std::string _class="fighter", std::string _race="goblin", int _level=1);
+        Enemy(string _name, string _class="fighter", string _race="goblin", int _level=1);
 
-        std::string element = "neutral";
-        std::vector<Item> loot;
+        string element = "neutral";
+        vector<Item> loot;
 
 };
 
 // Constructor
-Enemy::Enemy(std::string _name, std::string _class, std::string _race, int _level) : Character(
+Enemy::Enemy(string _name, string _class, string _race, int _level) : Character(
     _name, _class, _race, _level) {
 
     Weapon iron_sword = Weapon("Iron Sword", 10, "neutral");

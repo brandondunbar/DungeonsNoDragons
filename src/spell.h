@@ -12,26 +12,21 @@
 #define __SPELL_H_INCLUDED__   //   #define this so the compiler knows it has been included
 
 //=================================
-// Included Dependencies
-#include <vector>
-#include <string>
-
-//=================================
 class Spell {
 
     public:
         
-        Spell(std::string, std::string, std::string);  
+        Spell(string, string, string);  
 
-        std::string name;
-        std::string element;
-        std::string status_effect;
+        string name;
+        string element;
+        string status_effect;
         int damage;
         int cost;
 
 };
 
-Spell::Spell (std::string _name, std::string _element, std::string _status_effect) {
+Spell::Spell (string _name, string _element, string _status_effect) {
 
     name = _name;
     element = _element;

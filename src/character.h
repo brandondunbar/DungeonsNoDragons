@@ -12,8 +12,6 @@
 
 //=================================
 // Included Dependencies
-#include <vector>
-#include <string>
 #include "utility.h"
 #include "weapon.h"
 #include "armor.h"
@@ -27,7 +25,7 @@ class Character {
 
     public:
         
-        Character(std::string, std::string, std::string, int);  
+        Character(string, string, string, int);  
         
         int calculate_modifier(int stat);
 
@@ -39,12 +37,12 @@ class Character {
 
         bool take_damage(int damage);
 
-        int calculate_damage_to_receive(int damage, std::string element, std::string damage_type);
+        int calculate_damage_to_receive(int damage, string element, string damage_type);
 
         // Basic Info
-        std::string name;
-        std::string character_class;
-        std::string race;
+        string name;
+        string character_class;
+        string race;
         int level;
         int health;
         int mana;
@@ -53,16 +51,16 @@ class Character {
         int strength, constitution, dexterity, intelligence, wisdom, charisma;
 
         // Type strengths and weaknesses
-        std::vector<std::string> strengths, weaknesses;
+        vector<string> strengths, weaknesses;
 
         // Things
-        std::vector<Spell> spellbook;
+        vector<Spell> spellbook;
         Weapon weapon;
         Armor armor;
 
 };
 
-Character::Character (std::string _name, std::string _class, std::string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
+Character::Character (string _name, string _class, string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
 
     name = _name;
     character_class = _class;
@@ -124,7 +122,7 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
 
 // Calculate damage received method
 
-int Character::calculate_damage_to_receive(int damage, std::string element, std::string damage_type){
+int Character::calculate_damage_to_receive(int damage, string element, string damage_type){
     /* 
     Calculates damage to receive based on different factors 
     damage: base damage to be dealt

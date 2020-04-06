@@ -12,8 +12,6 @@
 
 //=================================
 // Included Dependencies
-#include <vector>
-#include <string>
 #include "character.h"
 #include "item.h"
 
@@ -22,7 +20,7 @@ class Player : public Character {
 
     public:
 
-        Player(std::string _name, std::string _class, std::string _race, int _level);
+        Player(string _name, string _class, string _race, int _level);
 
         bool store(Item _item);
         bool store(Weapon _weapon);
@@ -31,14 +29,14 @@ class Player : public Character {
         bool equip(Weapon _weapon);
         bool equip(Armor _armor);
 
-        std::string get_inventory();
+        string get_inventory();
 
-        std::vector<Item> inventory;
+        vector<Item> inventory;
         int gold = 0;
 
 };
 
-Player::Player(std::string _name, std::string _class, std::string _race, int _level) : Character(
+Player::Player(string _name, string _class, string _race, int _level) : Character(
     _name, _class, _race, _level) {
 
 }
@@ -91,12 +89,12 @@ bool Player::equip(Armor _armor){
 
 // Display Inventory
 
-std::string Player::get_inventory(){
+string Player::get_inventory(){
 
     int items_in_inventory = inventory.size();
 
     // Create string for display
-    std::string inventory_display = "\nInventory:\n";
+    string inventory_display = "\nInventory:\n";
 
     // Loop through items in inventory vector
     for (int i = 0; i < items_in_inventory; i++){

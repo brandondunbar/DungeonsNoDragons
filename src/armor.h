@@ -12,8 +12,6 @@
 
 //=================================
 // Included Dependencies
-#include <vector>
-#include <string>
 #include "item.h"
 
 //=================================
@@ -21,14 +19,14 @@ class Armor : public Item {
 
     public:
 
-        Armor(std::string _name, int _physical_defense, int _magical_defense, std::string _element);
+        Armor(string _name, int _physical_defense, int _magical_defense, string _element);
         int physical_defense;
         int magical_defense;
-        std::string element;
+        string element;
 
 };
 
-Armor::Armor(std::string _name, int _physical_defense, int _magical_defense, std::string _element) : Item(_name, "Armor") {
+Armor::Armor(string _name, int _physical_defense, int _magical_defense, string _element) : Item(_name, "Armor") {
     physical_defense = _physical_defense;
     magical_defense = _magical_defense;
     element = _element;
