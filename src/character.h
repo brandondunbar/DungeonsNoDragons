@@ -12,6 +12,8 @@
 
 //=================================
 // Included Dependencies
+#include <vector>
+#include <string>
 #include "utility.h"
 #include "weapon.h"
 #include "armor.h"
@@ -24,9 +26,10 @@ const int ELEMENT_WEAKNESS_PENALTY = 1;
 class Character {
 
     public:
-        
-        Character(string, string, string, int);  
-        
+
+        Character(std::string, std::string, std::string, int);
+        Character() = default;
+
         int calculate_modifier(int stat);
 
         int calculate_damage_to_deal();
@@ -37,12 +40,12 @@ class Character {
 
         bool take_damage(int damage);
 
-        int calculate_damage_to_receive(int damage, string element, string damage_type);
+        int calculate_damage_to_receive(int damage, std::string element, std::string damage_type);
 
         // Basic Info
-        string name;
-        string character_class;
-        string race;
+        std::string name;
+        std::string character_class;
+        std::string race;
         int level;
         int health;
         int mana;
@@ -51,16 +54,16 @@ class Character {
         int strength, constitution, dexterity, intelligence, wisdom, charisma;
 
         // Type strengths and weaknesses
-        vector<string> strengths, weaknesses;
+        std::vector<std::string> strengths, weaknesses;
 
         // Things
-        vector<Spell> spellbook;
+        std::vector<Spell> spellbook;
         Weapon weapon;
         Armor armor;
 
 };
 
-Character::Character (string _name, string _class, string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
+Character::Character (std::string _name, std::string _class, std::string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
 
     name = _name;
     character_class = _class;
@@ -87,14 +90,14 @@ int Character::calculate_damage_to_deal(){
     // Get player strength
     damage += calculate_modifier(strength);
 
-    // If the weapon's element is a player strength, 
+    // If the weapon's element is a player strength,
     if ( vector_contains_value(strengths, weapon.element) ) {
 
         // Apply element strength bonus
         damage += ELEMENT_STRENGTH_BONUS;
 
     }
-    cout << "Damage calc'd: " << damage << endl;
+    std::cout << "Damage calc'd: " << damage << std::endl;
     return damage;
 
 }
@@ -107,7 +110,7 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
     // Get player strength
     damage += calculate_modifier(wisdom);
 
-    // If the weapon's element is a player strength, 
+    // If the weapon's element is a player strength,
     if ( vector_contains_value(strengths, spell_attack.element) ) {
 
         // Apply element strength bonus
@@ -122,9 +125,9 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
 
 // Calculate damage received method
 
-int Character::calculate_damage_to_receive(int damage, string element, string damage_type){
-    /* 
-    Calculates damage to receive based on different factors 
+int Character::calculate_damage_to_receive(int damage, std::string element, std::string damage_type){
+    /*
+    Calculates damage to receive based on different factors
     damage: base damage to be dealt
     element: the magical element associated with the damage (most commonly neutral)
     damage_type: physical or magical
@@ -160,7 +163,7 @@ bool Character::deal_damage(Character &target){
     int damage = calculate_damage_to_deal();
 
     damage = target.calculate_damage_to_receive(damage, weapon.element, "physical");
-    cout << "Deal Damage method's damage value: " << damage << endl;
+    std::cout << "Deal Damage method's damage value: " << damage << std::endl;
     bool killed = target.take_damage(damage);
 
     return killed;
@@ -180,10 +183,10 @@ bool Character::deal_damage(Character &target, Spell spell_attack){
 
 bool Character::take_damage(int damage){
 
-    cout << "Character " << name << " will receive " << damage << " damage to his health: " << health << " health" << endl;
-    cout << "Pre-damage health: " << health << endl;
+    std::cout << "Character " << name << " will receive " << damage << " damage to his health: " << health << " health" << std::endl;
+    std::cout << "Pre-damage health: " << health << std::endl;
     health -= damage;
-    cout << "Post-damage health: " << health << endl;
+    std::cout << "Post-damage health: " << health << std::endl;
 
     if ( health <= 0 ){
         return true;

@@ -12,6 +12,8 @@
 
 //=================================
 // Included Dependencies
+#include <vector>
+#include <string>
 #include "item.h"
 
 //=================================
@@ -19,6 +21,7 @@ class Weapon : public Item {
 
     public:
         Weapon(std::string _name, int _damage, std::string _element);
+        Weapon() = default;
         int damage;
         std::string element;
 

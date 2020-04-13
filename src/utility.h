@@ -11,7 +11,12 @@
 #define __UTILITY_H_INCLUDED__   //   #define this so the compiler knows it has been included
 
 //=================================
-bool vector_contains_value(vector<string> &vect, string value){
+// Included Dependencies
+#include <vector>
+#include <string>
+
+//=================================
+bool vector_contains_value(std::vector<std::string> &vect, std::string value){
 
     for (int i = 0; i < vect.size(); i++){
         if (vect[i] == value){
