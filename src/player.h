@@ -108,6 +108,7 @@ void Player::display(){
     cout << "\tArmor: " << armor.name << endl;
     cout << "\tSpells";
     display_spellbook();
+    cout << endl;
 }
 
 // Display Spellbook

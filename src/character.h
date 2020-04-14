@@ -12,10 +12,13 @@
 
 //=================================
 // Included Dependencies
+#include "map"
+#include "vector"
 #include "utility.h"
 #include "weapon.h"
 #include "armor.h"
 #include "spell.h"
+#include "buff.h"
 
 const int ELEMENT_STRENGTH_BONUS = 3;
 const int ELEMENT_WEAKNESS_PENALTY = 1;
@@ -26,6 +29,7 @@ class Character {
     public:
         
         Character(string, string, string, int);
+        void set_health_and_mana();
         
         int calculate_modifier(int stat);
 
@@ -40,6 +44,12 @@ class Character {
         int calculate_damage_to_receive(int damage, string element, string damage_type);
         void display_attributes();
 
+        void display_buffs();
+        void add_buff(Buff buff);
+        void mod_stat(string stat, int amount);
+        void trigger_buffs();
+        void buff_effect(Buff &buff, const int index_pos);
+
         // Basic Info
         string name;
         string character_class;
@@ -48,11 +58,17 @@ class Character {
         int health;
         int mana = 0;
 
-        // Stats
-        int strength = 0, constitution = 0, dexterity = 0, intelligence = 0, wisdom = 0, charisma = 0;
+        // Base Stats
+        int strength = 10, constitution = 10, dexterity = 10, intelligence = 10, wisdom = 10, charisma = 10;
+        // Current Stats
+        int current_strength, current_constitution, current_dexterity, current_intelligence, current_wisdom, current_charisma;
+        bool intimidated = false;
 
-        // Type strengths and weaknesses
+        // Elemental type strengths and weaknesses
         vector<string> strengths, weaknesses;
+
+        // Buffs/Debuffs
+        vector<Buff> buffs;
 
         // Things
         vector<Spell> spellbook;
@@ -68,6 +84,19 @@ Character::Character (string _name, string _class, string _race, int _level) : w
     race = _race;
     level = _level;
 
+    // Set Temp stats
+    current_strength = strength;
+    current_constitution = constitution;
+    current_dexterity = dexterity;
+    current_intelligence = intelligence;
+    current_wisdom = wisdom;
+    current_charisma = charisma;
+
+}
+
+void Character::set_health_and_mana(){
+    health = constitution*5;
+    mana = intelligence*5;
 }
 
 int Character::calculate_modifier(int stat){
@@ -196,6 +225,111 @@ void Character::display_attributes(){
     cout << "\tLevel: " << level << endl;
     cout << "\tHealth: " << health << endl;
     cout << "\tMana: " << mana << endl;
+    cout << "\tBuffs: ";
+    display_buffs();
+
+    cout << "\n\nStats:" << endl;
+    cout << "\tStrength: (" << current_strength << "/" << strength << ")" << endl;
+    cout << "\tConstitution: (" << current_constitution << "/" << constitution << ")" << endl;
+    cout << "\tDexterity: (" << current_dexterity << "/" << dexterity << ")" << endl;
+    cout << "\tIntelligence: (" << current_intelligence << "/" << intelligence << ")" << endl;
+    cout << "\tWisdom: (" << current_wisdom << "/" << wisdom << ")" << endl;
+    cout << "\tCharisma: (" << current_charisma << "/" << charisma << ")" << endl;
+    
+}
+
+void Character::display_buffs(){
+
+    for ( int i = 0; i < buffs.size(); i++ ){
+
+        cout << buffs[i].name;
+
+        if ( i < buffs.size() - 1 ){
+
+            cout << ", ";
+
+        }
+    }
+}
+
+void Character::add_buff(Buff buff){
+
+    bool already_added = false;
+
+    for ( int i = 0; i < buffs.size(); i++ ){
+        if ( buffs[i].name == buff.name){
+            
+            buffs[i].round_timer = buff.round_timer;
+            already_added = true;
+            break;
+        } 
+    }
+
+    if ( !already_added ){
+        
+        buffs.push_back(buff);
+    
+    }
+}
+
+void Character::trigger_buffs(){
+
+    for ( int i = 0; i < buffs.size(); i++ ) {
+        buff_effect(buffs[i], i);
+    }
+
+}
+
+void Character::mod_stat(string stat, int amount){
+
+    if ( stat == "str" ) {
+
+        current_strength += amount;
+
+    } else if ( stat == "con" ) {
+
+        current_constitution += amount;
+
+    } else if ( stat == "dex" ) {
+
+        current_dexterity += amount;
+
+    }  else if ( stat == "int" ) {
+
+        current_intelligence += amount;
+
+    } else if ( stat == "wis" ) {
+
+        current_wisdom += amount;
+
+    }  else if ( stat == "cha" ) {
+
+        current_charisma += amount;
+
+    }
+
+}
+
+void Character::buff_effect(Buff &buff, const int index_pos){
+
+    if ( buff.activated == false ) {
+
+        mod_stat(buff.target_stat, buff.mod);
+
+        // To make sure the buff isn't continuously added
+        buff.activated = true;       
+
+    }
+
+    if ( buff.round_timer == 0 ){
+
+        buffs.erase(buffs.begin() + index_pos);
+        mod_stat(buff.target_stat, -buff.mod);
+
+    }
+
+    buff.round_timer--;
+
 }
 
 #endif // __CHARACTER_H_INCLUDED__
