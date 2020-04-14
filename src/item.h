@@ -20,6 +20,7 @@ class Item {
 
         string name;
         string type;
+        int damage = 0;
         
 };
 

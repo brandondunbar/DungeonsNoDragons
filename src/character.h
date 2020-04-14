@@ -38,6 +38,7 @@ class Character {
 
         bool deal_damage(Character &target);
         bool deal_damage(Character &target, Spell spell_attack);
+        bool deal_damage(Character &target, Item bomb);
 
         bool take_damage(int damage);
 
@@ -114,7 +115,7 @@ int Character::calculate_damage_to_deal(){
 
     // Get weapon damage
     int damage = weapon.damage;
-    // Get player strength
+    // Get player strength modifier
     damage += calculate_modifier(strength);
 
     // If the weapon's element is a player strength, 
@@ -134,7 +135,7 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
 
     // Get weapon damage
     int damage = spell_attack.damage;
-    // Get player strength
+    // Get player wisdom modifier
     damage += calculate_modifier(wisdom);
 
     // If the weapon's element is a player strength, 
@@ -149,6 +150,7 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
 
     return damage;
 }
+
 
 // Calculate damage received method
 
@@ -203,6 +205,16 @@ bool Character::deal_damage(Character &target, Spell spell_attack){
     bool killed = target.take_damage(damage);
 
     return killed;
+}
+
+bool Character::deal_damage(Character &target, Item bomb){
+
+    int damage = bomb.damage;
+    damage = target.calculate_damage_to_receive(damage, "explosive", "physical");
+    bool killed = target.take_damage(damage);
+
+    return killed;
+
 }
 
 // Take damage methods
