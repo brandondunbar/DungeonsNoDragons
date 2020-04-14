@@ -31,6 +31,7 @@ class Player : public Character {
 
         void display_inventory();
         void display();
+        void display_spellbook();
 
         vector<Item> inventory;
         int gold = 0;
@@ -97,13 +98,39 @@ void Player::display_inventory(){
     }
 }
 
+// Display Player Sheet
+
 void Player::display(){
     cout << "Player Sheet:\n" << endl;
     display_attributes();
     cout << "\n\tGold: " << gold << endl;
     cout << "\tWeapon: " << weapon.name << endl;
     cout << "\tArmor: " << armor.name << endl;
-    cout << "\tSpells: " << endl;
+    cout << "\tSpells";
+    display_spellbook();
+}
+
+// Display Spellbook
+
+void Player::display_spellbook(){
+
+    cout << "(" << spellbook.size() << "):\n\t\t";
+
+    if (spellbook.size() == 0) {
+
+        cout << "None" << endl;
+
+    } else {
+
+        for ( int i = 0; i < spellbook.size(); i++ ){
+
+            cout << spellbook[i].name;
+
+            if ( i < spellbook.size() -1 ){
+                cout << ", ";
+            }
+        }
+    }
 }
 
 #endif  // __PLAYER_H_INCLUDED__

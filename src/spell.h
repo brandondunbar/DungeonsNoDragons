@@ -18,6 +18,8 @@ class Spell {
         
         Spell(string _name, string _element, string _status_effect, int _damage, int _manacost);  
 
+        void display();
+
         string name;
         string element;
         string status_effect;
@@ -29,5 +31,13 @@ class Spell {
 Spell::Spell (string _name, string _element, string _status_effect, int _damage, int _manacost) :
 name(_name), element(_element), status_effect(_status_effect), damage(_damage), cost(_manacost) {}
 
+void Spell::display(){
+    cout << "Spell Sheet:\n" << endl;
+    cout << "\tName: " << name << endl;
+    cout << "\tElement: " << element << endl;
+    cout << "\tStatus Effect: " << status_effect << endl;
+    cout << "\tDamage: " << damage << endl;
+    cout << "\tCost: " << cost << endl;
+}
 
 #endif // __SPELL_H_INCLUDED__
