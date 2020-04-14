@@ -16,7 +16,7 @@ class Spell {
 
     public:
         
-        Spell(string, string, string);  
+        Spell(string _name, string _element, string _status_effect, int _damage, int _manacost);  
 
         string name;
         string element;
@@ -26,13 +26,8 @@ class Spell {
 
 };
 
-Spell::Spell (string _name, string _element, string _status_effect) {
-
-    name = _name;
-    element = _element;
-    status_effect = _status_effect; 
-    
-}
+Spell::Spell (string _name, string _element, string _status_effect, int _damage, int _manacost) :
+name(_name), element(_element), status_effect(_status_effect), damage(_damage), cost(_manacost) {}
 
 
 #endif // __SPELL_H_INCLUDED__

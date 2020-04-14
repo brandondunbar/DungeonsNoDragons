@@ -23,5 +23,26 @@ bool vector_contains_value(vector<string> &vect, string value){
 
 }
 
+string vector_to_string(vector<string> &vect){
+
+    string vector_string;
+
+    if (!vect.empty()){
+
+        for (int i = 0; i < vect.size(); i++){
+
+            vector_string += vect[i];
+
+            if (i < (vect.size() - 1)){
+                vector_string += ", ";
+            }
+        }
+    } else {
+        vector_string = ".";
+    }
+
+    return vector_string;
+
+}
 
 #endif // __UTILITY_H_INCLUDED__

@@ -26,10 +26,11 @@ class Player : public Character {
         bool store(Weapon _weapon);
         bool store(Armor _armor);
 
-        bool equip(Weapon _weapon);
-        bool equip(Armor _armor);
+        void equip(Weapon _weapon);
+        void equip(Armor _armor);
 
-        string get_inventory();
+        void display_inventory();
+        void display();
 
         vector<Item> inventory;
         int gold = 0;
@@ -66,42 +67,43 @@ bool Player::store(Armor _armor){
 
 // Equip methods
 
-bool Player::equip(Weapon _weapon){
+void Player::equip(Weapon _weapon){
 
     if (weapon.name != "Fists"){
         store(weapon);
     }
 
     weapon = _weapon;
-
-    return true;
-
 }
 
-bool Player::equip(Armor _armor){
-
+void Player::equip(Armor _armor){
     
     store(armor);
     armor = _armor;
-    return true;
-
 }
 
 // Display Inventory
 
-string Player::get_inventory(){
+void Player::display_inventory(){
 
     int items_in_inventory = inventory.size();
 
     // Create string for display
-    string inventory_display = "\nInventory:\n";
+    cout << "\nInventory:" << endl;
 
     // Loop through items in inventory vector
-    for (int i = 0; i < items_in_inventory; i++){
-        inventory_display += "\t- " + inventory[i].name + "\n";
+    for ( int i = 0; i < items_in_inventory; i++ ){
+        cout << "\t- " << inventory[i].name << endl;
     }
+}
 
-    return inventory_display;
+void Player::display(){
+    cout << "Player Sheet:\n" << endl;
+    display_attributes();
+    cout << "\n\tGold: " << gold << endl;
+    cout << "\tWeapon: " << weapon.name << endl;
+    cout << "\tArmor: " << armor.name << endl;
+    cout << "\tSpells: " << endl;
 }
 
 #endif  // __PLAYER_H_INCLUDED__

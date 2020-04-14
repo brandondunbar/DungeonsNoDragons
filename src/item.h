@@ -16,6 +16,7 @@ class Item {
     public:
         
         Item(string, string);
+        void display();
 
         string name;
         string type;
@@ -27,6 +28,14 @@ Item::Item (string _name, string _type){
     name = _name;
     type = _type;
     
+}
+
+void Item::display(){
+
+    cout << "Item Sheet:\n" << endl;
+    cout << "\tName: " << name << endl;
+    cout << "\tType: " << type << endl;
+
 }
 
 #endif  // __ITEM_H_INCLUDED__

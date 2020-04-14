@@ -16,6 +16,8 @@ class Enemy : public Character {
 
         Enemy(string _name, string _class="fighter", string _race="goblin", int _level=1);
 
+        void display();
+
         string element = "neutral";
         vector<Item> loot;
 
@@ -32,6 +34,27 @@ Enemy::Enemy(string _name, string _class, string _race, int _level) : Character(
     armor = leather_armor;
 
     health = 10;
+
+}
+
+void Enemy::display(){
+
+    cout << "Enemy Sheet:\n" << endl;
+    display_attributes();
+    
+    cout << "\n\tLoot:\n\t\t";
+    
+    for (int i; i<loot.size(); i++){
+        cout << loot[i].name;
+        if (i < (loot.size() - 1)){
+            cout << ", ";
+        } 
+    }
+    cout << endl;
+
+    cout << "\tElement: " << element << endl;
+    cout << "\tWeapon: " << weapon.name << endl;
+    cout << "\tArmor: " << armor.name << endl;
 
 }
 

@@ -25,7 +25,7 @@ class Character {
 
     public:
         
-        Character(string, string, string, int);  
+        Character(string, string, string, int);
         
         int calculate_modifier(int stat);
 
@@ -38,6 +38,7 @@ class Character {
         bool take_damage(int damage);
 
         int calculate_damage_to_receive(int damage, string element, string damage_type);
+        void display_attributes();
 
         // Basic Info
         string name;
@@ -45,10 +46,10 @@ class Character {
         string race;
         int level;
         int health;
-        int mana;
+        int mana = 0;
 
         // Stats
-        int strength, constitution, dexterity, intelligence, wisdom, charisma;
+        int strength = 0, constitution = 0, dexterity = 0, intelligence = 0, wisdom = 0, charisma = 0;
 
         // Type strengths and weaknesses
         vector<string> strengths, weaknesses;
@@ -160,7 +161,6 @@ bool Character::deal_damage(Character &target){
     int damage = calculate_damage_to_deal();
 
     damage = target.calculate_damage_to_receive(damage, weapon.element, "physical");
-    cout << "Deal Damage method's damage value: " << damage << endl;
     bool killed = target.take_damage(damage);
 
     return killed;
@@ -180,16 +180,22 @@ bool Character::deal_damage(Character &target, Spell spell_attack){
 
 bool Character::take_damage(int damage){
 
-    cout << "Character " << name << " will receive " << damage << " damage to his health: " << health << " health" << endl;
-    cout << "Pre-damage health: " << health << endl;
     health -= damage;
-    cout << "Post-damage health: " << health << endl;
 
     if ( health <= 0 ){
         return true;
     } else {
         return false;
     }
+}
+
+void Character::display_attributes(){
+    cout << "\tName: " << name << endl;
+    cout << "\tClass: " << character_class << endl;
+    cout << "\tRace: " << race << endl;
+    cout << "\tLevel: " << level << endl;
+    cout << "\tHealth: " << health << endl;
+    cout << "\tMana: " << mana << endl;
 }
 
 #endif // __CHARACTER_H_INCLUDED__
