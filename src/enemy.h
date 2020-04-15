@@ -54,7 +54,10 @@ void Enemy::display(){
 
     cout << "\tElement: " << element << endl;
     cout << "\tWeapon: " << weapon.name << endl;
+    cout << "\t\tDamage: " << weapon.damage << endl;
     cout << "\tArmor: " << armor.name << endl;
+    cout << "\t\tPhysical Defense: " << armor.physical_defense << endl;
+    cout << "\t\tMagical Defense: " << armor.magical_defense << endl;
 
 }
 

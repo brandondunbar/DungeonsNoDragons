@@ -111,7 +111,10 @@ void Player::display(){
     display_attributes();
     cout << "\n\tGold: " << gold << endl;
     cout << "\tWeapon: " << weapon.name << endl;
+    cout << "\t\tDamage: " << weapon.damage << endl;
     cout << "\tArmor: " << armor.name << endl;
+    cout << "\t\tPhysical Defense: " << armor.physical_defense << endl;
+    cout << "\t\tMagical Defense: " << armor.magical_defense << endl;
     cout << "\tSpells";
     display_spellbook();
     cout << endl;
