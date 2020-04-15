@@ -64,7 +64,6 @@ class Character {
         int strength = 10, constitution = 10, dexterity = 10, intelligence = 10, wisdom = 10, charisma = 10;
         // Current Stats
         int current_strength, current_constitution, current_dexterity, current_intelligence, current_wisdom, current_charisma;
-        bool intimidated = false;
 
         // Elemental type strengths and weaknesses
         vector<string> strengths, weaknesses;
