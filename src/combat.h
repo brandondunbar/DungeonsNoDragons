@@ -23,7 +23,7 @@ using namespace std;
 #include "dice.h"
 #include "buff.h"
 
-void battle_Sys(Player& player_character, Enemy& anEnemy)
+bool battle_Sys(Player& player_character, Enemy& anEnemy)
 {
 
     //Dice
@@ -51,16 +51,17 @@ void battle_Sys(Player& player_character, Enemy& anEnemy)
         {
             //Physical DMG
         case 1:
+            {
             player_character.deal_damage(anEnemy);
 
             cout << "\n\nEnemy's current HP: "
                  << anEnemy.health;
 
             break;
-
+            }
             //Magic DMG
         case 2:
-
+            {
             cout << "\n\nYou open your spellbook.";
 
             player_character.display_spellbook();
@@ -71,48 +72,69 @@ void battle_Sys(Player& player_character, Enemy& anEnemy)
 
             cout << "\n\nEnemy's current HP: "
                  << anEnemy.health;
-
+            }
             break;
 
             //Defend
         case 3:
+            {
 
             cout << "\n\nYou get into a defensive stance.";
 
-            //Make a debuff for enemy STR and WIS based on dice roll
+            //Buffs player to
+            Buff defending = Buff("Defending", "Armor", 5, 1);
+            player_character.add_buff(defending);
 
             break;
-
+            }
             //Items
         case 4:
+            {
 
             cout << "\n\nYou open your backpack.";
             player_character.display_inventory();
 
             break;
-
+            }
             //Intimidate
         case 5:
-
+            {
             cout << "\n\nYou attempt to intimidate.";
 
-            //Buff the player by a dice roll
+            //Debuffs the enemy's STR and WIS
+            Buff intimidate_STR = Buff("Intimidate STR", "str", -2, 3);
+            Buff intimidare_WIS = Buff("Intimidate WIS", "wis", -2, 3);
+
+            anEnemy.add_buff(intimidate_STR);
+            anEnemy.add_buff(intimidare_WIS);
 
             break;
-
+            }
         }
 
+        player_character.trigger_buffs();
+
+        if (anEnemy.health <= 0)
+        {
+            return true;
+        }
 
         //Enemy attack
         if (d.roll() <= 10)
         {
+            cout << "\n\nThe enemy used a physical attack.";
             anEnemy.deal_damage(player_character);
         }
         else
         {
+            cout << "\n\nThe enemy used a magic attack.";
             anEnemy.deal_damage(player_character, Spells["Fireball"]);
         }
+
+        anEnemy.trigger_buffs();
     }
+
+    return false;
 }
 
 #endif // COMBAT_H_INCLUDED
