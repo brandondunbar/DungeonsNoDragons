@@ -1,3 +1,6 @@
+/*puzzle header by sebastian
+Roe.S996299@stu.sanjac.edu*/
+
 #pragma once
 
 #include <iostream>

@@ -1,3 +1,5 @@
+/*dictionary of various items*/
+
 #pragma once
 #include <iostream>
 #include <map>

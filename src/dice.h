@@ -1,3 +1,7 @@
+/*dice object
+sebastian roe
+roe.s996299@stu.sanjac.edu*/
+
 #ifndef DICE_H_INCLUDED
 #define DICE_H_INCLUDED
 #include <iostream>
