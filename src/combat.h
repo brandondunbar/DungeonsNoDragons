@@ -110,6 +110,15 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
 
             break;
             }
+        case 7:
+            {
+            anEnemy.display();
+            }
+        case 8:
+            {
+            player_character.display();
+            }
+
         }
 
         player_character.trigger_buffs();
