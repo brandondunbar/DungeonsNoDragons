@@ -120,7 +120,7 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
                 {
                     player_character.mana += 25;
                 }
-                else if (chosenItem.name == "Bomb")
+                else if (chosenItem.type == "Bomb")
                 {
                     player_character.deal_damage(anEnemy, chosenItem);
                 }
