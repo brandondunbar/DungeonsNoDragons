@@ -15,9 +15,9 @@
 class Spell {
 
     public:
-        
-        Spell(string _name, string _element, string _status_effect, int _damage, int _manacost);  
 
+        Spell(string _name, string _element, string _status_effect, int _damage, int _manacost);
+        Spell() = default;
         void display();
 
         string name;

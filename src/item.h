@@ -1,4 +1,4 @@
-/* 
+/*
 *   item.h
 *   The header file containing the item class, inherited by weapons, armor, and other items.
 *   Brandon Dunbar
@@ -14,21 +14,22 @@
 class Item {
 
     public:
-        
+
         Item(string, string);
+        Item() = default;
         void display();
 
         string name;
         string type;
         int damage = 0;
-        
+
 };
 
 Item::Item (string _name, string _type){
 
     name = _name;
     type = _type;
-    
+
 }
 
 void Item::display(){

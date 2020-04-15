@@ -15,7 +15,7 @@ class Enemy : public Character {
     public:
 
         Enemy(string _name, string _class="fighter", string _race="goblin", int _level=1);
-
+        Enemy() = default;
         void display();
 
         string element = "neutral";
@@ -41,14 +41,14 @@ void Enemy::display(){
 
     cout << "Enemy Sheet:\n" << endl;
     display_attributes();
-    
+
     cout << "\n\tLoot:\n\t\t";
-    
+
     for (int i; i<loot.size(); i++){
         cout << loot[i].name;
         if (i < (loot.size() - 1)){
             cout << ", ";
-        } 
+        }
     }
     cout << endl;
 

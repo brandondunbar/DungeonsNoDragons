@@ -27,10 +27,11 @@ const int ELEMENT_WEAKNESS_PENALTY = 1;
 class Character {
 
     public:
-        
+
         Character(string, string, string, int);
+        Character() = default;
         void set_health_and_mana();
-        
+
         int calculate_modifier(int stat);
 
         int calculate_damage_to_deal();
@@ -76,6 +77,8 @@ class Character {
         Weapon weapon;
         Armor armor;
 
+        void learnSpell(Spell& aSpell);
+
 };
 
 Character::Character (string _name, string _class, string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
@@ -118,7 +121,7 @@ int Character::calculate_damage_to_deal(){
     // Get player strength modifier
     damage += calculate_modifier(strength);
 
-    // If the weapon's element is a player strength, 
+    // If the weapon's element is a player strength,
     if ( vector_contains_value(strengths, weapon.element) ) {
 
         // Apply element strength bonus
@@ -138,7 +141,7 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
     // Get player wisdom modifier
     damage += calculate_modifier(wisdom);
 
-    // If the weapon's element is a player strength, 
+    // If the weapon's element is a player strength,
     if ( vector_contains_value(strengths, spell_attack.element) ) {
 
         // Apply element strength bonus
@@ -155,8 +158,8 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
 // Calculate damage received method
 
 int Character::calculate_damage_to_receive(int damage, string element, string damage_type){
-    /* 
-    Calculates damage to receive based on different factors 
+    /*
+    Calculates damage to receive based on different factors
     damage: base damage to be dealt
     element: the magical element associated with the damage (most commonly neutral)
     damage_type: physical or magical
@@ -181,6 +184,12 @@ int Character::calculate_damage_to_receive(int damage, string element, string da
     }
 
     damage -= damage_dampen;
+
+    if (damage < 0)
+    {
+        return 0;
+    }
+
     return damage;
 }
 
@@ -247,7 +256,7 @@ void Character::display_attributes(){
     cout << "\tIntelligence: (" << current_intelligence << "/" << intelligence << ")" << endl;
     cout << "\tWisdom: (" << current_wisdom << "/" << wisdom << ")" << endl;
     cout << "\tCharisma: (" << current_charisma << "/" << charisma << ")" << endl;
-    
+
 }
 
 void Character::display_buffs(){
@@ -270,17 +279,17 @@ void Character::add_buff(Buff buff){
 
     for ( int i = 0; i < buffs.size(); i++ ){
         if ( buffs[i].name == buff.name){
-            
+
             buffs[i].round_timer = buff.round_timer;
             already_added = true;
             break;
-        } 
+        }
     }
 
     if ( !already_added ){
-        
+
         buffs.push_back(buff);
-    
+
     }
 }
 
@@ -329,7 +338,7 @@ void Character::buff_effect(Buff &buff, const int index_pos){
         mod_stat(buff.target_stat, buff.mod);
 
         // To make sure the buff isn't continuously added
-        buff.activated = true;       
+        buff.activated = true;
 
     }
 
@@ -342,6 +351,11 @@ void Character::buff_effect(Buff &buff, const int index_pos){
 
     buff.round_timer--;
 
+}
+
+void Character::learnSpell(Spell& aSpell)
+{
+    spellbook.push_back(aSpell);
 }
 
 #endif // __CHARACTER_H_INCLUDED__

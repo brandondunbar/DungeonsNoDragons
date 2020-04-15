@@ -20,6 +20,7 @@ class Armor : public Item {
     public:
 
         Armor(string _name, int _physical_defense, int _magical_defense, string _element);
+        Armor() = default;
         void display();
 
         int physical_defense;

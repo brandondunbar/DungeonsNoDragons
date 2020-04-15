@@ -20,6 +20,7 @@ class Weapon : public Item {
     public:
 
         Weapon(std::string _name, int _damage, std::string _element);
+        Weapon() = default;
         void display();
         int damage;
         std::string element;
@@ -33,7 +34,7 @@ Weapon::Weapon(std::string _name, int _damage, std::string _element) : Item(_nam
 
 void Weapon::display(){
 
-    cout << "\nWeapon Sheet:" <<endl; 
+    cout << "\nWeapon Sheet:" <<endl;
     cout << "\t" << type << ": " << name << endl;
     cout << "\tDamage: " << damage << endl;
     cout << "\tElement: " << element << endl;
