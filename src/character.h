@@ -12,12 +12,13 @@
 
 //=================================
 // Included Dependencies
-#include <vector>
-#include <string>
+#include "map"
+#include "vector"
 #include "utility.h"
 #include "weapon.h"
 #include "armor.h"
 #include "spell.h"
+#include "buff.h"
 
 const int ELEMENT_STRENGTH_BONUS = 3;
 const int ELEMENT_WEAKNESS_PENALTY = 1;
@@ -27,8 +28,9 @@ class Character {
 
     public:
 
-        Character(std::string, std::string, std::string, int);
+        Character(string, string, string, int);
         Character() = default;
+        void set_health_and_mana();
 
         int calculate_modifier(int stat);
 
@@ -37,39 +39,72 @@ class Character {
 
         bool deal_damage(Character &target);
         bool deal_damage(Character &target, Spell spell_attack);
+        bool deal_damage(Character &target, Item bomb);
 
         bool take_damage(int damage);
 
-        int calculate_damage_to_receive(int damage, std::string element, std::string damage_type);
+        int calculate_damage_to_receive(int damage, string element, string damage_type);
+        void display_attributes();
+
+        void display_buffs();
+        void add_buff(Buff buff);
+        void mod_stat(string stat, int amount);
+        void trigger_buffs();
+        void buff_effect(Buff &buff, const int index_pos);
+        void learnSpell(Spell& aSpell);
 
         // Basic Info
-        std::string name;
-        std::string character_class;
-        std::string race;
+        string name;
+        string character_class;
+        string race;
         int level;
         int health;
-        int mana;
+        int mana = 0;
 
-        // Stats
-        int strength, constitution, dexterity, intelligence, wisdom, charisma;
+        // Base Stats
+        int strength = 10, constitution = 10, dexterity = 10, intelligence = 10, wisdom = 10, charisma = 10;
+        // Current Stats
+        int current_strength, current_constitution, current_dexterity, current_intelligence, current_wisdom, current_charisma;
+        bool intimidated = false;
 
-        // Type strengths and weaknesses
-        std::vector<std::string> strengths, weaknesses;
+        // Elemental type strengths and weaknesses
+        vector<string> strengths, weaknesses;
+
+        // Buffs/Debuffs
+        vector<Buff> buffs;
 
         // Things
-        std::vector<Spell> spellbook;
+        vector<Spell> spellbook;
         Weapon weapon;
         Armor armor;
 
 };
 
-Character::Character (std::string _name, std::string _class, std::string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
+Character::Character (string _name, string _class, string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
 
     name = _name;
     character_class = _class;
     race = _race;
     level = _level;
 
+    // Set Temp stats
+    current_strength = strength;
+    current_constitution = constitution;
+    current_dexterity = dexterity;
+    current_intelligence = intelligence;
+    current_wisdom = wisdom;
+    current_charisma = charisma;
+
+}
+
+void Character::learnSpell(Spell& aSpell)
+{
+    spellbook.push_back(aSpell);
+}
+
+void Character::set_health_and_mana(){
+    health = constitution*5;
+    mana = intelligence*5;
 }
 
 int Character::calculate_modifier(int stat){
@@ -87,7 +122,7 @@ int Character::calculate_damage_to_deal(){
 
     // Get weapon damage
     int damage = weapon.damage;
-    // Get player strength
+    // Get player strength modifier
     damage += calculate_modifier(strength);
 
     // If the weapon's element is a player strength,
@@ -97,7 +132,7 @@ int Character::calculate_damage_to_deal(){
         damage += ELEMENT_STRENGTH_BONUS;
 
     }
-    std::cout << "Damage calc'd: " << damage << std::endl;
+    cout << "Damage calc'd: " << damage << endl;
     return damage;
 
 }
@@ -107,7 +142,7 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
 
     // Get weapon damage
     int damage = spell_attack.damage;
-    // Get player strength
+    // Get player wisdom modifier
     damage += calculate_modifier(wisdom);
 
     // If the weapon's element is a player strength,
@@ -123,9 +158,10 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
     return damage;
 }
 
+
 // Calculate damage received method
 
-int Character::calculate_damage_to_receive(int damage, std::string element, std::string damage_type){
+int Character::calculate_damage_to_receive(int damage, string element, string damage_type){
     /*
     Calculates damage to receive based on different factors
     damage: base damage to be dealt
@@ -152,6 +188,12 @@ int Character::calculate_damage_to_receive(int damage, std::string element, std:
     }
 
     damage -= damage_dampen;
+
+    if (damage < 0)
+    {
+        return 0;
+    }
+
     return damage;
 }
 
@@ -163,7 +205,6 @@ bool Character::deal_damage(Character &target){
     int damage = calculate_damage_to_deal();
 
     damage = target.calculate_damage_to_receive(damage, weapon.element, "physical");
-    std::cout << "Deal Damage method's damage value: " << damage << std::endl;
     bool killed = target.take_damage(damage);
 
     return killed;
@@ -172,27 +213,148 @@ bool Character::deal_damage(Character &target){
 bool Character::deal_damage(Character &target, Spell spell_attack){
     /* Deals damage to target character, returns bool reflecting if target is killed */
 
-    int damage = calculate_damage_to_deal();
+    int damage = calculate_damage_to_deal(spell_attack);
     damage = target.calculate_damage_to_receive(damage, spell_attack.element, "magical");
     bool killed = target.take_damage(damage);
 
     return killed;
 }
 
+bool Character::deal_damage(Character &target, Item bomb){
+
+    int damage = bomb.damage;
+    damage = target.calculate_damage_to_receive(damage, "explosive", "physical");
+    bool killed = target.take_damage(damage);
+
+    return killed;
+
+}
+
 // Take damage methods
 
 bool Character::take_damage(int damage){
 
-    std::cout << "Character " << name << " will receive " << damage << " damage to his health: " << health << " health" << std::endl;
-    std::cout << "Pre-damage health: " << health << std::endl;
     health -= damage;
-    std::cout << "Post-damage health: " << health << std::endl;
 
     if ( health <= 0 ){
         return true;
     } else {
         return false;
     }
+}
+
+void Character::display_attributes(){
+    cout << "\tName: " << name << endl;
+    cout << "\tClass: " << character_class << endl;
+    cout << "\tRace: " << race << endl;
+    cout << "\tLevel: " << level << endl;
+    cout << "\tHealth: " << health << endl;
+    cout << "\tMana: " << mana << endl;
+    cout << "\tBuffs: ";
+    display_buffs();
+
+    cout << "\n\nStats:" << endl;
+    cout << "\tStrength: (" << current_strength << "/" << strength << ")" << endl;
+    cout << "\tConstitution: (" << current_constitution << "/" << constitution << ")" << endl;
+    cout << "\tDexterity: (" << current_dexterity << "/" << dexterity << ")" << endl;
+    cout << "\tIntelligence: (" << current_intelligence << "/" << intelligence << ")" << endl;
+    cout << "\tWisdom: (" << current_wisdom << "/" << wisdom << ")" << endl;
+    cout << "\tCharisma: (" << current_charisma << "/" << charisma << ")" << endl;
+
+}
+
+void Character::display_buffs(){
+
+    for ( int i = 0; i < buffs.size(); i++ ){
+
+        cout << buffs[i].name;
+
+        if ( i < buffs.size() - 1 ){
+
+            cout << ", ";
+
+        }
+    }
+}
+
+void Character::add_buff(Buff buff){
+
+    bool already_added = false;
+
+    for ( int i = 0; i < buffs.size(); i++ ){
+        if ( buffs[i].name == buff.name){
+
+            buffs[i].round_timer = buff.round_timer;
+            already_added = true;
+            break;
+        }
+    }
+
+    if ( !already_added ){
+
+        buffs.push_back(buff);
+
+    }
+}
+
+void Character::trigger_buffs(){
+
+    for ( int i = 0; i < buffs.size(); i++ ) {
+        buff_effect(buffs[i], i);
+    }
+
+}
+
+void Character::mod_stat(string stat, int amount){
+
+    if ( stat == "str" ) {
+
+        current_strength += amount;
+
+    } else if ( stat == "con" ) {
+
+        current_constitution += amount;
+
+    } else if ( stat == "dex" ) {
+
+        current_dexterity += amount;
+
+    }  else if ( stat == "int" ) {
+
+        current_intelligence += amount;
+
+    } else if ( stat == "wis" ) {
+
+        current_wisdom += amount;
+
+    }  else if ( stat == "cha" ) {
+
+        current_charisma += amount;
+
+    }
+
+}
+
+void Character::buff_effect(Buff &buff, const int index_pos){
+
+    if ( buff.activated == false ) {
+
+        mod_stat(buff.target_stat, buff.mod);
+
+        // To make sure the buff isn't continuously added
+        buff.activated = true;
+
+    }
+
+    if ( buff.round_timer == 0 ){
+
+        buffs.erase(buffs.begin() + index_pos);
+        mod_stat(buff.target_stat, -buff.mod);
+
+    }
+
+    buff.round_timer--;
+
 }
 
 #endif // __CHARACTER_H_INCLUDED__

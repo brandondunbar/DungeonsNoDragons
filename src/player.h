@@ -12,8 +12,6 @@
 
 //=================================
 // Included Dependencies
-#include <vector>
-#include <string>
 #include "character.h"
 #include "item.h"
 
@@ -22,23 +20,25 @@ class Player : public Character {
 
     public:
 
-        Player(std::string _name, std::string _class, std::string _race, int _level);
+        Player(string _name, string _class, string _race, int _level);
 
         bool store(Item _item);
         bool store(Weapon _weapon);
         bool store(Armor _armor);
 
-        bool equip(Weapon _weapon);
-        bool equip(Armor _armor);
+        void equip(Weapon _weapon);
+        void equip(Armor _armor);
 
-        std::string get_inventory();
+        void display_inventory();
+        void display();
+        void display_spellbook();
 
-        std::vector<Item> inventory;
+        vector<Item> inventory;
         int gold = 0;
 
 };
 
-Player::Player(std::string _name, std::string _class, std::string _race, int _level) : Character(
+Player::Player(string _name, string _class, string _race, int _level) : Character(
     _name, _class, _race, _level) {
 
 }
@@ -68,42 +68,75 @@ bool Player::store(Armor _armor){
 
 // Equip methods
 
-bool Player::equip(Weapon _weapon){
+void Player::equip(Weapon _weapon){
 
     if (weapon.name != "Fists"){
         store(weapon);
     }
 
     weapon = _weapon;
-
-    return true;
-
 }
 
-bool Player::equip(Armor _armor){
-
+void Player::equip(Armor _armor){
 
     store(armor);
     armor = _armor;
-    return true;
-
 }
 
 // Display Inventory
 
-std::string Player::get_inventory(){
+void Player::display_inventory(){
 
     int items_in_inventory = inventory.size();
-
-    // Create string for display
-    std::string inventory_display = "\nInventory:\n";
-
-    // Loop through items in inventory vector
-    for (int i = 0; i < items_in_inventory; i++){
-        inventory_display += "\t- " + inventory[i].name + "\n";
+    if (items_in_inventory == 0)
+    {
+        cout << "\nThere is nothing inside it.\n";
+        return;
     }
 
-    return inventory_display;
+    // Create string for display
+    cout << "\nInventory:" << endl;
+
+    // Loop through items in inventory vector
+    for ( int i = 0; i < items_in_inventory; i++ ){
+        cout << "\t- " << inventory[i].name << endl;
+    }
+}
+
+// Display Player Sheet
+
+void Player::display(){
+    cout << "Player Sheet:\n" << endl;
+    display_attributes();
+    cout << "\n\tGold: " << gold << endl;
+    cout << "\tWeapon: " << weapon.name << endl;
+    cout << "\tArmor: " << armor.name << endl;
+    cout << "\tSpells";
+    display_spellbook();
+    cout << endl;
+}
+
+// Display Spellbook
+
+void Player::display_spellbook(){
+
+    cout << "(" << spellbook.size() << "):\n\t";
+
+    if (spellbook.size() == 0) {
+
+        cout << "None" << endl;
+
+    } else {
+
+        for ( int i = 0; i < spellbook.size(); i++ ){
+
+            cout << i << " - " << spellbook[i].name;
+
+            if ( i < spellbook.size() -1 ){
+                cout << ", ";
+            }
+        }
+    }
 }
 
 #endif  // __PLAYER_H_INCLUDED__

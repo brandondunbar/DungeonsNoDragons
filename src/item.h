@@ -11,27 +11,32 @@
 #define __ITEM_H_INCLUDED__   //   #define this so the compiler knows it has been included
 
 //=================================
-// Included Dependencies
-#include <vector>
-#include <string>
-
-//=================================
 class Item {
 
     public:
 
-        Item(std::string, std::string);
+        Item(string, string);
         Item() = default;
+        void display();
 
-        std::string name;
-        std::string type;
+        string name;
+        string type;
+        int damage = 0;
 
 };
 
-Item::Item (std::string _name, std::string _type){
+Item::Item (string _name, string _type){
 
     name = _name;
     type = _type;
+
+}
+
+void Item::display(){
+
+    cout << "Item Sheet:\n" << endl;
+    cout << "\tName: " << name << endl;
+    cout << "\tType: " << type << endl;
 
 }
 

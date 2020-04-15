@@ -12,16 +12,16 @@
 
 //=================================
 // Included Dependencies
-#include <vector>
-#include <string>
 #include "item.h"
 
 //=================================
 class Weapon : public Item {
 
     public:
+
         Weapon(std::string _name, int _damage, std::string _element);
         Weapon() = default;
+        void display();
         int damage;
         std::string element;
 
@@ -30,6 +30,16 @@ class Weapon : public Item {
 Weapon::Weapon(std::string _name, int _damage, std::string _element) : Item(_name, "Weapon"){
     damage = _damage;
     element = _element;
+}
+
+void Weapon::display(){
+
+    cout << "\nWeapon Sheet:" <<endl;
+    cout << "\t" << type << ": " << name << endl;
+    cout << "\tDamage: " << damage << endl;
+    cout << "\tElement: " << element << endl;
+    cout << "\n" << endl;
+
 }
 
 #endif  // __WEAPON_H_INCLUDED__
