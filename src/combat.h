@@ -1,5 +1,8 @@
 
-//New Combat Sys
+//combat.h
+//Dang Doan
+//Dangdoan115@gmail.com
+//Combat System for Dungeons no Dragons
 
 #ifndef COMBAT_H_INCLUDED
 #define COMBAT_H_INCLUDED
