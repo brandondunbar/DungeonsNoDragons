@@ -78,7 +78,7 @@ void Player::equip(Weapon _weapon){
 }
 
 void Player::equip(Armor _armor){
-    
+
     store(armor);
     armor = _armor;
 }
@@ -88,6 +88,12 @@ void Player::equip(Armor _armor){
 void Player::display_inventory(){
 
     int items_in_inventory = inventory.size();
+
+    if (items_in_inventory == 0)
+    {
+        cout << "\nInventory is empty.\n";
+        return;
+    }
 
     // Create string for display
     cout << "\nInventory:" << endl;
@@ -115,7 +121,7 @@ void Player::display(){
 
 void Player::display_spellbook(){
 
-    cout << "(" << spellbook.size() << "):\n\t\t";
+    cout << "(" << spellbook.size() << "):\n\t";
 
     if (spellbook.size() == 0) {
 
@@ -125,7 +131,7 @@ void Player::display_spellbook(){
 
         for ( int i = 0; i < spellbook.size(); i++ ){
 
-            cout << spellbook[i].name;
+            cout << i << " - " << spellbook[i].name;
 
             if ( i < spellbook.size() -1 ){
                 cout << ", ";
