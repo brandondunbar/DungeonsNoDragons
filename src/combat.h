@@ -94,6 +94,11 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
             //Items
         case 4:
             {
+                if (player_character.inventory.empty())
+                {
+                    cout << "Your inventory is empty.\n";
+                    break;
+                }
                 int choice;
                 cout << "\n\nYou open your backpack.";
                 player_character.display_inventory();
