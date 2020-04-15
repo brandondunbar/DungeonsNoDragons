@@ -94,7 +94,7 @@ void Player::display_inventory(){
 
     // Loop through items in inventory vector
     for ( int i = 0; i < items_in_inventory; i++ ){
-        cout << "\t- " << inventory[i].name << endl;
+        cout << "\t" << i << " " << inventory[i].name << endl;
     }
 }
 

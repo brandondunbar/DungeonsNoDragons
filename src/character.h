@@ -327,6 +327,15 @@ void Character::mod_stat(string stat, int amount){
 
         current_charisma += amount;
 
+    } else if ( stat == "armor" ) {
+
+        armor.physical_defense += amount;
+        armor.magical_defense += amount;
+
+    } else if ( stat == "dot" ) {
+
+        health -= amount;
+
     }
 
 }
@@ -338,7 +347,9 @@ void Character::buff_effect(Buff &buff, const int index_pos){
         mod_stat(buff.target_stat, buff.mod);
 
         // To make sure the buff isn't continuously added
-        buff.activated = true;
+        if ( buff.target_stat != "dot" ) {  // Damage over time should be continuously added
+            buff.activated = true;
+        }
 
     }
 
