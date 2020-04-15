@@ -65,6 +65,11 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
             //Magic DMG
         case 2:
             {
+                if (player_character.spellbook.empty())
+                {
+                    cout << "You have not learned any spells.\n";
+                    break;
+                }
                 cout << "\n\nYou open your spellbook.";
 
                 player_character.display_spellbook();
