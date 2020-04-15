@@ -94,10 +94,28 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
             //Items
         case 4:
             {
-
+                int choice;
                 cout << "\n\nYou open your backpack.";
                 player_character.display_inventory();
+                cout << "\nEnter which item to use: \n";
+                cin >> choice;
 
+                Item chosenItem = player_character.inventory[choice];
+
+                if (chosenItem.name == "Health Potion")
+                {
+                    player_character.health += 25;
+                }
+                else if (chosenItem.name == "Mana Potion")
+                {
+                    player_character.mana += 25;
+                }
+                else if (chosenItem.name == "Bomb")
+                {
+                    player_character.deal_damage(anEnemy, chosenItem);
+                }
+
+                player_character.inventory.erase(player_character.inventory.begin() + choice);
                 break;
             }
             //Intimidate
