@@ -52,71 +52,76 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
             //Physical DMG
         case 1:
             {
-            player_character.deal_damage(anEnemy);
+                player_character.deal_damage(anEnemy);
 
-            cout << "\n\nEnemy's current HP: "
-                 << anEnemy.health;
+                cout << "\n\nEnemy's current HP: "
+                     << anEnemy.health;
 
-            break;
+                break;
             }
             //Magic DMG
         case 2:
             {
-            cout << "\n\nYou open your spellbook.";
+                cout << "\n\nYou open your spellbook.";
 
-            player_character.display_spellbook();
-            int choice;
-            cout << "\n\nWhich spell do you want to use?\n";
-            cin >> choice;
-            player_character.deal_damage(anEnemy, player_character.spellbook[choice]);
+                player_character.display_spellbook();
+                int choice;
+                cout << "\n\nWhich spell do you want to use?\n";
+                cin >> choice;
+                player_character.deal_damage(anEnemy, player_character.spellbook[choice]);
 
-            cout << "\n\nEnemy's current HP: "
-                 << anEnemy.health;
+                cout << "\n\nEnemy's current HP: "
+                     << anEnemy.health;
+
+                break;
             }
-            break;
 
             //Defend
         case 3:
             {
 
-            cout << "\n\nYou get into a defensive stance.";
+                cout << "\n\nYou get into a defensive stance.";
 
-            //Buffs player to
-            Buff defending = Buff("Defending", "Armor", 5, 1);
-            player_character.add_buff(defending);
+                //Buffs player to
+                Buff defending = Buff("Defending", "Armor", 5, 1);
+                player_character.add_buff(defending);
 
-            break;
+                break;
             }
             //Items
         case 4:
             {
 
-            cout << "\n\nYou open your backpack.";
-            player_character.display_inventory();
+                cout << "\n\nYou open your backpack.";
+                player_character.display_inventory();
 
-            break;
+                break;
             }
             //Intimidate
         case 5:
             {
-            cout << "\n\nYou attempt to intimidate.";
+                cout << "\n\nYou attempt to intimidate.";
 
-            //Debuffs the enemy's STR and WIS
-            Buff intimidate_STR = Buff("Intimidate STR", "str", -2, 3);
-            Buff intimidare_WIS = Buff("Intimidate WIS", "wis", -2, 3);
+                //Debuffs the enemy's STR and WIS
+                Buff intimidate_STR = Buff("Intimidate STR", "str", -2, 3);
+                Buff intimidare_WIS = Buff("Intimidate WIS", "wis", -2, 3);
 
-            anEnemy.add_buff(intimidate_STR);
-            anEnemy.add_buff(intimidare_WIS);
+                anEnemy.add_buff(intimidate_STR);
+                anEnemy.add_buff(intimidare_WIS);
 
-            break;
+                break;
             }
+
+        //Checking stats for debugging
+
         case 7:
             {
-            anEnemy.display();
+                anEnemy.display();
             }
+
         case 8:
             {
-            player_character.display();
+                player_character.display();
             }
 
         }
