@@ -3,6 +3,8 @@
 *   Holds the character class, inherited by player and enemy classes
 *   Brandon Dunbar
 *   dunbar.b965960@stu.sanjac.edu       brandon.dunbar97@gmail.com
+*   Sebastian Roe
+*   Roe.S996299@stu.sanjac.edu
 */
 
 //=================================
