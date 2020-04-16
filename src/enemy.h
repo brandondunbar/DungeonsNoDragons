@@ -1,4 +1,4 @@
-
+//defines an enemy class derived from the character class
 //=================================
 // Include Guard
 #ifndef __ENEMY_H_INCLUDED__   // if enemy.h hasn't been included yet...

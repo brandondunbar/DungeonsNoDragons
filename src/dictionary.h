@@ -1,4 +1,4 @@
-/*dictionary of various items*/
+/*dictionary of various items, armor, spells, weapons, and enemies*/
 
 #pragma once
 #include <iostream>

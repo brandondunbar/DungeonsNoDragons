@@ -1,4 +1,6 @@
 /*puzzle header by sebastian
+generates a word scramble puzzle, or generates
+a hinting prompt and asks for your answer
 Roe.S996299@stu.sanjac.edu*/
 
 #pragma once

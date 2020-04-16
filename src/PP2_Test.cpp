@@ -1,3 +1,4 @@
+//tests the combat system individually
 #include <iostream>
 #include <vector>
 #include <string>
