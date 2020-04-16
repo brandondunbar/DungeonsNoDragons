@@ -12,6 +12,9 @@ using namespace std;
 
 #include "player.h"
 #include "enemy.h"
+#include "dice.h"
+#include "puzzle.h"
+#include "combat.h"
 
 int main(){
 
@@ -239,6 +242,44 @@ int main(){
     } else {
         cout << orc.name << " is at " << orc.health << "!" << endl;
     }
+
+    cout << "\n\nTesting: Dice rolling----------------------------------------\n\n" << endl;
+    Dice d(6);
+    cout << "Rolling six sided dice six times: \n\n";
+    for (int i = 0; i < 6; i++)
+    {
+        cout << "Rolled a " << d.roll() << endl;
+    }
+
+    cout << "\n\nTesting: puzzles --------------------------------\n\n";
+    cout << "Unscramble the word or guess the answer to a hint!\n";
+    for (int i = 0; i < 3; i++)
+    {
+        Puzzle p(i);
+        if (p.solve())
+        {
+            cout << "You solved the puzzle!\n";
+        }
+        else
+        {
+            cout << "You failed the puzzle.\n";
+        }
+    }
+
+    cout << "\n\nTesting: combat system -----------------------------\n\n";
+    player_character.health = 100;
+    orc.health = 100;
+    if (battle_Sys(player_character, orc))
+    {
+        cout << "\nYou won the battle!\n";
+    }
+    else
+    {
+        cout << "\nYou lost the battle!\n";
+    }
+    
+
+    
 
     return 0;
 
