@@ -14,7 +14,7 @@ class Enemy : public Character {
 
     public:
 
-        Enemy(string _name, string _class="fighter", string _race="goblin", int _level=1);
+        Enemy(string _name, string _class="fighter", string _race="goblin");
         Enemy() = default;
         void display();
 
@@ -24,8 +24,8 @@ class Enemy : public Character {
 };
 
 // Constructor
-Enemy::Enemy(string _name, string _class, string _race, int _level) : Character(
-    _name, _class, _race, _level) {
+Enemy::Enemy(string _name, string _class, string _race) : Character(
+    _name, _class, _race) {
 
     Weapon iron_sword = Weapon("Iron Sword", 10, "neutral");
     weapon = iron_sword;
