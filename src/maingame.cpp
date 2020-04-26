@@ -27,6 +27,29 @@ bool hasDoneFifthDungeon = false;
 
 int main()
 {
+    //Intro sequence
+    cout << "\n\nWelcome to Dungeons no Dragons!"
+         << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
+         << "\nIn this game, you're on a quest to save your sister from Gylbesdaym, Eater of All."
+         << "\nYou heard rumors of Gylbesdaym terrorizing a city in the south called Eretedon."
+         << "\nYou arrive at a tavern on the city outskirts and sit at the counter."
+         << "\nThe man next to you says,"
+         << "\n\nHooded man: You must be insane to come to this acursed city at such a time"
+         << "\nHooded man: There are rumors of a massive wave of monsters moving closer to the city because of Gylbesdaym's arrival recently."
+         << "\nHooded man: You though, don't look like an average traveler, tell me, what is your name.";
+    
+    //Character creation
+    cout << "\n\nMy name is: ";
+    string name;
+    cin >> name;
+
+    cout << "\nAnd I am a: "
+         << "\nRaces: "
+         << "\n1.Human, adaptable, average in all things"
+         << "\n2.Elf, swift nomads that usually roam the forests in the west"
+         << "\n3.Dwarf, their sturdiness makes up for thier lack of height"
+         << "\n4.Tiefling, cunning "
+
     while (!gameOver && mainPlayer.health > 0)
     {
         int choice;
