@@ -28,7 +28,7 @@ class Character {
 
     public:
 
-        Character(string, string, string, int);
+        Character(string, string, string);
         Character() = default;
         void set_health_and_mana();
 
@@ -56,7 +56,6 @@ class Character {
         string name;
         string character_class;
         string race;
-        int level;
         int health;
         int mana = 0;
 
@@ -80,12 +79,11 @@ class Character {
 
 };
 
-Character::Character (string _name, string _class, string _race, int _level) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
+Character::Character (string _name, string _class, string _race) : weapon("Fists", 5, "neutral"), armor("Leather Armor", 5, 1, "neutral") {
 
     name = _name;
     character_class = _class;
     race = _race;
-    level = _level;
 
     // Set Temp stats
     current_strength = strength;
@@ -242,7 +240,6 @@ void Character::display_attributes(){
     cout << "\tName: " << name << endl;
     cout << "\tClass: " << character_class << endl;
     cout << "\tRace: " << race << endl;
-    cout << "\tLevel: " << level << endl;
     cout << "\tHealth: " << health << endl;
     cout << "\tMana: " << mana << endl;
     cout << "\tBuffs: ";

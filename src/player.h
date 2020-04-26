@@ -20,7 +20,7 @@ class Player : public Character {
 
     public:
 
-        Player(string _name, string _class, string _race, int _level);
+        Player(string _name, string _class, string _race);
 
         bool store(Item _item);
         bool store(Weapon _weapon);
@@ -38,8 +38,8 @@ class Player : public Character {
 
 };
 
-Player::Player(string _name, string _class, string _race, int _level) : Character(
-    _name, _class, _race, _level) {
+Player::Player(string _name, string _class, string _race) : Character(
+    _name, _class, _race) {
 
 }
 
