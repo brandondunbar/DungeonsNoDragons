@@ -16,7 +16,7 @@ void fourthDungeon(Player& aPlayer);
 void fifthDungeon(Player& aPlayer);
 void sixthDungeon(Player& aPlayer);
 
-
+//Dungeon Checks
 bool gameOver = false;
 bool hasDoneFirstDungeon = false;
 bool hasDoneSecondDungeon = false;
@@ -24,6 +24,8 @@ bool hasDoneThirdDungeon = false;
 bool hasDoneFourthDungeon = false;
 bool hasDoneFifthDungeon = false;
 
+//Player Template
+Player mainPlayer = Player("name", "class", "race");
 
 int main()
 {
@@ -43,12 +45,103 @@ int main()
     string name;
     cin >> name;
 
-    cout << "\nAnd I am a: "
-         << "\nRaces: "
+    mainPlayer.name = name;
+
+    cout << "\nRaces: "
          << "\n1.Human, adaptable, average in all things"
          << "\n2.Elf, swift nomads that usually roam the forests in the west"
          << "\n3.Dwarf, their sturdiness makes up for thier lack of height"
-         << "\n4.Tiefling, cunning "
+         << "\n4.Tiefling, silver-tounged creatures born from darkness"
+         << "\n5.Gnome, small, cunning tinkerers that boast high intelligence"
+         << "\nSelect race: ";
+
+    int raceChoice;
+    cin >> raceChoice;
+    switch (raceChoice)
+    {
+        case 1:
+            mainPlayer.race = "Human";
+            mainPlayer.strength += 1;
+            mainPlayer.constitution += 1;
+            mainPlayer.dexterity += 1;
+            mainPlayer.intelligence += 1;
+            mainPlayer.wisdom += 1;
+            mainPlayer.charisma += 1;
+            break;
+
+        case 2:
+            mainPlayer.race = "Elf";
+            mainPlayer.dexterity += 2;
+            break;
+
+        case 3:
+            mainPlayer.race = "Dwarf";
+            mainPlayer.constitution += 2;
+            break;
+
+        case 4:
+            mainPlayer.race = "Tiefling";
+            mainPlayer.charisma += 2;
+            break;
+
+        case 5:
+            mainPlayer.race = "Gnome";
+            mainPlayer.intelligence += 2;
+            break;
+    }
+
+    cout << "\nI am a "
+         << mainPlayer.race;
+
+    cout << "\n\nHooded man: Oh I see, I'm a novice storywriter and I've run into a writers' block recently."
+         << "\nI came hoping to find new inspiration."
+         << "\nWhat did you do before coming here?";
+
+    cout << "\n\nClasses: "
+         << "\n1.Paladin, a holy knight proficient in both holy magic and melee combat"
+         << "\n2.Mercenary, a wandering sellsword skilled with a blade"
+         << "\n3.Scholar, a student of the arcane arts knowledgeable in ancient magecraft"
+         << "\n4.Summoner, commands spirits to weaken foes"
+         << "\n5.Marksman, a former hunter with unrivaled precision"
+         << "\n6.Thief, an agile cutpurse";
+    
+    int playerClass;
+    cin >> playerClass;
+    switch (playerClass)
+    {
+        case 1:
+            mainPlayer.character_class = "Paladin";
+            //Add items
+            break;
+
+        case 2:
+            mainPlayer.character_class = "Mercenary";
+            //Add items
+            break;
+
+        case 3:
+            mainPlayer.character_class = "Scholar";
+            //Add items
+            break;
+
+        case 4:
+            mainPlayer.character_class = "Summoner";
+            //Add items
+            break;
+
+        case 5:
+            mainPlayer.character_class = "Marksman";
+            //Add items
+            break;
+
+        case 6:
+            mainPlayer.character_class = "Thief";
+            //Add items
+            break;
+    }
+
+    cout << "\nI was a "
+         << mainPlayer.character_class;
 
     while (!gameOver && mainPlayer.health > 0)
     {
