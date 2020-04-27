@@ -112,36 +112,44 @@ int main()
         case 1:
             mainPlayer.character_class = "Paladin";
             //Add items
+            mainPlayer.weapon = Weapons["Dull Magic Sword"];
             break;
 
         case 2:
             mainPlayer.character_class = "Mercenary";
             //Add items
+            mainPlayer.weapon = Weapons["Rusty Great Sword"];
             break;
 
         case 3:
             mainPlayer.character_class = "Scholar";
             //Add items
+            mainPlayer.weapon = Weapons["Dusty Magic Tome"];
             break;
 
         case 4:
             mainPlayer.character_class = "Summoner";
             //Add items
+            mainPlayer.weapon = Weapons["Pine Magic Staff"];
             break;
 
         case 5:
             mainPlayer.character_class = "Marksman";
             //Add items
+            mainPlayer.weapon = Weapons["Short Bow"];
             break;
 
         case 6:
             mainPlayer.character_class = "Thief";
             //Add items
+            mainPlayer.weapon = Weapons["Chipped Dual Daggers"];
             break;
     }
 
     cout << "\nI was a "
          << mainPlayer.character_class;
+
+    mainPlayer.display();
 
     while (!gameOver && mainPlayer.health > 0)
     {
@@ -187,7 +195,7 @@ int main()
                 }
                 else
                 {
-                    firstDungeon(mainPlayer);
+                    // firstDungeon(mainPlayer);
                     hasDoneFirstDungeon = true;
                     break;
                 }
@@ -206,7 +214,7 @@ int main()
                 }
                 else
                 {
-                    secondDungeon(mainPlayer);
+                    // secondDungeon(mainPlayer);
                     hasDoneSecondDungeon = true;
                     break;
                 }
@@ -225,7 +233,7 @@ int main()
                 }
                 else
                 {
-                    thirdDungeon(mainPlayer);
+                    // thirdDungeon(mainPlayer);
                     hasDoneThirdDungeon = true;
                     break;
                 }
@@ -244,7 +252,7 @@ int main()
                 }
                 else
                 {
-                    fourthDungeon(mainPlayer);
+                    // fourthDungeon(mainPlayer);
                     hasDoneFourthDungeon = true;
                     break;
                 }
@@ -263,7 +271,7 @@ int main()
                 }
                 else
                 {
-                    fifthDungeon(mainPlayer);
+                    // fifthDungeon(mainPlayer);
                     hasDoneFifthDungeon = true;
                     break;
                 }
@@ -277,7 +285,7 @@ int main()
                 }
                 else
                 {
-                    sixthDungeon(mainPlayer);
+                    // sixthDungeon(mainPlayer);
                     break;
                 }
             }

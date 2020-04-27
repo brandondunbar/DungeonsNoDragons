@@ -8,8 +8,8 @@
 #include "enemy.h"
 
 std::map<std::string, Enemy> Enemies = {
-    {"Orc Fighter", Enemy("Basic Orc Fighter", "fighter", "orc", 1)},
-    {"Magical Training Dummy", Enemy("Magical Training Dummy", "Dummy", "Dummy", 1)}
+    {"Orc Fighter", Enemy("Basic Orc Fighter", "fighter", "orc")},
+    {"Magical Training Dummy", Enemy("Magical Training Dummy", "Dummy", "Dummy")}
 };
 std::map<std::string, Item> Items = {
     {"Health Potion", Item("Health Potion", "Potion")},
@@ -28,5 +28,11 @@ std::map<std::string, Spell> Spells = {
 std::map<std::string, Weapon> Weapons = {
     {"Iron Sword", Weapon("Iron Sword", 10, "neutral")},
     {"Longbow", Weapon("Longbow", 10, "Neutral")},
-    {"Staff", Weapon("Staff", 20, "Neutral")}
+    {"Staff", Weapon("Staff", 20, "Neutral")},
+    {"Dull Magic Sword", Weapon("Dull Magic Sword", 3, "Neutral")},
+    {"Rusty Great Sword", Weapon("Rusty Great Sword", 10, "Neutral")},
+    {"Dusty Magic Tome", Weapon("Magic Tome", 4, "Magic")},
+    {"Pine Magic Staff", Weapon("Magic Staff", 4, "Magic")},
+    {"Short Bow", Weapon("Short Bow", 7, "Neutral")},
+    {"Chipped Dual Daggers", Weapon("Chipped Dual Daggers", 4, "Neutral")},
 };
