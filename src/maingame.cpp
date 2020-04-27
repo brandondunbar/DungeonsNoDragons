@@ -313,7 +313,7 @@ int main()
     return 0;
 }
 
-
+//Store
 void visitStore(Player& aPlayer)
 {
     cout << "Welcome to the Jorildyn's store! What would you like to do?\n\n";
@@ -461,6 +461,8 @@ void visitStore(Player& aPlayer)
         cin >> choice;
     }
 }
+
+//First Dungeon
 void firstDungeon()
 {
     p = Puzzle (0);
