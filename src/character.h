@@ -138,6 +138,11 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
     // Get player wisdom modifier
     damage += calculate_modifier(wisdom);
 
+    // Add spell focus modifier
+    if ( weapon.element == "Magic" ) {
+        damage += weapon.damage;
+    }
+
     // If the weapon's element is a player strength,
     if ( vector_contains_value(strengths, spell_attack.element) ) {
 
