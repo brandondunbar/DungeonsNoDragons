@@ -32,8 +32,8 @@ int main()
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
-         << "\nIn this game, you're on a quest to save your sister from Gylbesdaym, Eater of All."
-         << "\nYou heard rumors of Gylbesdaym terrorizing a city in the south called Eretedon."
+         << "\nYou recieved a clue on your sister who went missing a few years ago."
+         << "\nYou begin your search in the southern city Eretedon, a city plagued with rumors of the arrival of Gylbesdaym, Eater of All."
          << "\nYou arrive at a tavern on the city outskirts and sit at the counter."
          << "\nThe man next to you says,"
          << "\n\nHooded man: You must be insane to come to this acursed city at such a time"
@@ -143,10 +143,15 @@ int main()
     cout << "\nI was a "
          << mainPlayer.character_class;
 
+    //End of character creation
+
+    //Transition to city (story)
+    cout << "After leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.";
+
     while (!gameOver && mainPlayer.health > 0)
     {
         int choice;
-        cout << "Welcome to town! What would you like to do here?\n";
+        cout << "Welcome to Eretedon! What would you like to do here?\n";
         cout << "1) Rest at the inn (10 gold)\n";
         cout << "2) Visit the store\n";
         cout << "3) Enter the first dungeon\n";
@@ -155,7 +160,8 @@ int main()
         cout << "6) Enter the fourth dungeon\n";
         cout << "7) Enter the fifth dungeon\n";
         cout << "8) Enter the sixth dungeon\n";
-        cout << "9) Give up\n";
+        cout << "9) Inventory\n";
+        cout << "10) Give up\n";
         cin >> choice;
 
         switch (choice)
@@ -196,12 +202,12 @@ int main()
             {
                 if (hasDoneSecondDungeon)
                 {
-                    cout << "You enter the dungeon, but the monsters are already slain. You head back to town.\n";
+                    cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
                     break;
                 }
                 else if (!hasDoneFirstDungeon)
                 {
-                    cout << "The dungeon is sealed with powerful magic. You head back to town.\n";
+                    cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
                     break;
                 }
                 else
@@ -215,12 +221,12 @@ int main()
             {
                 if (hasDoneThirdDungeon)
                 {
-                    cout << "You enter the dungeon, but the monsters are already slain. You head back to town.\n";
+                    cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
                     break;
                 }
                 else if (!hasDoneSecondDungeon)
                 {
-                    cout << "The dungeon is sealed with powerful magic. You head back to town.\n";
+                    cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
                     break;
                 }
                 else
@@ -234,12 +240,12 @@ int main()
             {
                 if (hasDoneFourthDungeon)
                 {
-                    cout << "You enter the dungeon, but the monsters are already slain. You head back to town.\n";
+                    cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
                     break;
                 }
                 else if (!hasDoneThirdDungeon)
                 {
-                    cout << "The dungeon is sealed with powerful magic. You head back to town.\n";
+                    cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
                     break;
                 }
                 else
@@ -253,12 +259,12 @@ int main()
             {
                 if (hasDoneFifthDungeon)
                 {
-                    cout << "You enter the dungeon, but the monsters are already slain. You head back to town.\n";
+                    cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
                     break;
                 }
                 else if (!hasDoneFourthDungeon)
                 {
-                    cout << "The dungeon is sealed with powerful magic. You head back to town.\n";
+                    cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
                     break;
                 }
                 else
@@ -272,7 +278,7 @@ int main()
             {
                 if (!hasDoneFifthDungeon)
                 {
-                    cout << "The dungeon is sealed with powerful magic. You head back to town.\n";
+                    cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
                     break;
                 }
                 else
@@ -283,17 +289,94 @@ int main()
             }
         case 9:
             {
-                cout << "You lay down your weapons and give up on saving your sister.\n";
+                //Work in progress, changes needed for the player to fully access their inventory
+                cout << "You check your gear\n";
+                mainPlayer.inventory();
+            }
+        case 10:
+            {
+                cout << "You leave the city with no clues to where your sister could be\n"
                 cout << "End of game.\n";
                 gameOver = true;
                 break;
             }
         default:
             {
-                cout << "Your character wanders around for a bit, gets lost, then finds his way back to town.\n";
+                cout << "Your character wanders around for a bit, gets lost, then finds his way back to the guild.\n";
                 break;
             }
         }
     }
     return 0;
+}
+
+void firstDungeon()
+{
+    p = Puzzle (0);
+    string puzzleAnswer;
+    string inventoryAnswer;
+
+    //Story
+    cout << "\n\nThe guild decides to give you a exterminate mission to assess your skill and experience."
+         << "\nThe location is the GreenHill Cave and the target is the slime king."
+         << "\nYou push open the moss covered doors and head inside without hesitation.";
+
+    //Enemy Generation
+
+    //Combat
+    battle_Sys(mainPlayer, slime);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "Yes" or "yes")
+    {
+        mainPlayer.inventory();
+    }
+
+    //Puzzle
+    cout << "\n\nYou spot a door sealed by magic, do you wish to unlock it?";
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+            //Rewards gold
+            cout << "\n\nYou find a small pouch of coins nested next to a skeleton."
+            mainPlayer.gold += 50;
+        }
+    }
+
+    //Enemy Generation
+
+    //Combat
+    battle_Sys(mainPlayer, slime);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "Yes" or "yes")
+    {
+        mainPlayer.inventory();
+    }
+
+    //Story
+
+    //Boss
+    battle_Sys(mainPlayer, slimeKing);
+
+    //Puzzle
+    cout << "\n\nA locked chest appears where the boss was once at, do you wish to open it?";
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+            //Rewards Unique Boss Item
+        }
+    }
 }
