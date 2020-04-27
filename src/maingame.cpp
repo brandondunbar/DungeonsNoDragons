@@ -466,13 +466,7 @@ void visitStore(Player& aPlayer)
         cin >> choice;
     }
 }
-<<<<<<< HEAD
 void firstDungeon(Player& aPlayer)
-=======
-
-//First Dungeon
-void firstDungeon()
->>>>>>> 610d4c93b94d0f08c44bc5e4ba3d88081cf89e54
 {
     Puzzle p = Puzzle(0);
     string puzzleAnswer;
