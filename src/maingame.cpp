@@ -9,12 +9,15 @@ using namespace std;
 #include "puzzle.h"
 #include "combat.h"
 
+void visitStore(Player& aPlayer);
 void firstDungeon(Player& aPlayer);
 void secondDungeon(Player& aPlayer);
 void thirdDungeon(Player& aPlayer);
 void fourthDungeon(Player& aPlayer);
 void fifthDungeon(Player& aPlayer);
 void sixthDungeon(Player& aPlayer);
+
+Enemy generateEnemy(int dungeon, int difficulty);
 
 //Dungeon Checks
 bool gameOver = false;
@@ -296,4 +299,153 @@ int main()
         }
     }
     return 0;
+}
+
+
+void visitStore(Player& aPlayer)
+{
+    cout << "Welcome to the Jorildyn's store! What would you like to do?\n\n";
+    cout << "1) Health Potion (restores 25 health) - 5 gold\n";
+    cout << "2) Mana Potion (restores 25 mana) - 5 gold\n";
+    cout << "3) Bomb (does 10 damage) - 5 gold\n";
+    cout << "4) Iron Armor (5 physical defense, 1 magical defense, neutral) - 20 gold\n";
+    cout << "5) Lightning Armor (10 physical defense, 10 magical defense, neutral) - 50 gold\n";
+    cout << "6) Iron Sword (10 damage, neutral) - 15 gold\n";
+    cout << "7) Long Bow (10 damage, neutral) - 15 gold\n";
+    cout << "8) Staff (20 damage, neutral) - 30 gold\n";
+    cout << "9) Leave\n";
+    int choice;
+    cin >> choice;
+    while (true){
+        switch (choice)
+        {
+            case 1:
+            {
+                if (aPlayer.gold < 5)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 5;
+                    aPlayer.inventory.push_back(Items["Health Potion"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 2:
+            {
+                if (aPlayer.gold < 5)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 5;
+                    aPlayer.inventory.push_back(Items["Mana Potion"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 3:
+            {
+                if (aPlayer.gold < 5)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 5;
+                    aPlayer.inventory.push_back(Items["Bomb"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 4:
+            {
+                if (aPlayer.gold < 20)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 20;
+                    aPlayer.inventory.push_back(Armors["Iron Armor"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 5:
+            {
+                if (aPlayer.gold < 50)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 50;
+                    aPlayer.inventory.push_back(Armors["Lightning Armor"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 6:
+            {
+                if (aPlayer.gold < 15)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 15;
+                    aPlayer.inventory.push_back(Weapons["Iron Sword"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 7:
+            {
+                if (aPlayer.gold < 15)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 15;
+                    aPlayer.inventory.push_back(Weapons["Long Bow"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 8:
+            {
+                if (aPlayer.gold < 30)
+                {
+                    cout << "You do not have enough gold to purchase this item.\n";
+                    break;
+                }
+                else
+                {
+                    aPlayer.gold -= 30;
+                    aPlayer.inventory.push_back(Weapons["Staff"]);
+                    cout << "Thank you for your purchase!\n";
+                    break;
+                }
+            }
+            case 9:
+            {
+                cout << "Thank you for shopping here!\n";
+                return;
+            }
+        }
+        cout << "What else do you want to purchase?\n";
+        cin >> choice;
+    }
 }
