@@ -27,11 +27,10 @@ bool hasDoneThirdDungeon = false;
 bool hasDoneFourthDungeon = false;
 bool hasDoneFifthDungeon = false;
 
-//Player Template
-Player mainPlayer = Player("name", "class", "race");
 
 int main()
 {
+    Player mainPlayer = Player("name", "class", "race");
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
@@ -298,7 +297,7 @@ int main()
             }
         case 10:
             {
-                cout << "You leave the city with no clues to where your sister could be\n"
+                cout << "You leave the city with no clues to where your sister could be\n";
                 cout << "End of game.\n";
                 gameOver = true;
                 break;
@@ -461,9 +460,9 @@ void visitStore(Player& aPlayer)
         cin >> choice;
     }
 }
-void firstDungeon()
+void firstDungeon(Player& aPlayer)
 {
-    p = Puzzle (0);
+    Puzzle p = Puzzle(0);
     string puzzleAnswer;
     string inventoryAnswer;
 
@@ -475,7 +474,7 @@ void firstDungeon()
     //Enemy Generation
 
     //Combat
-    battle_Sys(mainPlayer, slime);
+    battle_Sys(aPlayer, slime);
 
     //Inventory
     cout << "Do you want to check your gear?";
@@ -483,7 +482,7 @@ void firstDungeon()
 
     if (inventoryAnswer == "Yes" or "yes")
     {
-        mainPlayer.inventory();
+        aPlayer.inventory();
     }
 
     //Puzzle
@@ -495,15 +494,15 @@ void firstDungeon()
         if(p.solve());
         {
             //Rewards gold
-            cout << "\n\nYou find a small pouch of coins nested next to a skeleton."
-            mainPlayer.gold += 50;
+            cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
+            aPlayer.gold += 50;
         }
     }
 
     //Enemy Generation
 
     //Combat
-    battle_Sys(mainPlayer, slime);
+    battle_Sys(aPlayer, slime);
 
     //Inventory
     cout << "Do you want to check your gear?";
@@ -511,13 +510,13 @@ void firstDungeon()
 
     if (inventoryAnswer == "Yes" or "yes")
     {
-        mainPlayer.inventory();
+        aPlayer.inventory();
     }
 
     //Story
 
     //Boss
-    battle_Sys(mainPlayer, slimeKing);
+    battle_Sys(aPlayer, slimeKing);
 
     //Puzzle
     cout << "\n\nA locked chest appears where the boss was once at, do you wish to open it?";
