@@ -26,13 +26,13 @@ using namespace std;
 #include "dice.h"
 #include "buff.h"
 
-bool battle_Sys(Player& player_character, Enemy& anEnemy)
+bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 {
 
     //Dice
     Dice d;
 
-    while (player_character.health > 0 && anEnemy.health > 0)
+    while (mainPlayer.health > 0 && anEnemy.health > 0)
     {
         int enemy_Health;
         int player_Choice;
@@ -40,7 +40,7 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
         //Combat Menu
         cout
              << "\nPlayer Health: "
-             << player_character.health
+             << mainPlayer.health
              << "\n\nMake your move"
              << "\n1. Attack\n"
              << "2. Magic\n"
@@ -55,7 +55,7 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
             //Physical DMG
         case 1:
             {
-                player_character.deal_damage(anEnemy);
+                mainPlayer.deal_damage(anEnemy);
 
                 cout << "\n\nEnemy's current HP: "
                      << anEnemy.health;
@@ -65,18 +65,18 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
             //Magic DMG
         case 2:
             {
-                if (player_character.spellbook.empty())
+                if (mainPlayer.spellbook.empty())
                 {
                     cout << "You have not learned any spells.\n";
                     break;
                 }
                 cout << "\n\nYou open your spellbook.";
 
-                player_character.display_spellbook();
+                mainPlayer.display_spellbook();
                 int choice;
                 cout << "\n\nWhich spell do you want to use?\n";
                 cin >> choice;
-                player_character.deal_damage(anEnemy, player_character.spellbook[choice]);
+                mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
 
                 cout << "\n\nEnemy's current HP: "
                      << anEnemy.health;
@@ -92,40 +92,40 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
 
                 //Buffs player to
                 Buff defending = Buff("Defending", "Armor", 5, 1);
-                player_character.add_buff(defending);
+                mainPlayer.add_buff(defending);
 
                 break;
             }
             //Items
         case 4:
             {
-                if (player_character.inventory.empty())
+                if (mainPlayer.inventory.empty())
                 {
                     cout << "Your inventory is empty.\n";
                     break;
                 }
                 int choice;
                 cout << "\n\nYou open your backpack.";
-                player_character.display_inventory();
+                mainPlayer.display_inventory();
                 cout << "\nEnter which item to use: \n";
                 cin >> choice;
 
-                Item chosenItem = player_character.inventory[choice];
+                Item chosenItem = mainPlayer.inventory[choice];
 
                 if (chosenItem.name == "Health Potion")
                 {
-                    player_character.health += 25;
+                    mainPlayer.health += 25;
                 }
                 else if (chosenItem.name == "Mana Potion")
                 {
-                    player_character.mana += 25;
+                    mainPlayer.mana += 25;
                 }
                 else if (chosenItem.type == "Bomb")
                 {
-                    player_character.deal_damage(anEnemy, chosenItem);
+                    mainPlayer.deal_damage(anEnemy, chosenItem);
                 }
 
-                player_character.inventory.erase(player_character.inventory.begin() + choice);
+                mainPlayer.inventory.erase(mainPlayer.inventory.begin() + choice);
                 break;
             }
             //Intimidate
@@ -152,12 +152,12 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
 
         case 8:
             {
-                player_character.display();
+                mainPlayer.display();
             }
 
         }
 
-        player_character.trigger_buffs();
+        mainPlayer.trigger_buffs();
 
         if (anEnemy.health <= 0)
         {
@@ -168,12 +168,12 @@ bool battle_Sys(Player& player_character, Enemy& anEnemy)
         if (d.roll() <= 10)
         {
             cout << "\n\nThe enemy used a physical attack.";
-            anEnemy.deal_damage(player_character);
+            anEnemy.deal_damage(mainPlayer);
         }
         else
         {
             cout << "\n\nThe enemy used a magic attack.";
-            anEnemy.deal_damage(player_character, Spells["Fireball"]);
+            anEnemy.deal_damage(mainPlayer, Spells["Fireball"]);
         }
 
         anEnemy.trigger_buffs();
