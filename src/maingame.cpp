@@ -492,17 +492,19 @@ void firstDungeon(Player& aPlayer)
     
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+    if (inventoryAnswer == "Yes" or "yes")
+    {
         aPlayer.inventory();
+    }
 
     //Puzzle
     cout << "\n\nYou spot a door sealed by magic.";
-    if(p.solve())
+    if(p.solve());
     {
-        //Rewards gold
+            //Rewards gold
         cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
         aPlayer.gold += 50;
     }
@@ -520,11 +522,13 @@ void firstDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+    if (inventoryAnswer == "Yes" or "yes")
+    {
         aPlayer.inventory();
+    }
 
     //Story
 
@@ -541,8 +545,8 @@ void firstDungeon(Player& aPlayer)
     Puzzle p = Puzzle(0);
 
     //Puzzle
-    cout << "\n\nA locked chest appears where the boss was once at.";
-    if (p.solve())
+    cout << "\n\nA locked chest appears where the boss was once at."
+    if(p.solve());
     {
             //Rewards Unique Boss Item
     }
@@ -570,14 +574,12 @@ void secondDungeon(Player& aPlayer)
     
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
-        aPlayer.inventory();
     //Puzzle
     //Puzzle Story
-    if(p.solve())
+    if(p.solve());
     {
             //Standard puzzle reward
     }
@@ -595,11 +597,9 @@ void secondDungeon(Player& aPlayer)
     }
     
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
-        aPlayer.inventory();
     //Story
 
     //Boss
@@ -616,12 +616,13 @@ void secondDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle story
-    if(p.solve())
+    if(p.solve());
     {
-        //Rewards Unique Boss Item
+            //Rewards Unique Boss Item
     }
 }
 
+//Dungeons 3 (needs story and enemy generation)
 void thirdDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(1);
@@ -716,16 +717,14 @@ void fourthDungeon(Player& aPlayer)
     }
     
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
-        aPlayer.inventory();
     //Puzzle
     //Puzzle Story
-    if(p.solve())
+    if(p.solve());
     {
-        //Rewards
+            //Rewards
     }
 
     //Enemy Generation
@@ -741,11 +740,9 @@ void fourthDungeon(Player& aPlayer)
     }
     
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
-        aPlayer.inventory();
     //Boss
     if (battle_Sys(aPlayer, demonLord))
     {
@@ -761,12 +758,13 @@ void fourthDungeon(Player& aPlayer)
     //Puzzle
     //Puzzle Story
 
-    if(p.solve())
+    if(p.solve());
     {
-        //Rewards Unique Boss Item
+            //Rewards Unique Boss Item
     }
 }
 
+//Dungeon 5 (needs story and enemy generation)
 void fifthDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(2);
@@ -858,24 +856,18 @@ void sixthDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
-
-    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
-        aPlayer.inventory();
 
     //Final Boss
     if (battle_Sys(aPlayer, demonSister))
     {
         //Win
     }
-    else
     {
         //Lose
     }
 
     //Story
 }
-
-
 
