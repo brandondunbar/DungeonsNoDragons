@@ -27,7 +27,6 @@ bool hasDoneThirdDungeon = false;
 bool hasDoneFourthDungeon = false;
 bool hasDoneFifthDungeon = false;
 
-
 int main()
 {
     Player mainPlayer = Player("name", "class", "race");
@@ -467,7 +466,7 @@ void visitStore(Player& aPlayer)
     }
 }
 
-//Dungeon 1 (needs story and enemy generation)
+//Dungeon 1 (enemy generation)
 void firstDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
@@ -484,21 +483,22 @@ void firstDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, slime))
     {
         //Win
+        cout << "\n\nThe slime splatters into a dozen driplets.";
     }
     else
     {
         //Lose
+        cout << "\n\nYou get absorbed by the slime.";
+        return;
     }
     
 
     //Inventory
-    cout << "Do you want to check your gear?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "Yes" or "yes")
-    {
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
-    }
 
     //Puzzle
     cout << "\n\nYou spot a door sealed by magic.";
@@ -515,22 +515,26 @@ void firstDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, slime))
     {
         //Win
+        cout << "\n\nThe slime gets split down the middle.";
     }
     else
     {
         //Lose
+        cout << "\n\nYou died from a slime.";
+        return;
     }
 
     //Inventory
-    cout << "Do you want to check your gear?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "Yes" or "yes")
-    {
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
-    }
 
     //Story
+    cout << "\n\nYou find a huge, moss covered door at the end of the cave."
+         << "\nIts quite heavy but you manage to push it open and enter."
+         << "\nYou spot at the other end of the room a giant slime.";
 
     //Boss
     if (battle_Sys(aPlayer, slimeKing))
@@ -546,10 +550,14 @@ void firstDungeon(Player& aPlayer)
 
     //Puzzle
     cout << "\n\nA locked chest appears where the boss was once at."
-    if(p.solve());
+    if(p.solve())
     {
             //Rewards Unique Boss Item
     }
+
+    //Story
+    cout << "\n\nYou find a mysterious rune on the floor and promptly erase it."
+         << "\nYou head back to Eretedon";
 }
 
 //Dungeon 2 (needs story and enemy generation)
@@ -574,8 +582,11 @@ void secondDungeon(Player& aPlayer)
     
 
     //Inventory
-    cout << "Do you want to check your gear?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
 
     //Puzzle
     //Puzzle Story
@@ -597,8 +608,11 @@ void secondDungeon(Player& aPlayer)
     }
     
     //Inventory
-    cout << "Do you want to check your gear?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
 
     //Story
 
@@ -644,7 +658,7 @@ void thirdDungeon(Player& aPlayer)
     
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -671,7 +685,7 @@ void thirdDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -717,8 +731,11 @@ void fourthDungeon(Player& aPlayer)
     }
     
     //Inventory
-    cout << "Do you want to check your gear?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
 
     //Puzzle
     //Puzzle Story
@@ -740,8 +757,11 @@ void fourthDungeon(Player& aPlayer)
     }
     
     //Inventory
-    cout << "Do you want to check your gear?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
 
     //Boss
     if (battle_Sys(aPlayer, demonLord))
@@ -786,7 +806,7 @@ void fifthDungeon(Player& aPlayer)
     
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -813,7 +833,7 @@ void fifthDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "Do you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -856,8 +876,11 @@ void sixthDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "Do you want to check your gear?";
+    cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
 
     //Final Boss
     if (battle_Sys(aPlayer, demonSister))
