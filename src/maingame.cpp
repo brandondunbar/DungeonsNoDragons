@@ -466,6 +466,8 @@ void visitStore(Player& aPlayer)
         cin >> choice;
     }
 }
+
+//Dungeon 1 (needs story and enemy generation)
 void firstDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
@@ -526,6 +528,63 @@ void firstDungeon(Player& aPlayer)
 
     //Puzzle
     cout << "\n\nA locked chest appears where the boss was once at, do you wish to open it?";
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+            //Rewards Unique Boss Item
+        }
+    }
+}
+
+//Dungeon 2 (needs story and enemy generation)
+void secondDungeon(Player& aPlayer)
+{
+    Puzzle p = Puzzle(0);
+    string puzzleAnswer;
+    string inventoryAnswer;
+
+    //Story
+
+    //Enemy Generation
+
+    //Battle
+    battle_Sys(aPlayer, zombie);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    //Puzzle
+    //Puzzle Story
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+           //Standard puzzle reward
+        }
+    }
+    
+    //Enemy Generation
+
+    //Battle
+    battle_Sys(aPlayer, zombie);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    //Story
+
+    //Boss
+    battle_Sys(aPlayer, undeadGiant);
+
+    //Puzzle
+    //Puzzle story
     cin >> puzzleAnswer;
 
     if (puzzleAnswer == "Yes" or "yes")
