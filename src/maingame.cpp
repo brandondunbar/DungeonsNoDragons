@@ -466,7 +466,7 @@ void visitStore(Player& aPlayer)
     }
 }
 
-//Dungeon 1 (enemy generation)
+//Dungeon 1 (needs enemy generation)
 void firstDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
@@ -502,7 +502,7 @@ void firstDungeon(Player& aPlayer)
 
     //Puzzle
     cout << "\n\nYou spot a door sealed by magic.";
-    if(p.solve());
+    if(p.solve())
     {
             //Rewards gold
         cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
@@ -540,33 +540,50 @@ void firstDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, slimeKing))
     {
         //Win
+        cout << "\n\nThe slimeking liquifies as you deliver the final blow.";
     }
     else
     {
         //Lose
+        cout << "Your jouney ends just as quickly as it began.";
+        return;
     }
     
     Puzzle p = Puzzle(0);
 
     //Puzzle
-    cout << "\n\nA locked chest appears where the boss was once at."
+    cout << "\n\nA locked chest appears where the boss was once at.";
     if(p.solve())
     {
             //Rewards Unique Boss Item
+            cout << "\n\nThe chest opens.";
     }
 
     //Story
     cout << "\n\nYou find a mysterious rune on the floor and promptly erase it."
+         << "\nNext to the rune was an odd note, you take it with you."
          << "\nYou head back to Eretedon";
 }
 
-//Dungeon 2 (needs story and enemy generation)
+//Dungeon 2 (needs enemy generation)
 void secondDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
     string inventoryAnswer;
 
     //Story
+    cout << "\n\nAfter reporting to the guild your feat and recieving your gate pass, you run into the storywriter you met at the bar."
+         << "\nStorywriter: Oh hey "
+         << aPlayer.name
+         << ", nice meeting you here."
+         << "\nStorywriter: I've heard rumors of undead rising recently in nearby villages, it sounds suspicious."
+         << "\nStorywriter: I was going to file an official request but I hope you can check it out for me."
+         << "\nYou give him a thumbs up and tell the storywriter you'll head there right away."
+         << "\nStorywriter: Alright, I'll tell the guild that you've gone to the villages, good luck."
+         << "\nBefore the storywriter left, you hand him the note and asked him to figure out what it means."
+         << "\nStorywriter: I see, interesting. I'll see what I can find out about it."
+         << "\n\n\nYou arrive at the closest village in the west to find no one around in the streets."
+         << "\nYou decide to investigate.";
 
     //Enemy Generation
 
@@ -574,10 +591,13 @@ void secondDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, zombie))
     {
         //Win
+        cout << "\n\nYou dispatched the undead swiftly";
     }
     else
     {
         //Lose
+        cout << "\n\nYou're swarmed and killed";
+        return;
     }
     
 
@@ -590,9 +610,11 @@ void secondDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    if(p.solve());
+    cout << "\n\nYou found a odd magic chest";
+    if(p.solve())
     {
-            //Standard puzzle reward
+        //Standard puzzle reward
+        cout << "\n\nThe chest opens";
     }
     
     //Enemy Generation
@@ -601,10 +623,12 @@ void secondDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, zombie))
     {
         //Win
+        cout << "\n\nThe undead falls to the gound";
     }
     else
     {
         //Lose
+        cout << "\n\nYour journey ends by the hands of the undead";
     }
     
     //Inventory
@@ -615,25 +639,38 @@ void secondDungeon(Player& aPlayer)
         aPlayer.inventory();
 
     //Story
+    cout << "\n\nYou find a massive zombie in the center of the village."
+         << "\nIt looks your way and begins to charge at you.";
 
     //Boss
     if (battle_Sys(aPlayer, undeadGiant))
     {
         //Win
+        cout << "\n\nThe giant falls to the ground, breaking it leading to a hidden underground structure.";
     }
     else
     {
         //Lose
+        cout << "\n\nThe giant grabs you and crushes you.";
     }
 
     Puzzle p = Puzzle(0);
 
     //Puzzle
     //Puzzle story
-    if(p.solve());
+    cout << "\n\nA locked chest falls on top of the giant undead's corpse.";
+    if(p.solve())
     {
-            //Rewards Unique Boss Item
+        //Rewards Unique Boss Item
+        cout << "\n\nThe chest opens.";
     }
+
+    //Story
+    cout << "\n\nYou explore the underground structure a bit to find a mysterious rune."
+         << "\nYou spot a rune glowing in a corner near a table."
+         << "\nYou approach it to find that it looks similar to the one in the cave."
+         << "\nYou quicky sketch the mysterious rune onto some paper and destroy it"
+         << "\nYou return to Eretedon.";
 }
 
 //Dungeons 3 (needs story and enemy generation)
@@ -666,7 +703,7 @@ void thirdDungeon(Player& aPlayer)
     //Puzzle
     //Puzzle Story
 
-    if(p.solve());
+    if(p.solve())
     {
         //standard puzzle reward
     }
@@ -704,7 +741,7 @@ void thirdDungeon(Player& aPlayer)
     //Puzzle Story
     Puzzle p = Puzzle(1);
 
-    if(p.solve());
+    if(p.solve())
     {
         //Rewards Unique Boss Item
     }
@@ -739,7 +776,7 @@ void fourthDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    if(p.solve());
+    if(p.solve())
     {
             //Rewards
     }
@@ -778,7 +815,7 @@ void fourthDungeon(Player& aPlayer)
     //Puzzle
     //Puzzle Story
 
-    if(p.solve());
+    if(p.solve())
     {
             //Rewards Unique Boss Item
     }
@@ -814,7 +851,7 @@ void fifthDungeon(Player& aPlayer)
     //Puzzle
     //Puzzle Story
 
-    if(p.solve());
+    if(p.solve())
     {
         //standard puzzle reward
     }
@@ -852,7 +889,7 @@ void fifthDungeon(Player& aPlayer)
     //Puzzle Story
     Puzzle p = Puzzle(2);
 
-    if(p.solve());
+    if(p.solve())
     {
         //Rewards Unique Boss Item
     }
