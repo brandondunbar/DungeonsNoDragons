@@ -31,8 +31,8 @@ std::map<std::string, Weapon> Weapons = {
     {"Staff", Weapon("Staff", 20, "Neutral")},
     {"Dull Magic Sword", Weapon("Dull Magic Sword", 3, "Neutral")},
     {"Rusty Great Sword", Weapon("Rusty Great Sword", 10, "Neutral")},
-    {"Dusty Magic Tome", Weapon("Magic Tome", 4, "Magic")},
-    {"Pine Magic Staff", Weapon("Magic Staff", 4, "Magic")},
+    {"Dusty Magic Tome", Weapon("Dusty Magic Tome", 4, "Magic")},
+    {"Pine Magic Staff", Weapon("Pine Magic Staff", 4, "Magic")},
     {"Short Bow", Weapon("Short Bow", 7, "Neutral")},
     {"Chipped Dual Daggers", Weapon("Chipped Dual Daggers", 4, "Neutral")},
 };
