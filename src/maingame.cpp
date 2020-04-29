@@ -595,3 +595,59 @@ void secondDungeon(Player& aPlayer)
         }
     }
 }
+
+//Dungeon 4 (needs story and enemy generation)
+void fourthDungeon(Player& aPlayer)
+{
+    Puzzle p = Puzzle(2);
+    string puzzleAnswer;
+    string inventoryAnswer;
+
+    //Story
+
+    //Enemy Generation
+
+    //Battle
+    battle_Sys(aPlayer, lesserDemon);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    //Puzzle
+    //Puzzle Story
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+            //Rewards Unique Boss Item
+        }
+    }
+
+    //Enemy Generation
+
+    //Battle
+    battle_Sys(aPlayer, lesserDemon);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    //Boss
+    battle_Sys(aPlayer, demonLord);
+
+    //Puzzle
+    //Puzzle Story
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+            //Rewards Unique Boss Item
+        }
+    }
+}
+
