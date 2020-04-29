@@ -536,3 +536,74 @@ void firstDungeon(Player& aPlayer)
         }
     }
 }
+
+
+void thirdDungeon(Player& aPlayer)
+{
+    Puzzle p = Puzzle(1);
+    string puzzleAnswer;
+    string inventoryAnswer;
+
+    //Story
+    cout << "You venture into the third dungeon with nothing in sight, when a goblin charges at you.\n";
+    cout << "You battle the goblin."
+
+    //generate goblin here
+
+    //Combat
+    battle_Sys(aPlayer, goblin);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "Yes" or "yes")
+    {
+        aPlayer.inventory();
+    }
+
+    //Puzzle
+    cout << "\n\nYou spot a door sealed by magic, do you wish to unlock it?";
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+            //Rewards gold
+            cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
+            aPlayer.gold += 75;
+        }
+    }
+
+    //generate another goblin here
+
+    //Combat
+    battle_Sys(aPlayer, slime);
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "Yes" or "yes")
+    {
+        aPlayer.inventory();
+    }
+
+    //Story
+
+    //Boss
+    battle_Sys(aPlayer, slimeKing);
+
+    //Puzzle
+    cout << "\n\nA locked chest appears where the boss was once at, do you wish to open it?";
+    cin >> puzzleAnswer;
+
+    if (puzzleAnswer == "Yes" or "yes")
+    {
+        if(p.solve());
+        {
+            //Rewards Unique Boss Item
+        }
+    }
+}
