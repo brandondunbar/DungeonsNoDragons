@@ -541,8 +541,8 @@ void firstDungeon(Player& aPlayer)
     Puzzle p = Puzzle(0);
 
     //Puzzle
-    cout << "\n\nA locked chest appears where the boss was once at."
-    if(p.solve())
+    cout << "\n\nA locked chest appears where the boss was once at.";
+    if (p.solve())
     {
             //Rewards Unique Boss Item
     }
