@@ -466,6 +466,8 @@ void visitStore(Player& aPlayer)
         cin >> choice;
     }
 }
+
+//Dungeon 1 (needs story and enemy generation)
 void firstDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
@@ -537,66 +539,52 @@ void firstDungeon(Player& aPlayer)
     }
 }
 
-
-void thirdDungeon(Player& aPlayer)
+//Dungeon 2 (needs story and enemy generation)
+void secondDungeon(Player& aPlayer)
 {
-    Puzzle p = Puzzle(1);
+    Puzzle p = Puzzle(0);
     string puzzleAnswer;
     string inventoryAnswer;
 
     //Story
-    cout << "You venture into the third dungeon with nothing in sight, when a goblin charges at you.\n";
-    cout << "You battle the goblin."
 
-    //generate goblin here
+    //Enemy Generation
 
-    //Combat
-    battle_Sys(aPlayer, goblin);
+    //Battle
+    battle_Sys(aPlayer, zombie);
 
     //Inventory
     cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "Yes" or "yes")
-    {
-        aPlayer.inventory();
-    }
-
     //Puzzle
-    cout << "\n\nYou spot a door sealed by magic, do you wish to unlock it?";
+    //Puzzle Story
     cin >> puzzleAnswer;
 
     if (puzzleAnswer == "Yes" or "yes")
     {
         if(p.solve());
         {
-            //Rewards gold
-            cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
-            aPlayer.gold += 75;
+           //Standard puzzle reward
         }
     }
+    
+    //Enemy Generation
 
-    //generate another goblin here
-
-    //Combat
-    battle_Sys(aPlayer, slime);
+    //Battle
+    battle_Sys(aPlayer, zombie);
 
     //Inventory
     cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
-    if (inventoryAnswer == "Yes" or "yes")
-    {
-        aPlayer.inventory();
-    }
-
     //Story
 
     //Boss
-    battle_Sys(aPlayer, slimeKing);
+    battle_Sys(aPlayer, undeadGiant);
 
     //Puzzle
-    cout << "\n\nA locked chest appears where the boss was once at, do you wish to open it?";
+    //Puzzle story
     cin >> puzzleAnswer;
 
     if (puzzleAnswer == "Yes" or "yes")
