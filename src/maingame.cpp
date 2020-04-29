@@ -471,7 +471,6 @@ void visitStore(Player& aPlayer)
 void firstDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
-    string puzzleAnswer;
     string inventoryAnswer;
 
     //Story
@@ -482,7 +481,15 @@ void firstDungeon(Player& aPlayer)
     //Enemy Generation
 
     //Combat
-    battle_Sys(aPlayer, slime);
+    if (battle_Sys(aPlayer, slime))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+    
 
     //Inventory
     cout << "Do you want to check your gear?";
@@ -494,23 +501,25 @@ void firstDungeon(Player& aPlayer)
     }
 
     //Puzzle
-    cout << "\n\nYou spot a door sealed by magic, do you wish to unlock it?";
-    cin >> puzzleAnswer;
-
-    if (puzzleAnswer == "Yes" or "yes")
+    cout << "\n\nYou spot a door sealed by magic.";
+    if(p.solve());
     {
-        if(p.solve());
-        {
             //Rewards gold
-            cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
-            aPlayer.gold += 50;
-        }
+        cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
+        aPlayer.gold += 50;
     }
 
     //Enemy Generation
 
     //Combat
-    battle_Sys(aPlayer, slime);
+    if (battle_Sys(aPlayer, slime))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
 
     //Inventory
     cout << "Do you want to check your gear?";
@@ -524,18 +533,22 @@ void firstDungeon(Player& aPlayer)
     //Story
 
     //Boss
-    battle_Sys(aPlayer, slimeKing);
+    if (battle_Sys(aPlayer, slimeKing))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+    
+    Puzzle p = Puzzle(0);
 
     //Puzzle
-    cout << "\n\nA locked chest appears where the boss was once at, do you wish to open it?";
-    cin >> puzzleAnswer;
-
-    if (puzzleAnswer == "Yes" or "yes")
+    cout << "\n\nA locked chest appears where the boss was once at."
+    if(p.solve());
     {
-        if(p.solve());
-        {
             //Rewards Unique Boss Item
-        }
     }
 }
 
@@ -543,7 +556,6 @@ void firstDungeon(Player& aPlayer)
 void secondDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
-    string puzzleAnswer;
     string inventoryAnswer;
 
     //Story
@@ -551,7 +563,15 @@ void secondDungeon(Player& aPlayer)
     //Enemy Generation
 
     //Battle
-    battle_Sys(aPlayer, zombie);
+    if (battle_Sys(aPlayer, zombie))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+    
 
     //Inventory
     cout << "Do you want to check your gear?";
@@ -559,21 +579,23 @@ void secondDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    cin >> puzzleAnswer;
-
-    if (puzzleAnswer == "Yes" or "yes")
+    if(p.solve());
     {
-        if(p.solve());
-        {
-           //Standard puzzle reward
-        }
+            //Standard puzzle reward
     }
     
     //Enemy Generation
 
     //Battle
-    battle_Sys(aPlayer, zombie);
-
+    if (battle_Sys(aPlayer, zombie))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+    
     //Inventory
     cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
@@ -581,18 +603,22 @@ void secondDungeon(Player& aPlayer)
     //Story
 
     //Boss
-    battle_Sys(aPlayer, undeadGiant);
+    if (battle_Sys(aPlayer, undeadGiant))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+
+    Puzzle p = Puzzle(0);
 
     //Puzzle
     //Puzzle story
-    cin >> puzzleAnswer;
-
-    if (puzzleAnswer == "Yes" or "yes")
+    if(p.solve());
     {
-        if(p.solve());
-        {
             //Rewards Unique Boss Item
-        }
     }
 }
 
@@ -600,7 +626,6 @@ void secondDungeon(Player& aPlayer)
 void fourthDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(2);
-    string puzzleAnswer;
     string inventoryAnswer;
 
     //Story
@@ -608,46 +633,92 @@ void fourthDungeon(Player& aPlayer)
     //Enemy Generation
 
     //Battle
-    battle_Sys(aPlayer, lesserDemon);
-
+    if (battle_Sys(aPlayer, lesserDemon))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+    
     //Inventory
     cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
     //Puzzle
     //Puzzle Story
-    cin >> puzzleAnswer;
-
-    if (puzzleAnswer == "Yes" or "yes")
+    if(p.solve());
     {
-        if(p.solve());
-        {
-            //Rewards Unique Boss Item
-        }
+            //Rewards
     }
 
     //Enemy Generation
 
     //Battle
-    battle_Sys(aPlayer, lesserDemon);
-
+    if (battle_Sys(aPlayer, lesserDemon))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+    
     //Inventory
     cout << "Do you want to check your gear?";
     cin >> inventoryAnswer;
 
     //Boss
-    battle_Sys(aPlayer, demonLord);
+    if (battle_Sys(aPlayer, demonLord))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+    
+    Puzzle p = Puzzle(2);
 
     //Puzzle
     //Puzzle Story
-    cin >> puzzleAnswer;
 
-    if (puzzleAnswer == "Yes" or "yes")
+    if(p.solve());
     {
-        if(p.solve());
-        {
             //Rewards Unique Boss Item
-        }
     }
 }
 
+//Dungeon 6 (needs story and enemy generation)
+void sixthDungeon(Player& aPlayer)
+{
+    string inventoryAnswer;
+
+    //Story
+
+    //Boss
+    if (battle_Sys(aPlayer, gylbesdaym))
+    {
+        //Win
+    }
+    else
+    {
+        //Lose
+    }
+
+    //Inventory
+    cout << "Do you want to check your gear?";
+    cin >> inventoryAnswer;
+
+    //Final Boss
+    if (battle_Sys(aPlayer, demonSister))
+    {
+        //Win
+    }
+    {
+        //Lose
+    }
+
+    //Story
+}
