@@ -622,6 +622,79 @@ void secondDungeon(Player& aPlayer)
     }
 }
 
+void thirdDungeon(Player& aPlayer)
+{
+    Puzzle p = Puzzle(1);
+    string inventoryAnswer;
+
+    //Story
+
+    //Enemy Generation
+
+    //Battle
+    if (battle_Sys(aPlayer, miniGoblin))
+    {
+        //won battle
+    }
+    else
+    {
+        //died
+    }
+    
+
+    //Inventory
+    cout << "Do you want to check your gear (y/n)?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
+    //Puzzle
+    //Puzzle Story
+
+    if(p.solve());
+    {
+        //standard puzzle reward
+    }
+    
+
+    //Enemy Generation
+
+    //Battle
+    if (battle_Sys(aPlayer, goblinWarrior))
+    {
+        //won battle
+    }
+    else
+    {
+        //died
+    }
+
+    //Inventory
+    cout << "Do you want to check your gear (y/n)?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
+    //Boss
+    if (battle_Sys(aPlayer, goblinLord))
+    {
+        //won battle
+    }
+    else
+    {
+        //died
+    }
+
+    //Puzzle
+    //Puzzle Story
+    Puzzle p = Puzzle(1);
+
+    if(p.solve());
+    {
+        //Rewards Unique Boss Item
+    }
+}
+
 //Dungeon 4 (needs story and enemy generation)
 void fourthDungeon(Player& aPlayer)
 {
@@ -690,6 +763,79 @@ void fourthDungeon(Player& aPlayer)
     }
 }
 
+void fifthDungeon(Player& aPlayer)
+{
+    Puzzle p = Puzzle(2);
+    string inventoryAnswer;
+
+    //Story
+
+    //Enemy Generation
+
+    //Battle
+    if (battle_Sys(aPlayer, dwarf))
+    {
+        //won battle
+    }
+    else
+    {
+        //died
+    }
+    
+
+    //Inventory
+    cout << "Do you want to check your gear (y/n)?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
+    //Puzzle
+    //Puzzle Story
+
+    if(p.solve());
+    {
+        //standard puzzle reward
+    }
+    
+
+    //Enemy Generation
+
+    //Battle
+    if (battle_Sys(aPlayer, dwarf))
+    {
+        //won battle
+    }
+    else
+    {
+        //died
+    }
+
+    //Inventory
+    cout << "Do you want to check your gear (y/n)?";
+    cin >> inventoryAnswer;
+
+    if (inventoryAnswer == "y" || inventoryAnswer == "Y")
+        aPlayer.inventory();
+    //Boss
+    if (battle_Sys(aPlayer, dwarfBoss))
+    {
+        //won battle
+    }
+    else
+    {
+        //died
+    }
+
+    //Puzzle
+    //Puzzle Story
+    Puzzle p = Puzzle(2);
+
+    if(p.solve());
+    {
+        //Rewards Unique Boss Item
+    }
+}
+
 //Dungeon 6 (needs story and enemy generation)
 void sixthDungeon(Player& aPlayer)
 {
@@ -722,3 +868,6 @@ void sixthDungeon(Player& aPlayer)
 
     //Story
 }
+
+
+
