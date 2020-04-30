@@ -194,6 +194,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
         if (anEnemy.current_health <= 0)
         {
+            mainPlayer.store(anEnemy.loot[0]);
             return true;
         }
 
