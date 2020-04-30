@@ -18,6 +18,7 @@ std::map<std::string, Item> Items = {
     {"Gold Pouch", Item("Gold Pouch", "Gold Pouch")}
 };
 std::map<std::string, Armor> Armors = {
+    {"None", Armor("None", 0, 0, "Neutral")},
     {"Iron Armor", Armor("Iron Armor", 5, 1, "Neutral")},
     {"Lightning Armor", Armor("Lightning Armor", 10, 10, "Lightning")}
 };
