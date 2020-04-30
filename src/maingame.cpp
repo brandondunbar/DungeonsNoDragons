@@ -522,9 +522,13 @@ void firstDungeon(Player& aPlayer)
     if(p.solve())
     {
             //Rewards gold
-        cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
+        cout << "\n\nYou find a small pouch of coins nested next to a skeleton beyond the door. There is nothing else.\n";
         aPlayer.gold += 50;
     }
+
+    cout << "You keep walking further into the dungeon when you come across another slime.\n";
+    cout << "This slime looks a little stronger than the previous.\n";
+    cout << "You enter into battle with the slime.\n";
     //enemy generation
     slime = EnemyGenerator("slime", 2);
 
@@ -576,11 +580,16 @@ void firstDungeon(Player& aPlayer)
             //Rewards Unique Boss Item
             cout << "\n\nThe chest opens.";
     }
+    else
+    {
+        cout << "The chest disappears.\n";
+    }
+    
 
     //Story
     cout << "\n\nYou find a mysterious rune on the floor and promptly erase it."
          << "\nNext to the rune was an odd note, you take it with you."
-         << "\nYou head back to Eretedon";
+         << "\nYou head back to Eretedon\n\n";
 }
 
 //Dungeon 2
@@ -601,7 +610,8 @@ void secondDungeon(Player& aPlayer)
          << "\nBefore the storywriter left, you hand him the note and asked him to figure out what it means."
          << "\nStorywriter: I see, interesting. I'll see what I can find out about it."
          << "\n\n\nYou arrive at the closest village in the west to find no one around in the streets."
-         << "\nYou decide to investigate.";
+         << "\nYou decide to investigate."
+         << "\nAll of the sudden, an undead creature jumps out at you and you battle it.\n";
     //enemy generation
     Enemy zombie = EnemyGenerator("undead", 1);
 
@@ -632,8 +642,15 @@ void secondDungeon(Player& aPlayer)
     if(p.solve())
     {
         //Standard puzzle reward
-        cout << "\n\nThe chest opens";
+        cout << "\n\nThe chest opens\n";
     }
+    else
+    {
+        cout << "The chest mysteriously disappears.\n";
+    }
+    
+    cout << "When you look up you notice another zombie charging right at you, this one looks stronger\n";
+    cout << "You engage in combat with it.\n";
     //enemy generation
     zombie = EnemyGenerator("undead", 2);
 
@@ -714,7 +731,8 @@ void thirdDungeon(Player& aPlayer)
          << "\nYou hand him the sketching of the rune and ask him about it."
          << "\nStorywriter: I'm not to well-versed in magic but I know a mage who is, I'll ask him about it."
          << "\nYou thank him and head northwest towards the ruins."
-         << "\n\nUpon arrival, you notice traces of goblins being in the area, you prepare for combat.";
+         << "\nUpon arrival, you notice traces of goblins being in the area, you prepare for combat."
+         << "\nThe first goblin runs up to you and begins to fight you.\n";
 
     //Enemy Generation
     Enemy miniGoblin = EnemyGenerator("greeny", 1);
@@ -741,15 +759,20 @@ void thirdDungeon(Player& aPlayer)
         aPlayer.inventory();
     //Puzzle
     //Puzzle Story
-    cout << "\n\nYou find door covered in a magic field.";
+    cout << "\n\nYou find door covered in a magic field with a riddle on it.\n";
 
     if(p.solve())
     {
         //standard puzzle reward
-        cout << "\n\nYou break open the door.";
+        cout << "\n\nYou break open the door.\n";
     }
+    else
+    {
+        cout << "The door seals completely shut.\n";
+    }
+    
 
-
+    cout << "\nA second, stronger goblin comes charging at you. You engage in combat.\n";
     //Enemy Generation
     Enemy goblinWarrior = EnemyGenerator("greeny", 2);
     //Battle
@@ -800,6 +823,11 @@ void thirdDungeon(Player& aPlayer)
         //Rewards Unique Boss Item
         cout << "\n\nThe chest opens.";
     }
+    else
+    {
+        cout << "\n\nThe chest mysteriously disappears.\n";
+    }
+    
 
     //Story
     cout << "\n\nYou look at the path deeper downwards."
@@ -825,7 +853,8 @@ void fourthDungeon(Player& aPlayer)
          << "\nYou both turn around to find the upper half of the Eretedon royal palace gone and the city districts nearby engulfed in flames."
          << "\nA massive portal appears above the palace and countless demons appear out of it."
          << "\nStorywriter: You go and help the guards, I'll go find the mage to help us."
-         << "\nYou head straight towards the palace through the main road while the storywriter goes to find the mage.";
+         << "\nYou head straight towards the palace through the main road while the storywriter goes to find the mage."
+         << "\nYou engage in combat with the first demon that runs straight towards you.\n";
 
     //Enemy Generation
     Enemy lesserDemon = EnemyGenerator("demon", 1);
@@ -861,7 +890,12 @@ void fourthDungeon(Player& aPlayer)
             cout << "\n\nThe chest unlocks.";
 
     }
-
+    else
+    {
+        cout << "\n\nThe chest mysteriously disappears.\n";
+    }
+    
+    cout << "You look up and spot another demon charging right at you. This one looks stronger.\n\n";
     //Enemy Generation
     lesserDemon = EnemyGenerator("demon", 2);
     //Battle
@@ -919,6 +953,11 @@ void fourthDungeon(Player& aPlayer)
             //Rewards Unique Boss Item
             cout << "\n\nYou unlock the chest.";
     }
+    else
+    {
+        cout << "\n\nThe chest mysteriously disappears.\n";
+    }
+    
 
     //Story
     cout << "\n\nYou pick up the broken horn as a trophy and head back to the guild.";
@@ -939,7 +978,8 @@ void fifthDungeon(Player& aPlayer)
          << "\nAs you head further down, the air feels damp and cold."
          << "\nYou eventually find an opening that leads to an ancient dwarven ruin. The markings nearby matches the words written on the note."
          << "\nThe doors open before you even touch them."
-         << "\nYou enter inside the empty facility.";
+         << "\nYou enter inside the empty facility."
+         << "\nYou engage into combat with magical animated armor.\n";
 
     //Enemy Generation
     Enemy dwarf = EnemyGenerator("construct", 1);
@@ -973,8 +1013,13 @@ void fifthDungeon(Player& aPlayer)
         //standard puzzle reward
         cout << "\n\nThe door opens.";
     }
+    else
+    {
+        cout << "\n\nThe door magically seals shut.\n";
+    }
+    
 
-
+    cout << "Next you run into a clockwork golem.\n";
     //Enemy Generation
     dwarf = EnemyGenerator("construct", 2);
     //Battle
@@ -1028,6 +1073,11 @@ void fifthDungeon(Player& aPlayer)
         //Rewards Unique Boss Item
         cout << "\n\nYou open the orb.";
     }
+    else
+    {
+        cout << "\n\nThe orb flies away.\n";
+    }
+    
 
     //Story
     cout << "\n\nYou also find a note near the machine."
