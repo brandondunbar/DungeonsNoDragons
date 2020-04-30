@@ -28,9 +28,26 @@ using namespace std;
 
 bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 {
+    // Get the operating system...
+    string os_name = getOS();
 
     //Dice
     Dice d;
+
+    if (anEnemy.name == "Leviathan"){
+        //Enemy attack
+        Spell spell = Spell("Extinction Ray", "death", "None", 40, 50);
+        
+        cout << "\n\nThe enemy used " << spell.name << endl;
+        anEnemy.deal_damage(mainPlayer, spell);
+
+        Buff def_debuff = Buff("Str debuff", "str", -15, 5);
+        mainPlayer.add_buff(def_debuff);
+
+        anEnemy.trigger_buffs();
+
+        pressAnyKey(os_name);
+    }
 
     while (mainPlayer.current_health > 0 && anEnemy.current_health > 0)
     {
@@ -59,6 +76,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
                 cout << "\n\nEnemy's current HP: "
                      << anEnemy.current_health;
+                pressAnyKey(os_name);
 
                 break;
             }
@@ -74,7 +92,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
                 mainPlayer.display_spellbook();
                 int choice;
-                cout << "\n\nWhich spell do you want to use?\n";
+                cout << "\n\nWhich spell do you want to use?\n>>> ";
                 cin >> choice;
                 
                 if (mainPlayer.current_mana < mainPlayer.spellbook[choice].cost)
@@ -108,6 +126,8 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 cout << "\n\nEnemy's current HP: "
                      << anEnemy.current_health;
 
+                pressAnyKey(os_name);
+
                 break;
             }
 
@@ -120,6 +140,8 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 //Buffs player to
                 Buff defending = Buff("Defending", "Armor", 5, 1);
                 mainPlayer.add_buff(defending);
+
+                pressAnyKey(os_name);
 
                 break;
             }
@@ -134,7 +156,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 int choice;
                 cout << "\n\nYou open your backpack.";
                 mainPlayer.display_items();
-                cout << "\nEnter which item to use: \n";
+                cout << "\nEnter which item to use: \n>>> ";
                 cin >> choice;
 
                 Item chosenItem = mainPlayer.invItems[choice];
@@ -159,6 +181,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 }
 
                 mainPlayer.invItems.erase(mainPlayer.invItems.begin() + choice);
+                pressAnyKey(os_name);
                 break;
             }
             //Intimidate
@@ -172,6 +195,8 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
                 anEnemy.add_buff(intimidate_STR);
                 anEnemy.add_buff(intimidare_WIS);
+
+                pressAnyKey(os_name);
 
                 break;
             }
@@ -197,6 +222,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
             cout << "\nYou defeated the enemy in combat.\n";
             cout << "Enemy dropped item: " << anEnemy.loot[0].name << endl;
             mainPlayer.store(anEnemy.loot[0]);
+            pressAnyKey(os_name);
             return true;
         }
 
@@ -208,12 +234,14 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
             Spell spell = anEnemy.spellbook[spellChoice-1];
             cout << "\n\nThe enemy used " << spell.name << endl;
             anEnemy.deal_damage(mainPlayer, spell);
+            pressAnyKey(os_name);
             
         }
         else
         {
             cout << "\n\nThe enemy used a physical attack.";
             anEnemy.deal_damage(mainPlayer);
+            pressAnyKey(os_name);
         }
 
         anEnemy.trigger_buffs();

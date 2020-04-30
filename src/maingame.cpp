@@ -360,18 +360,21 @@ int main()
                 //Work in progress, changes needed for the player to fully access their inventory
                 cout << "You check your gear\n";
                 mainPlayer.inventory();
+                pressAnyKey(os_name);
                 break;
             }
         case 11:
             {
                 cout << "You leave the city with no clues to where your sister could be\n";
                 cout << "End of game.\n";
+                pressAnyKey(os_name);
                 gameOver = true;
                 break;
             }
         default:
             {
                 cout << "Your character wanders around for a bit, gets lost, then finds his way back to the guild.\n";
+                pressAnyKey(os_name);
                 break;
             }
         }
