@@ -57,20 +57,7 @@ void Enemy::display(){
 }
 
 
-int generateStat(string type, int tier){
-
-    string types[] = {
-        "slime", "undead", "greeny", "demon", "construct", "boss"
-    };
-
-    int elementIndex = 0;
-    for ( int i = 0; i < 5; i++ ) {
-
-        if ( types[i] == type ) {
-            elementIndex = i;
-            break;
-        }
-    }
+int generateStat(int elementIndex, int tier){
 
     Dice d( tier * 5 );
 
@@ -79,6 +66,39 @@ int generateStat(string type, int tier){
         stat_points += d.roll();
     }
     return stat_points;
+}
+
+
+Item generateLoot(int elementIndex, int tier){
+
+    Dice d;
+
+    Item loot;
+
+    int itemRoll = d.roll();
+
+    if ( itemRoll <= 5 ) {
+
+        // Health pot
+        loot = Items["Health Potion"];
+
+    } else if ( 6 <= itemRoll && itemRoll <= 10 ) {
+
+        // Mana pot
+        loot = Items["Mana Potion"];
+        
+    } else if ( 11 <= itemRoll && itemRoll <= 15 ) {
+
+        // Bomb
+        loot = Items["Bomb"];
+
+    } else {
+
+        // Gold
+        loot = Items["Gold Pouch"];
+
+    }
+
 }
 
 
@@ -368,12 +388,26 @@ Enemy EnemyGenerator(string type, int tier){
 
     }    
 
-    generatedEnemy.strength = generateStat(type, tier);
-    generatedEnemy.constitution = generateStat(type, tier);
-    generatedEnemy.dexterity = generateStat(type, tier);
-    generatedEnemy.intelligence = generateStat(type, tier);
-    generatedEnemy.wisdom = generateStat(type, tier);
-    generatedEnemy.charisma = generateStat(type, tier);
+    string types[] = {
+        "slime", "undead", "greeny", "demon", "construct", "boss"
+    };
+
+    int elementIndex = 0;
+    for ( int i = 0; i < 5; i++ ) {
+
+        if ( types[i] == type ) {
+            elementIndex = i;
+            break;
+        }
+    }
+
+    generatedEnemy.strength = generateStat(elementIndex, tier);
+    generatedEnemy.constitution = generateStat(elementIndex, tier);
+    generatedEnemy.dexterity = generateStat(elementIndex, tier);
+    generatedEnemy.intelligence = generateStat(elementIndex, tier);
+    generatedEnemy.wisdom = generateStat(elementIndex, tier);
+    generatedEnemy.charisma = generateStat(elementIndex, tier);
+    generatedEnemy.loot.push_back(generateLoot(elementIndex, tier));
 
     return generatedEnemy;
 
