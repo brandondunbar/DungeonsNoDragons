@@ -21,7 +21,7 @@ std::map<std::string, Armor> Armors = {
     {"None", Armor("None", 0, 0, "Neutral")},
     {"Iron Armor", Armor("Iron Armor", 10, 5, "Neutral")},
     {"Lightning Armor", Armor("Lightning Armor", 25, 25, "Neutral")},
-    {"Cursed Armor", Armor("Cursed Armor", 20, 15, "dark")},
+    {"Cursed Armor", Armor("Cursed Armor", 15, 15, "dark")},
     {"Damascus Armor", Armor("Damascus Armor", 40, 40, "Neutral")},
     {"Gear Armor", Armor("Gear Armor", 50, 50, "Neutral")},
     {"Void Armor", Armor("Void Armor", 60, 60, "dark")},
