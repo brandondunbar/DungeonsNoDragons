@@ -377,7 +377,7 @@ void visitStore(Player& aPlayer)
     cout << "2) Mana Potion (restores 25 mana) - 5 gold\n";
     cout << "3) Bomb (does 10 damage) - 5 gold\n";
     cout << "4) Iron Armor (5 physical defense, 1 magical defense, neutral) - 25 gold\n";
-    cout << "5) Lightning Armor (10 physical defense, 10 magical defense, neutral) - 50 gold\n";
+    cout << "5) Lightning Armor (25 physical defense, 25 magical defense, neutral) - 100 gold\n";
     cout << "6) Iron Sword (10 damage, neutral) - 15 gold\n";
     cout << "7) Long Bow (10 damage, neutral) - 15 gold\n";
     cout << "8) Staff (20 damage, neutral) - 30 gold\n";
@@ -453,14 +453,14 @@ void visitStore(Player& aPlayer)
             }
             case 5:
             {
-                if (aPlayer.gold < 50)
+                if (aPlayer.gold < 100)
                 {
                     cout << "You do not have enough gold to purchase this item.\n";
                     break;
                 }
                 else
                 {
-                    aPlayer.gold -= 50;
+                    aPlayer.gold -= 100;
                     aPlayer.invArmors.push_back(Armors["Lightning Armor"]);
                     cout << "Thank you for your purchase!\n";
                     break;
