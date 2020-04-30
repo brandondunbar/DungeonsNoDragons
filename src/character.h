@@ -142,7 +142,7 @@ int Character::calculate_damage_to_deal(){
         damage += ELEMENT_STRENGTH_BONUS;
 
     }
-    cout << "Damage calc'd: " << damage << endl;
+
     return damage;
 
 }
