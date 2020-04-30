@@ -123,8 +123,8 @@ Enemy EnemyGenerator(string type, int tier){
             case 1:
                 {
                 generatedEnemy = Enemy("Slime", "fighter", "slime");
-                generatedEnemy.weapon = Weapon("Ooze Slash", 3, "Neutral");
-                generatedEnemy.learnSpell( Spell("Slime Ball", "Neutral", "None", 2, 5) );
+                generatedEnemy.weapon = Weapon("Ooze Slash", 7, "Neutral");
+                generatedEnemy.learnSpell( Spell("Slime Ball", "Neutral", "None", 7, 10) );
                 generatedEnemy.armor = Armors["None"];
                 break;
                 }
