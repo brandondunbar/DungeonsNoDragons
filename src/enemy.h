@@ -420,7 +420,7 @@ Enemy EnemyGenerator(string type, int tier){
                 generatedEnemy = Enemy("Demon Boss", "boss", "demon");
                 generatedEnemy.weapon = Weapon("Cursed Warhammer of Damnation", 50, "Dark");
                 generatedEnemy.armor = Armors["Iron Armor"];
-                
+
                 break;
                 }
         }
@@ -448,6 +448,9 @@ Enemy EnemyGenerator(string type, int tier){
     generatedEnemy.charisma = generateStat(elementIndex, tier);
     generatedEnemy.loot.push_back(generateLoot(elementIndex, tier));
 
+    generatedEnemy.initialize_stats();
+    int healthModifier = elementIndex + tier;
+    generatedEnemy.base_health *= (healthModifier/10);
     generatedEnemy.initialize_stats();
 
     return generatedEnemy;

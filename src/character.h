@@ -93,8 +93,8 @@ Character::Character (string _name, string _class, string _race) : weapon("Fists
 
 void Character::set_health_and_mana(){
 
-    base_health = constitution*5;
-    base_mana = intelligence*5;
+    base_health = constitution*10;
+    base_mana = intelligence*10;
     current_health = base_health;
     current_mana = base_mana;
 
