@@ -33,11 +33,11 @@ int main()
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
-         << "\nYou recieved a clue on your sister who went missing a few years ago."
-         << "\nYou begin your search in the southern city Eretedon, a city plagued with rumors of the arrival of Gylbesdaym, Eater of All."
+         << "\nYou've been searching for your sister for the last two years since she went missing."
+         << "\nYour search eventually lead you to the southern city, Eretedon, a city plagued with rumors of the arrival of Gylbesdaym, Eater of All."
          << "\nYou arrive at a tavern on the city outskirts and sit at the counter."
          << "\nThe man next to you says,"
-         << "\n\nHooded man: You must be insane to come to this acursed city at such a time"
+         << "\n\nHooded man: You must be insane to come to this city at such a time"
          << "\nHooded man: There are rumors of a massive wave of monsters moving closer to the city because of Gylbesdaym's arrival recently."
          << "\nHooded man: You though, don't look like an average traveler, tell me, what is your name.";
     
@@ -701,11 +701,13 @@ void thirdDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, miniGoblin))
     {
         //won battle
-        cout << "\n\nYo"
+        cout << "\n\nYou killed the goblin.";
     }
     else
     {
         //died
+        cout << "\n\nYou are killed by the goblin.";
+        return;
     }
     
 
@@ -717,10 +719,12 @@ void thirdDungeon(Player& aPlayer)
         aPlayer.inventory();
     //Puzzle
     //Puzzle Story
+    cout << "\n\nYou find door covered in a magic field.";
 
     if(p.solve())
     {
         //standard puzzle reward
+        cout << "\n\nYou break open the door.";
     }
     
 
@@ -730,10 +734,13 @@ void thirdDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, goblinWarrior))
     {
         //won battle
+        cout << "\n\nYou slay the goblin.";
     }
     else
     {
         //died
+        cout << "\n\nThe goblins overwhelm you.";
+        return;
     }
 
     //Inventory
@@ -742,33 +749,53 @@ void thirdDungeon(Player& aPlayer)
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
+
+    //Story
+    cout << "\n\nYou break down the massive doors and find the goblin lord sitting arrogantly on his throne."
+         << "\nHe slowly stands up and you prepare for a fight.";
+
     //Boss
     if (battle_Sys(aPlayer, goblinLord))
     {
         //won battle
+        cout << "\n\nThe goblin lord gets knocked through a wall, revealing a path deeper underground.";
     }
     else
     {
         //died
+        cout << "\n\nYou are sliced in half by his massive blade.";
+        return;
     }
 
     //Puzzle
     //Puzzle Story
+    cout << "\n\nYou spot a locked chest behind his throne.";
     Puzzle p = Puzzle(1);
 
     if(p.solve())
     {
         //Rewards Unique Boss Item
+        cout << "\n\nThe chest opens.";
     }
+
+    //Story
+    cout << "\n\nYou look at the path deeper downwards."
+         << "\nUnsure if going down is a good idea, you return to Eretedon.";
 }
 
-//Dungeon 4 (needs story and enemy generation)
+//Dungeon 4 (needs enemy generation)
 void fourthDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(2);
     string inventoryAnswer;
 
     //Story
+    cout << "\n\nYou meet up with the storywriter at the plaza."
+         << "\nStorywriter: Hey "
+         << aPlayer.name
+         << ", I got some good news and some bad news."
+         << "\nThe good news is that the note mentions something about a woman and its dated back around two years ago, it might be your sister."
+         << "\nThe bad news is that my mage friend informed me that this rune might be related to the appearence of "
 
     //Enemy Generation
 
