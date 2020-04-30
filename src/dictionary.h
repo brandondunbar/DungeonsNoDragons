@@ -7,10 +7,10 @@
 #include "player.h"
 #include "enemy.h"
 
-std::map<std::string, Enemy> Enemies = {
+/*std::map<std::string, Enemy> Enemies = {
     {"Orc Fighter", Enemy("Basic Orc Fighter", "fighter", "orc")},
     {"Magical Training Dummy", Enemy("Magical Training Dummy", "Dummy", "Dummy")}
-};
+};*/
 std::map<std::string, Item> Items = {
     {"Health Potion", Item("Health Potion", "Potion")},
     {"Mana Potion", Item("Mana Potion", "Potion")},

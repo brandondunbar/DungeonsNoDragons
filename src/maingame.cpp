@@ -30,6 +30,7 @@ bool hasDoneFifthDungeon = false;
 int main()
 {
     Player mainPlayer = Player("name", "class", "race");
+    mainPlayer.gold = 20;
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
@@ -40,7 +41,7 @@ int main()
          << "\n\nHooded man: You must be insane to come to this acursed city at such a time"
          << "\nHooded man: There are rumors of a massive wave of monsters moving closer to the city because of Gylbesdaym's arrival recently."
          << "\nHooded man: You though, don't look like an average traveler, tell me, what is your name.";
-    
+
     //Character creation
     cout << "\n\nMy name is: ";
     string name;
@@ -105,7 +106,7 @@ int main()
          << "\n4.Summoner, commands spirits to weaken foes"
          << "\n5.Marksman, a former hunter with unrivaled precision"
          << "\n6.Thief, an agile cutpurse";
-    
+
     int playerClass;
     cin >> playerClass;
     switch (playerClass)
@@ -200,7 +201,7 @@ int main()
                 }
                 else
                 {
-                    // firstDungeon(mainPlayer);
+                    firstDungeon(mainPlayer);
                     hasDoneFirstDungeon = true;
                     break;
                 }
@@ -219,7 +220,7 @@ int main()
                 }
                 else
                 {
-                    // secondDungeon(mainPlayer);
+                    secondDungeon(mainPlayer);
                     hasDoneSecondDungeon = true;
                     break;
                 }
@@ -238,7 +239,7 @@ int main()
                 }
                 else
                 {
-                    // thirdDungeon(mainPlayer);
+                    thirdDungeon(mainPlayer);
                     hasDoneThirdDungeon = true;
                     break;
                 }
@@ -257,7 +258,7 @@ int main()
                 }
                 else
                 {
-                    // fourthDungeon(mainPlayer);
+                    fourthDungeon(mainPlayer);
                     hasDoneFourthDungeon = true;
                     break;
                 }
@@ -276,7 +277,7 @@ int main()
                 }
                 else
                 {
-                    // fifthDungeon(mainPlayer);
+                    fifthDungeon(mainPlayer);
                     hasDoneFifthDungeon = true;
                     break;
                 }
@@ -290,7 +291,7 @@ int main()
                 }
                 else
                 {
-                    // sixthDungeon(mainPlayer);
+                    sixthDungeon(mainPlayer);
                     break;
                 }
             }
@@ -299,6 +300,7 @@ int main()
                 //Work in progress, changes needed for the player to fully access their inventory
                 cout << "You check your gear\n";
                 mainPlayer.inventory();
+                break;
             }
         case 10:
             {
@@ -492,7 +494,7 @@ void firstDungeon(Player& aPlayer)
         cout << "\n\nYou get absorbed by the slime.";
         return;
     }
-    
+
 
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
@@ -510,7 +512,7 @@ void firstDungeon(Player& aPlayer)
         aPlayer.gold += 50;
     }
     //enemy generation
-    Enemy slime = EnemyGenerator("slime", 2);
+    slime = EnemyGenerator("slime", 2);
 
     //Combat
     if (battle_Sys(aPlayer, slime))
@@ -550,8 +552,8 @@ void firstDungeon(Player& aPlayer)
         cout << "Your jouney ends just as quickly as it began.";
         return;
     }
-    
-    Puzzle p = Puzzle(0);
+
+    p = Puzzle(0);
 
     //Puzzle
     cout << "\n\nA locked chest appears where the boss was once at.";
@@ -601,7 +603,7 @@ void secondDungeon(Player& aPlayer)
         cout << "\n\nYou're swarmed and killed";
         return;
     }
-    
+
 
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
@@ -619,7 +621,7 @@ void secondDungeon(Player& aPlayer)
         cout << "\n\nThe chest opens";
     }
     //enemy generation
-    Enemy zombie = EnemyGenerator("undead", 2);
+    zombie = EnemyGenerator("undead", 2);
 
     //Battle
     if (battle_Sys(aPlayer, zombie))
@@ -632,7 +634,7 @@ void secondDungeon(Player& aPlayer)
         //Lose
         cout << "\n\nYour journey ends by the hands of the undead";
     }
-    
+
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
@@ -657,7 +659,7 @@ void secondDungeon(Player& aPlayer)
         cout << "\n\nThe giant grabs you and crushes you.";
     }
 
-    Puzzle p = Puzzle(0);
+    p = Puzzle(0);
 
     //Puzzle
     //Puzzle story
@@ -711,7 +713,7 @@ void thirdDungeon(Player& aPlayer)
     {
         //died
     }
-    
+
 
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
@@ -726,7 +728,7 @@ void thirdDungeon(Player& aPlayer)
     {
         //standard puzzle reward
     }
-    
+
 
     //Enemy Generation
     Enemy goblinWarrior = EnemyGenerator("greeny", 2);
@@ -759,7 +761,7 @@ void thirdDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    Puzzle p = Puzzle(1);
+    p = Puzzle(1);
 
     if(p.solve())
     {
@@ -787,7 +789,7 @@ void fourthDungeon(Player& aPlayer)
     {
         //Lose
     }
-    
+
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
@@ -803,7 +805,7 @@ void fourthDungeon(Player& aPlayer)
     }
 
     //Enemy Generation
-    Enemy lesserDemon = EnemyGenerator("demon", 2);
+    lesserDemon = EnemyGenerator("demon", 2);
     //Battle
     if (battle_Sys(aPlayer, lesserDemon))
     {
@@ -813,7 +815,7 @@ void fourthDungeon(Player& aPlayer)
     {
         //Lose
     }
-    
+
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
     cin >> inventoryAnswer;
@@ -831,8 +833,8 @@ void fourthDungeon(Player& aPlayer)
     {
         //Lose
     }
-    
-    Puzzle p = Puzzle(2);
+
+    p = Puzzle(2);
 
     //Puzzle
     //Puzzle Story
@@ -863,7 +865,7 @@ void fifthDungeon(Player& aPlayer)
     {
         //died
     }
-    
+
 
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
@@ -878,10 +880,10 @@ void fifthDungeon(Player& aPlayer)
     {
         //standard puzzle reward
     }
-    
+
 
     //Enemy Generation
-    Enemy dwarf = EnemyGenerator("construct", 2);
+    dwarf = EnemyGenerator("construct", 2);
     //Battle
     if (battle_Sys(aPlayer, dwarf))
     {
@@ -911,7 +913,7 @@ void fifthDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    Puzzle p = Puzzle(2);
+    p = Puzzle(2);
 
     if(p.solve())
     {

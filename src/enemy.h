@@ -9,6 +9,7 @@
 #include "character.h"
 #include "item.h"
 #include "dice.h"
+#include "dictionary.h"
 
 
 //=================================
@@ -68,7 +69,7 @@ void Enemy::display(){
 
 Enemy EnemyGenerator(string type, int tier){
     /* Generates enemy based on type and tier
-    
+
     params:
         type - Type of enemy to generate i.e. slime, orc, demon
         tier - 1, 2, or 3; 3 is strongest
@@ -83,12 +84,14 @@ Enemy EnemyGenerator(string type, int tier){
         switch (tier) {
 
             case 1:
+                {
                 generatedEnemy = Enemy("Slime", "fighter", "slime");
                 generatedEnemy.weapon = Weapon("Ooze Slash", 3, "Neutral");
                 generatedEnemy.learnSpell( Spell("Slime Ball", "Neutral", "None", 2, 5) );
                 break;
-
+                }
             case 2:
+                {
                 string element;
 
                 generatedEnemy = Enemy("Chuchu", "mage", "slime");
@@ -113,7 +116,7 @@ Enemy EnemyGenerator(string type, int tier){
                 } else if (16 <= diceRoll && diceRoll <= 20) {
 
                     element = "Earth";
-                    
+
                 }
 
                 string enemy_name = element + " Chuchu";
@@ -121,20 +124,23 @@ Enemy EnemyGenerator(string type, int tier){
                 generatedEnemy.weapon = Weapon("Ooze Slash", 3, enemy_name);
                 string spell_name = element + " Slime Ball";
                 generatedEnemy.learnSpell( Spell(spell_name, "Neutral", element, 4, 5) );
-                
+
                 break;
+                }
         }
     } else if (type == "undead") {
 
         switch (tier) {
 
             case 1:
+                {
                 generatedEnemy = Enemy("Zombie", "fighter", "undead");
                 generatedEnemy.weapon = Weapon("Rotten Scratch", 5, "Neutral");
                 generatedEnemy.learnSpell( Spell("Acrid Vomit", "Poison", "Toxic", 5, 10) );
                 break;
-
+                }
             case 2:
+                {
                 int diceRoll = d.roll();
 
                 if (diceRoll > 10) {
@@ -150,14 +156,16 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy.learnSpell( Spell("Screech", "None", "Neutral", 7, 5));
 
                 }
-                
+
                 break;
+                }
         }
     } else if (type == "greeny") {
 
         switch (tier) {
 
             case 1:
+                {
                 int diceRoll = d.roll();
 
                 if (diceRoll > 10) {
@@ -170,10 +178,11 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy = Enemy("Goblin Archer", "archer", "goblin");
                     generatedEnemy.weapon = Weapons["Longbow"];
                 }
-                
-                break;
 
+                break;
+                }
             case 2:
+                {
                 int diceRoll = d.roll();
 
                 if (diceRoll > 10) {
@@ -192,8 +201,10 @@ Enemy EnemyGenerator(string type, int tier){
                 }
 
                 break;
-            
+                }
+
             case 3:
+                {
                 int diceRoll = d.roll();
 
                 if (diceRoll > 10) {
@@ -209,19 +220,23 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy.learnSpell( Spells["Thunderbolt"] );
                     generatedEnemy.learnSpell( Spells["Ice Spike"] );
                 }
-                
+
                 break;
+                }
         }
     } else if (type == "demon") {
 
         switch (tier) {
 
             case 1:
+                {
                 generatedEnemy = Enemy("Abyssal Chicken", "fighter", "demon");
                 generatedEnemy.weapon = Weapon("Cursed Talons", 15, "dark");
                 break;
+                }
 
             case 2:
+                {
                 int diceRoll = d.roll();
 
                 if (diceRoll > 6) {
@@ -243,73 +258,93 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy.weapon = Weapons["Great Sword"];
 
                 }
-                
+
                 break;
-            
+                }
+
             case 3:
+                {
                 generatedEnemy = Enemy("Maurezhi", "fighter", "demon");
                 generatedEnemy.weapon = Weapon("Blasphemous Hook", 25, "dark");
                 break;
+                }
         }
     } else if (type == "construct") {
 
         switch (tier) {
 
             case 1:
+                {
                 generatedEnemy = Enemy("Animated Armor", "fighter", "mech");
                 generatedEnemy.weapon = Weapons["Great Sword"];
                 break;
+                }
 
             case 2:
-
+                {
                 generatedEnemy = Enemy("Clockwork Golem", "fighter", "mech");
                 generatedEnemy.weapon = Weapons["Great Sword"];
                 break;
-            
+                }
+
             case 3:
+                {
                 generatedEnemy = Enemy("Warforge", "fighter", "mech");
                 generatedEnemy.weapon = Weapon("Mechanized Glaive", 25, "Neutral");
                 break;
+                }
         }
     } else if (type == "boss") {
 
         switch (tier) {
 
             case 1:
+                {
                 generatedEnemy = Enemy("King Slime", "boss", "slime");
                 generatedEnemy.weapon = Weapon("Slime Sword", 15, "Neutral");
                 break;
+                }
 
             case 2:
-
+                {
                 generatedEnemy = Enemy("Lich", "boss", "undead");
                 generatedEnemy.weapon = Weapon("Ancient Great Sword", 20, "Neutral");
                 break;
-            
+                }
             case 3:
+                {
                 generatedEnemy = Enemy("Orc Warlord", "boss", "orc");
                 generatedEnemy.weapon = Weapon("Bone Great Sword", 25, "Neutral");
                 break;
+                }
 
             case 4:
+                {
                 generatedEnemy = Enemy("Orcus", "boss", "demon");
                 generatedEnemy.weapon = Weapon("Soul Scythe", 30, "Dark");
                 break;
+                }
 
             case 5:
+                {
                 generatedEnemy = Enemy("Clockwork Behir", "boss", "construct");
                 generatedEnemy.weapon = Weapon("Sharpened Gear", 35, "Neutral");
                 break;
-            
+                }
+
             case 6:
+                {
                 generatedEnemy = Enemy("Leviathan", "boss", "elemental");
                 generatedEnemy.weapon = Weapon("Petrified Bite", 40, "Neutral");
                 break;
-            
+                }
+
             case 7:
+                {
                 generatedEnemy = Enemy("Demon Boss", "boss", "demon");
                 generatedEnemy.weapon = Weapon("Cursed Warhammer of Damnation", 50, "Dark");
                 break;
+                }
         }
 
     }
