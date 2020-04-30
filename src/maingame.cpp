@@ -25,14 +25,42 @@ bool hasDoneThirdDungeon = false;
 bool hasDoneFourthDungeon = false;
 bool hasDoneFifthDungeon = false;
 
+string getOS(){
+    /* This should return whether or not the OS is windows, so that the program determine
+    * whether it should use system("pause") ((Windows)) or system("read") ((Mac/Linux)) */
+
+    #ifdef _WIN32
+        return "Windows";
+    #else
+        return "Other";
+    #endif
+}
+
+
+void pressAnyKey(string os_name){
+    /* Pauses the program until a key is pressed */
+
+    if(os_name == "Windows"){
+        system("pause");
+    } else {
+        system("read");
+    }
+}
+
 int main()
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     Player mainPlayer = Player("name", "class", "race");
     mainPlayer.gold = 20;
 
     //Intro sequence
-    cout << "\n\nWelcome to Dungeons no Dragons!"
-         << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
+    cout << "\n\nWelcome to Dungeons no Dragons!" << endl;
+
+    pressAnyKey(os_name);
+
+    cout << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
          << "\nYou've been searching for your sister for the last two years since she went missing."
          << "\nYour search eventually lead you to the southern city, Eretedon, a city plagued with rumors of the arrival of Gylbesdaym, Eater of All."
          << "\nYou arrive at a tavern on the city outskirts and sit at the counter."
