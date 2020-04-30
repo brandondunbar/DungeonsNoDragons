@@ -191,8 +191,8 @@ void Player::inventory()
                 if (invItems[itemChoice].name == "Health Potion")
                 {
                     cout << "Restored health by 25.\n";
-                    if (current_health + 25 > 100)
-                        current_health = 100;
+                    if (current_health + 25 > base_health)
+                        current_health = base_health;
                     else
                         current_health += 25;
                     invItems.erase(invItems.begin() + itemChoice);
@@ -201,8 +201,8 @@ void Player::inventory()
                 else if (invItems[itemChoice].name == "Mana Potion")
                 {
                     cout << "Restored mana by 25.\n";
-                    if (current_mana + 25 > 100)
-                        current_mana = 100;
+                    if (current_mana + 25 > base_mana)
+                        current_mana = base_mana;
                     else
                         current_mana += 25;
                     invItems.erase(invItems.begin() + itemChoice);
