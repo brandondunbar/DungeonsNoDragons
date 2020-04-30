@@ -802,7 +802,7 @@ void fourthDungeon(Player& aPlayer)
          << aPlayer.name
          << ", I got some good news and some bad news."
          << "\nThe good news is that the note mentions something about a woman and its dated back around two years ago, it might be your sister."
-         << "\nThe bad news is that my mage friend informed me that this rune might be related to the appearence of "
+         << "\nThe bad news is that my mage friend informed me that this rune might be related to the appearence of ";
 
     //Enemy Generation
     Enemy lesserDemon = EnemyGenerator("demon", 1);
