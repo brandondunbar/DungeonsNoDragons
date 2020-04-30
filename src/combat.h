@@ -32,7 +32,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
     //Dice
     Dice d;
 
-    while (mainPlayer.health > 0 && anEnemy.health > 0)
+    while (mainPlayer.current_health > 0 && anEnemy.current_health > 0)
     {
         int enemy_Health;
         int player_Choice;
@@ -40,7 +40,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
         //Combat Menu
         cout
              << "\nPlayer Health: "
-             << mainPlayer.health
+             << mainPlayer.current_health
              << "\n\nMake your move"
              << "\n1. Attack\n"
              << "2. Magic\n"
@@ -58,7 +58,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 mainPlayer.deal_damage(anEnemy);
 
                 cout << "\n\nEnemy's current HP: "
-                     << anEnemy.health;
+                     << anEnemy.current_health;
 
                 break;
             }
@@ -79,7 +79,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
 
                 cout << "\n\nEnemy's current HP: "
-                     << anEnemy.health;
+                     << anEnemy.current_health;
 
                 break;
             }
@@ -114,17 +114,17 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
                 if (chosenItem.name == "Health Potion")
                 {
-                    if (mainPlayer.health + 25 > 100)
-                        mainPlayer.health = 100;
+                    if (mainPlayer.current_health + 25 > 100)
+                        mainPlayer.current_health = 100;
                     else
-                        mainPlayer.health += 25;
+                        mainPlayer.current_health += 25;
                 }
                 else if (chosenItem.name == "Mana Potion")
                 {
-                    if (mainPlayer.mana + 25 > 100)
-                        mainPlayer.mana = 100;
+                    if (mainPlayer.current_mana + 25 > 100)
+                        mainPlayer.current_mana = 100;
                     else
-                        mainPlayer.mana += 25;
+                        mainPlayer.current_mana += 25;
                 }
                 else if (chosenItem.type == "Bomb")
                 {
@@ -165,7 +165,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
         mainPlayer.trigger_buffs();
 
-        if (anEnemy.health <= 0)
+        if (anEnemy.current_health <= 0)
         {
             return true;
         }

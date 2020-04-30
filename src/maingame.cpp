@@ -17,9 +17,6 @@ void fourthDungeon(Player& aPlayer);
 void fifthDungeon(Player& aPlayer);
 void sixthDungeon(Player& aPlayer);
 
-const int MAX_HEALTH = 100;
-const int MAX_MANA = 100;
-
 //Dungeon Checks
 bool gameOver = false;
 bool hasDoneFirstDungeon = false;
@@ -32,8 +29,7 @@ int main()
 {
     Player mainPlayer = Player("name", "class", "race");
     mainPlayer.gold = 20;
-    mainPlayer.health = MAX_HEALTH;
-    mainPlayer.mana = MAX_MANA;
+
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
@@ -156,12 +152,14 @@ int main()
     cout << "\nI was a "
          << mainPlayer.character_class;
 
+    mainPlayer.initialize_stats();
+
     //End of character creation
 
     //Transition to city (story)
     cout << "\n\nAfter leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.\n";
 
-    while (!gameOver && mainPlayer.health > 0)
+    while (!gameOver && mainPlayer.current_health > 0)
     {
         int choice;
         cout << "Welcome to Eretedon! What would you like to do here?\n";
@@ -190,8 +188,7 @@ int main()
                 else
                 {
                     cout << "You visit the inn and rest for the night, restoring your health and mana.\n";
-                    mainPlayer.health = MAX_HEALTH;
-                    mainPlayer.mana = MAX_MANA;
+                    mainPlayer.initialize_stats();
                     mainPlayer.gold -= 10;
                     break;
                 }
