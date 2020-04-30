@@ -40,6 +40,8 @@ string getOS(){
 void pressAnyKey(string os_name){
     /* Pauses the program until a key is pressed */
 
+    cout << endl;
+
     if(os_name == "Windows"){
         system("pause");
     } else {
@@ -63,14 +65,17 @@ int main()
     cout << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
          << "\nYou've been searching for your sister for the last two years since she went missing."
          << "\nYour search eventually lead you to the southern city, Eretedon, a city plagued with rumors of the arrival of Gylbesdaym, Eater of All."
-         << "\nYou arrive at a tavern on the city outskirts and sit at the counter."
-         << "\nThe man next to you says,"
+         << "\nYou arrive at a tavern on the city outskirts and sit at the counter.";
+
+    pressAnyKey(os_name);
+
+    cout << "\nThe man next to you says,"
          << "\n\nHooded man: You must be insane to come to this city at such a time"
          << "\nHooded man: There are rumors of a massive wave of monsters moving closer to the city because of Gylbesdaym's arrival recently."
          << "\nHooded man: You though, don't look like an average traveler, tell me, what is your name.";
 
     //Character creation
-    cout << "\n\nMy name is: ";
+    cout << "\n\nMy name is: \n>>> ";
     string name;
     cin >> name;
 
@@ -82,7 +87,7 @@ int main()
          << "\n3.Dwarf, their sturdiness makes up for thier lack of height"
          << "\n4.Tiefling, silver-tounged creatures born from darkness"
          << "\n5.Gnome, small, cunning tinkerers that boast high intelligence"
-         << "\nSelect race: ";
+         << "\nSelect race: \n>>> ";
 
     int raceChoice;
     cin >> raceChoice;
@@ -125,6 +130,8 @@ int main()
     cout << "\n\nHooded man: Oh I see, I'm a novice storywriter and I've run into a writers' block recently."
          << "\nI came hoping to find new inspiration."
          << "\nWhat did you do before coming here?";
+        
+    pressAnyKey(os_name);
 
     cout << "\n\nClasses: "
          << "\n1.Paladin, a holy knight proficient in both holy magic and melee combat"
@@ -132,7 +139,7 @@ int main()
          << "\n3.Scholar, a student of the arcane arts knowledgeable in ancient magecraft"
          << "\n4.Summoner, commands spirits to weaken foes"
          << "\n5.Marksman, a former hunter with unrivaled precision"
-         << "\n6.Thief, an agile cutpurse\n";
+         << "\n6.Thief, an agile cutpurse\n\n>>> ";
 
     int playerClass;
     cin >> playerClass;
@@ -186,6 +193,7 @@ int main()
 
     //Transition to city (story)
     cout << "\n\nAfter leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.\n";
+    pressAnyKey(os_name);
 
     while (!gameOver && mainPlayer.current_health > 0)
     {
@@ -201,7 +209,7 @@ int main()
         cout << "8) Enter the sixth dungeon\n";
         cout << "9) View your stats\n";
         cout << "10) Inventory\n";
-        cout << "11) Give up\n";
+        cout << "11) Give up\n\n>>> ";
         cin >> choice;
 
         switch (choice)
@@ -361,6 +369,9 @@ int main()
 //Store
 void visitStore(Player& aPlayer)
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     cout << "Welcome to the Jorildyn's store! What would you like to do?\n\n";
     cout << "1) Health Potion (restores 25 health) - 5 gold\n";
     cout << "2) Mana Potion (restores 25 mana) - 5 gold\n";
@@ -372,6 +383,7 @@ void visitStore(Player& aPlayer)
     cout << "8) Staff (20 damage, neutral) - 30 gold\n";
     cout << "9) Leave\n\n";
     cout << "Your gold - " << aPlayer.gold << endl;
+    cout << ">>> ";
 
 
     int choice;
@@ -506,7 +518,7 @@ void visitStore(Player& aPlayer)
             }
         }
         cout << "You have " << aPlayer.gold << " gold left.\n";
-        cout << "What else do you want to purchase?\n";
+        cout << "What else do you want to purchase?\n\n>>> ";
         cin >> choice;
     }
 }
@@ -514,6 +526,9 @@ void visitStore(Player& aPlayer)
 //Dungeon 1
 void firstDungeon(Player& aPlayer)
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     Puzzle p = Puzzle(0);
     string inventoryAnswer;
 
@@ -522,6 +537,8 @@ void firstDungeon(Player& aPlayer)
          << "\nThe location is the GreenHill Cave and the target is the slime king."
          << "\nYou push open the moss covered doors and head inside without hesitation."
          << "\nAfter a few steps you encounter a slime, and enter into combat.\n";
+
+    pressAnyKey(os_name);
 
     //enemy generation
     Enemy slime = EnemyGenerator("slime", 1);
@@ -539,9 +556,10 @@ void firstDungeon(Player& aPlayer)
         return;
     }
 
+    pressAnyKey(os_name);
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -577,7 +595,7 @@ void firstDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -603,6 +621,8 @@ void firstDungeon(Player& aPlayer)
         cout << "Your journey ends just as quickly as it began.";
         return;
     }
+
+    pressAnyKey(os_name);
 
     p = Puzzle(0);
 
@@ -630,6 +650,9 @@ void firstDungeon(Player& aPlayer)
 //Dungeon 2
 void secondDungeon(Player& aPlayer)
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     Puzzle p = Puzzle(0);
     string inventoryAnswer;
 
@@ -637,16 +660,25 @@ void secondDungeon(Player& aPlayer)
     cout << "\n\nAfter reporting to the guild your feat and recieving your gate pass, you run into the storywriter you met at the bar."
          << "\nStorywriter: Oh hey "
          << aPlayer.name
-         << ", nice meeting you here."
-         << "\nStorywriter: I've heard rumors of undead rising recently in nearby villages, it sounds suspicious."
+         << ", nice meeting you here.";
+    
+    pressAnyKey(os_name);
+
+    cout << "\nStorywriter: I've heard rumors of undead rising recently in nearby villages, it sounds suspicious."
          << "\nStorywriter: I was going to file an official request but I hope you can check it out for me."
-         << "\nYou give him a thumbs up and tell the storywriter you'll head there right away."
-         << "\nStorywriter: Alright, I'll tell the guild that you've gone to the villages, good luck."
+         << "\nYou give him a thumbs up and tell the storywriter you'll head there right away.";
+    
+    pressAnyKey(os_name);
+
+    cout << "\nStorywriter: Alright, I'll tell the guild that you've gone to the villages, good luck."
          << "\nBefore the storywriter left, you hand him the note and asked him to figure out what it means."
          << "\nStorywriter: I see, interesting. I'll see what I can find out about it."
          << "\n\n\nYou arrive at the closest village in the west to find no one around in the streets."
-         << "\nYou decide to investigate."
-         << "\nAll of the sudden, an undead creature jumps out at you and you battle it.\n";
+         << "\nYou decide to investigate.";
+    
+    pressAnyKey(os_name);
+
+    cout << "\nAll of the sudden, an undead creature jumps out at you and you battle it.\n";
     //enemy generation
     Enemy zombie = EnemyGenerator("undead", 1);
 
@@ -665,7 +697,7 @@ void secondDungeon(Player& aPlayer)
 
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -686,6 +718,8 @@ void secondDungeon(Player& aPlayer)
     {
         cout << "The chest mysteriously disappears.\n";
     }
+
+    pressAnyKey(os_name);
     
     cout << "When you look up you notice another zombie charging right at you, this one looks stronger\n";
     cout << "You engage in combat with it.\n";
@@ -706,7 +740,7 @@ void secondDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -749,6 +783,7 @@ void secondDungeon(Player& aPlayer)
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
     
+    pressAnyKey(os_name);
 
     //Story
     cout << "\n\nYou explore the underground structure a bit to find a mysterious rune."
@@ -761,6 +796,9 @@ void secondDungeon(Player& aPlayer)
 //Dungeons 3
 void thirdDungeon(Player& aPlayer)
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     Puzzle p = Puzzle(1);
     string inventoryAnswer;
 
@@ -769,13 +807,19 @@ void thirdDungeon(Player& aPlayer)
          << "\nYou've waited for what feels like hours until he finally showed up with books in hand."
          << "\nStorywriter: Ah "
          << aPlayer.name
-         << ", I was looking for you. I've found something interesting about the note you gave me."
-         << "\nStorywriter: The language used for the note turns out to be ancient dwarven, an extinct language."
+         << ", I was looking for you. I've found something interesting about the note you gave me.";
+    
+    pressAnyKey(os_name);
+
+    cout << "\nStorywriter: The language used for the note turns out to be ancient dwarven, an extinct language."
          << "\nThats not all, its also encoded. The person who wrote this seemed well versed in the language."
          << "\nI managed to translate a little bit of it."
          << "\nIt says, the Castle of Green Stones."
-         << "\nI think it may be refering to the castle ruins northwest of the city, maybe you should check it out."
-         << "\nYou hand him the sketching of the rune and ask him about it."
+         << "\nI think it may be refering to the castle ruins northwest of the city, maybe you should check it out.";
+    
+    pressAnyKey(os_name);
+
+    cout << "\nYou hand him the sketching of the rune and ask him about it."
          << "\nStorywriter: I'm not to well-versed in magic but I know a mage who is, I'll ask him about it."
          << "\nYou thank him and head northwest towards the ruins."
          << "\nUpon arrival, you notice traces of goblins being in the area, you prepare for combat."
@@ -799,7 +843,7 @@ void thirdDungeon(Player& aPlayer)
 
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -807,6 +851,8 @@ void thirdDungeon(Player& aPlayer)
     //Puzzle
     //Puzzle Story
     cout << "\n\nYou find door covered in a magic field with a riddle on it.\n";
+
+    pressAnyKey(os_name);
 
     if(p.solve())
     {
@@ -840,11 +886,13 @@ void thirdDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
+
+    pressAnyKey(os_name);
 
     //Story
     cout << "\n\nYou break down the massive doors and find the orc warlord sitting arrogantly on his throne."
@@ -882,6 +930,7 @@ void thirdDungeon(Player& aPlayer)
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
     
+    pressAnyKey(os_name);
 
     //Story
     cout << "\n\nYou look at the path deeper downwards."
@@ -891,6 +940,9 @@ void thirdDungeon(Player& aPlayer)
 //Dungeon 4
 void fourthDungeon(Player& aPlayer)
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     Puzzle p = Puzzle(2);
     string inventoryAnswer;
 
@@ -898,12 +950,18 @@ void fourthDungeon(Player& aPlayer)
     cout << "\n\nYou meet up with the storywriter at the plaza."
          << "\nStorywriter: Hey "
          << aPlayer.name
-         << ", I got some good news and some bad news."
-         << "\nThe good news is that the note mentions something about a woman and its dated back around two years ago, it might be your sister."
+         << ", I got some good news and some bad news.";
+
+    pressAnyKey(os_name);
+
+    cout << "\nThe good news is that the note mentions something about a woman and its dated back around two years ago, it might be your sister."
          << "\nThe bad news is that my mage friend informed me that this rune might be related to the appearence of Gylbesdaym."
          << "\nYou tell him about the hidden passage."
-         << "\nStorywriter: I see, maybe we should go check that out."
-         << "\nAs you two were about to head to the gate, you hear a massive explosion roar throughout the city."
+         << "\nStorywriter: I see, maybe we should go check that out.";
+
+    pressAnyKey(os_name);
+
+    cout << "\nAs you two were about to head to the gate, you hear a massive explosion roar throughout the city."
          << "\nYou both turn around to find the upper half of the Eretedon royal palace gone and the city districts nearby engulfed in flames."
          << "\nA massive portal appears above the palace and countless demons appear out of it."
          << "\nStorywriter: You go and help the guards, I'll go find the mage to help us."
@@ -929,7 +987,7 @@ void fourthDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -950,6 +1008,8 @@ void fourthDungeon(Player& aPlayer)
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
     
+    pressAnyKey(os_name);
+
     cout << "You look up and spot another demon charging right at you. This one looks stronger.\n\n";
     //Enemy Generation
     lesserDemon = EnemyGenerator("demon", 2);
@@ -969,7 +1029,7 @@ void fourthDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -980,6 +1040,7 @@ void fourthDungeon(Player& aPlayer)
          << "\nYou enter through the palace remains and find a greater demon lord standing on top of what was once the throne room."
          << "\nHe lets out a roar and charges at you.";
 
+    pressAnyKey(os_name);
 
     //Boss
     Enemy demonLord = EnemyGenerator("boss", 4);
@@ -998,6 +1059,8 @@ void fourthDungeon(Player& aPlayer)
 
     }
 
+    pressAnyKey(os_name);
+
     p = Puzzle(2);
 
     //Puzzle
@@ -1015,6 +1078,7 @@ void fourthDungeon(Player& aPlayer)
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
     
+    pressAnyKey(os_name);
 
     //Story
     cout << "\n\nYou pick up the broken horn as a trophy and head back to the guild.";
@@ -1023,6 +1087,9 @@ void fourthDungeon(Player& aPlayer)
 //Dungeon 5
 void fifthDungeon(Player& aPlayer)
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     Puzzle p = Puzzle(2);
     string inventoryAnswer;
 
@@ -1030,13 +1097,18 @@ void fifthDungeon(Player& aPlayer)
     cout << "\n\nYou and the storywriter meet up at the guildhouse."
          << "\nStorywriter: glad to see that you're safe but I'm going to have to stay here and help with the aftermath."
          << "\nWe still don't know what lies in under the ruins but just don't do anything too crazy."
-         << "\nYou gear up and head back towards the ruins in the northwest."
-         << "\n\nYou arrive at the entrance to the depths."
+         << "\nYou gear up and head back towards the ruins in the northwest.";
+
+    pressAnyKey(os_name);
+
+    cout << "\n\nYou arrive at the entrance to the depths."
          << "\nAs you head further down, the air feels damp and cold."
          << "\nYou eventually find an opening that leads to an ancient dwarven ruin. The markings nearby matches the words written on the note."
          << "\nThe doors open before you even touch them."
          << "\nYou enter inside the empty facility."
          << "\nYou engage into combat with magical animated armor.\n";
+
+    pressAnyKey(os_name);
 
     //Enemy Generation
     Enemy dwarf = EnemyGenerator("construct", 1);
@@ -1056,7 +1128,7 @@ void fifthDungeon(Player& aPlayer)
 
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -1077,6 +1149,7 @@ void fifthDungeon(Player& aPlayer)
         cout << "\n\nThe door magically seals shut.\n";
     }
     
+    pressAnyKey(os_name);
 
     cout << "Next you run into a clockwork golem.\n";
     //Enemy Generation
@@ -1094,7 +1167,7 @@ void fifthDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -1103,10 +1176,15 @@ void fifthDungeon(Player& aPlayer)
     //Story
     cout << "\n\nYou enter the a dark room at the end of the room."
          << "\nYou begin to hear clicks and hissing around you."
-         << "\nYou look up to find a pair of blue glowing eyes staring at you."
-         << "\nThe lights flicker on and you get a clear sight of the machine."
+         << "\nYou look up to find a pair of blue glowing eyes staring at you.";
+    
+    pressAnyKey(os_name);
+
+    cout << "\nThe lights flicker on and you get a clear sight of the machine."
          << "\nIt has a long body of a serpent and legs of a centepede. It's face resembles that of a crocodile."
          << "\nIt craws around the walls quickly then lunges at you.";
+
+    pressAnyKey(os_name);
 
     //Boss
     Enemy dwarfBoss = EnemyGenerator("boss", 5);
@@ -1125,6 +1203,8 @@ void fifthDungeon(Player& aPlayer)
         return;
     }
 
+    pressAnyKey(os_name);
+
     //Puzzle
     //Puzzle Story
     cout << "\n\nYou find an odd orb sealed by a mechanical lock and a riddle. It reads: \n";
@@ -1141,6 +1221,7 @@ void fifthDungeon(Player& aPlayer)
         cout << "\n\nThe orb flies away.\n";
     }
     
+    pressAnyKey(os_name);
 
     //Story
     cout << "\n\nYou also find a note near the machine."
@@ -1151,14 +1232,20 @@ void fifthDungeon(Player& aPlayer)
 //Dungeon 6
 void sixthDungeon(Player& aPlayer)
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     string inventoryAnswer;
     string playerAnswer;
     int finalChoice;
 
     //Story
     cout << "\n\nAs you head towards the guild hall, a tear in time and space rips the area in half."
-         << "\nGylbesdaym, the Eater of All, lets out a massive roar that shatters all the windows nearby and sends trees flying."
-         << "\nHe lets out a burst of pure magic that scorches half of the city into dust."
+         << "\nGylbesdaym, the Eater of All, lets out a massive roar that shatters all the windows nearby and sends trees flying.";
+    
+    pressAnyKey(os_name);
+
+    cout << "\nHe lets out a burst of pure magic that scorches half of the city into dust."
          << "\nIt begins to charge another beam straight at you.";
 
     //Boss
@@ -1176,7 +1263,7 @@ void sixthDungeon(Player& aPlayer)
     }
 
     //Inventory
-    cout << "\nDo you want to check your gear (y/n)?";
+    cout << "\nDo you want to check your gear (y/n)?\n>>> ";
     cin >> inventoryAnswer;
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
@@ -1184,13 +1271,19 @@ void sixthDungeon(Player& aPlayer)
 
     //Story
     cout << "\n\nYou follow Gylbesdaym through the portal to find yourself in a lavish throne room."
-         << "\nYou hear a familiar voice across the room."
-         << "\nFamiliar voice: You're a failure, and failures deserved to be erased."
+         << "\nYou hear a familiar voice across the room.";
+
+    pressAnyKey(os_name);
+
+    cout << "\nFamiliar voice: You're a failure, and failures deserved to be erased."
          << "\nBefore you even know what happened, Gylbesdaym's guts splatter on the walls and windows around you."
          << "\nIn front of you was your sister."
          << "\nSister?: Its suprising that you made it this far, I expected you to have been killed along with the rest of the village 2 years ago."
-         << "\nYou: Who are you?"
-         << "\nSister?: Me? Oh you must mean this human shell that I took a few years ago."
+         << "\nYou: Who are you?";
+
+    pressAnyKey(os_name);
+
+    cout << "\nSister?: Me? Oh you must mean this human shell that I took a few years ago."
          << "\nThe demon sheds it's human form to present a grotesque crimson winged demon."
          << "\n???: My name is Xanoroth, the Embodiment of Dispair."
          << "\nXanoroth: It seems that my pet has failed, I guess I'll have to destroy your plane of existence myself."
@@ -1215,6 +1308,8 @@ void sixthDungeon(Player& aPlayer)
         return;
     }
 
+    pressAnyKey(os_name);
+
     //Story
     cout << "\n\nXanoroth: No, it can't be. I'm invincible."
          << "\nYou: ";
@@ -1233,8 +1328,11 @@ void sixthDungeon(Player& aPlayer)
         case 1:
         {
             cout << "\n\nYou walk away and out of the tear."
-                 << "\nIn the distance, you hear..."
-                 << "\nXanoroth: You fool!, You will regret sparing me."
+                 << "\nIn the distance, you hear...";
+
+                 pressAnyKey(os_name);
+                 
+            cout << "\nXanoroth: You fool!, You will regret sparing me."
                  << "\n\nIt is said that Eretedon was wiped from the face of the planet a mere 3 months later."
                  << "\nThe hero, "
                  << aPlayer.name
