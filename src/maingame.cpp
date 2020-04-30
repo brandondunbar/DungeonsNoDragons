@@ -56,8 +56,8 @@ int main()
     mainPlayer.gold = 20;
 
     //Intro sequence
-    cout << "\n\nWelcome to Dungeons no Dragons!";
-    
+    cout << "\n\nWelcome to Dungeons no Dragons!" << endl;
+
     pressAnyKey(os_name);
 
     cout << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
