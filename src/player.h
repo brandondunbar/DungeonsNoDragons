@@ -153,10 +153,14 @@ void Player::display_inventory()
     display_items();
     display_weapons();
     display_armors();
+    cout << endl;
 }
 
 void Player::inventory()
 {
+    // Get the operating system...
+    string os_name = getOS();
+
     cout << "Welcome to the inventory manager.\n";
     int choice;
     while (true)
@@ -166,7 +170,7 @@ void Player::inventory()
         cout << "2) Use an item\n";
         cout << "3) Switch weapon\n";
         cout << "4) Switch armor\n";
-        cout << "5) Exit inventory manager\n";
+        cout << "5) Exit inventory manager\n\n>>> ";
         cin >> choice;
         if (choice == 1)
         {
@@ -181,7 +185,7 @@ void Player::inventory()
             else
             {
                 int itemChoice;
-                cout << "Which item do you want to use?\n";
+                cout << "Which item do you want to use?\n\n>>> ";
                 display_items();
                 cin >> itemChoice;
                 if (invItems[itemChoice].name == "Health Potion")
@@ -192,6 +196,7 @@ void Player::inventory()
                     else
                         current_health += 25;
                     invItems.erase(invItems.begin() + itemChoice);
+                    pressAnyKey(os_name);
                 }
                 else if (invItems[itemChoice].name == "Mana Potion")
                 {
@@ -201,10 +206,12 @@ void Player::inventory()
                     else
                         current_mana += 25;
                     invItems.erase(invItems.begin() + itemChoice);
+                    pressAnyKey(os_name);
                 }
                 else if (invItems[itemChoice].name == "Bomb")
                 {
                     cout << "You cannot use that item outside of combat.\n";
+                    pressAnyKey(os_name);
                 }
                 else if (invItems[itemChoice].name == "Gold Pouch")
                 {
@@ -213,6 +220,7 @@ void Player::inventory()
                     cout << "You open the gold pouch and find " << goldToGive << " gold.\n";
                     gold += goldToGive;
                     invItems.erase(invItems.begin() + itemChoice);
+                    pressAnyKey(os_name);
                 }
             }
         }
@@ -226,31 +234,36 @@ void Player::inventory()
                 cout << weapon.name << " " << "Damage: " << weapon.damage;
                 cout << "Your other weapons are: \n\n";
                 display_weapons();
-                cout << "Which weapon do you want to equip?\n";
+                cout << "Which weapon do you want to equip?\n>>> ";
                 int weaponChoice;
                 cin >> weaponChoice;
                 Weapon oldWeapon = weapon;
                 weapon = invWeapons[weaponChoice];
                 invWeapons.erase(invWeapons.begin() + weaponChoice);
                 invWeapons.push_back(oldWeapon);
+                cout << weapon.name << " equipped." << endl;
+                pressAnyKey(os_name);
             }
         }
         else if (choice == 4)
         {
-            if (invArmors.size() == 0)
+            if (invArmors.size() == 0){
                 cout << "You have no other armors.\n";
-            else
+                pressAnyKey(os_name);
+            } else
             {
                 cout << "You are currently equipped with: \n";
                 cout << armor.name << " " << "Phys Def: " << armor.physical_defense << " " << "Magic Def: " << armor.magical_defense << endl;
                 display_armors();
-                cout << "Which armor do you want to equip?\n";
+                cout << "Which armor do you want to equip?\n>>> ";
                 int armorChoice;
                 cin >> armorChoice;
                 Armor oldArmor = armor;
                 armor = invArmors[armorChoice];
                 invArmors.erase(invArmors.begin() + armorChoice);
                 invArmors.push_back(oldArmor);
+                cout << armor.name << " equipped." << endl;
+                pressAnyKey(os_name);
             }
         }
         else if (choice == 5)
