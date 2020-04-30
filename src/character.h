@@ -209,6 +209,8 @@ int Character::calculate_damage_to_receive(int damage, string element, string da
         return 0;
     }
 
+    cout << damage << " dealt!" << endl;
+
     return damage;
 }
 
