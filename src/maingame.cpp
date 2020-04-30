@@ -345,7 +345,10 @@ void visitStore(Player& aPlayer)
     cout << "6) Iron Sword (10 damage, neutral) - 15 gold\n";
     cout << "7) Long Bow (10 damage, neutral) - 15 gold\n";
     cout << "8) Staff (20 damage, neutral) - 30 gold\n";
-    cout << "9) Leave\n";
+    cout << "9) Leave\n\n";
+    cout << "Your gold - " << aPlayer.gold << endl;
+
+
     int choice;
     cin >> choice;
     while (true){
