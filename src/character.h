@@ -31,6 +31,8 @@ class Character {
         Character(string, string, string);
         Character() = default;
         void set_health_and_mana();
+        void set_current_stats();
+        void initialize_stats();
 
         int calculate_modifier(int stat);
 
@@ -56,8 +58,10 @@ class Character {
         string name;
         string character_class;
         string race;
-        int health;
-        int mana = 0;
+        int current_health;
+        int current_mana;
+        int base_health;
+        int base_mana;
 
         // Base Stats
         int strength = 10, constitution = 10, dexterity = 10, intelligence = 10, wisdom = 10, charisma = 10;
@@ -85,7 +89,20 @@ Character::Character (string _name, string _class, string _race) : weapon("Fists
     character_class = _class;
     race = _race;
 
-    // Set Temp stats
+}
+
+void Character::set_health_and_mana(){
+
+    base_health = constitution*5;
+    base_mana = intelligence*5;
+    current_health = base_health;
+    current_mana = base_mana;
+
+}
+
+void Character::set_current_stats(){
+
+
     current_strength = strength;
     current_constitution = constitution;
     current_dexterity = dexterity;
@@ -95,9 +112,9 @@ Character::Character (string _name, string _class, string _race) : weapon("Fists
 
 }
 
-void Character::set_health_and_mana(){
-    health = constitution*5;
-    mana = intelligence*5;
+void Character::initialize_stats(){
+    set_health_and_mana();
+    set_current_stats();
 }
 
 int Character::calculate_modifier(int stat){
@@ -151,7 +168,7 @@ int Character::calculate_damage_to_deal(Spell spell_attack){
 
     }
 
-    mana -= spell_attack.cost;
+    current_mana -= spell_attack.cost;
 
     return damage;
 }
@@ -232,9 +249,9 @@ bool Character::deal_damage(Character &target, Item bomb){
 
 bool Character::take_damage(int damage){
 
-    health -= damage;
+    current_health -= damage;
 
-    if ( health <= 0 ){
+    if ( current_health <= 0 ){
         return true;
     } else {
         return false;
@@ -245,8 +262,8 @@ void Character::display_attributes(){
     cout << "\tName: " << name << endl;
     cout << "\tClass: " << character_class << endl;
     cout << "\tRace: " << race << endl;
-    cout << "\tHealth: " << health << endl;
-    cout << "\tMana: " << mana << endl;
+    cout << "\tHealth: " << current_health << endl;
+    cout << "\tMana: " << current_mana << endl;
     cout << "\tBuffs: ";
     display_buffs();
 
@@ -335,7 +352,7 @@ void Character::mod_stat(string stat, int amount){
 
     } else if ( stat == "dot" ) {
 
-        health -= amount;
+        current_health -= amount;
 
     }
 

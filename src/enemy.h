@@ -29,17 +29,7 @@ class Enemy : public Character {
 
 // Constructor
 Enemy::Enemy(string _name, string _class, string _race) : Character(
-    _name, _class, _race) {
-
-    Weapon iron_sword = Weapon("Iron Sword", 10, "neutral");
-    weapon = iron_sword;
-
-    Armor leather_armor = Armor("Leather Armor", 5, 1, "neutral");
-    armor = leather_armor;
-
-    health = 10;
-
-}
+    _name, _class, _race) {}
 
 
 void Enemy::display(){
