@@ -468,7 +468,7 @@ void visitStore(Player& aPlayer)
     }
 }
 
-//Dungeon 1 (needs enemy generation)
+//Dungeon 1
 void firstDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
@@ -569,7 +569,7 @@ void firstDungeon(Player& aPlayer)
          << "\nYou head back to Eretedon";
 }
 
-//Dungeon 2 (needs enemy generation)
+//Dungeon 2
 void secondDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(0);
@@ -678,7 +678,7 @@ void secondDungeon(Player& aPlayer)
          << "\nYou return to Eretedon.";
 }
 
-//Dungeons 3 (needs enemy generation)
+//Dungeons 3
 void thirdDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(1);
@@ -790,7 +790,7 @@ void thirdDungeon(Player& aPlayer)
          << "\nUnsure if going down is a good idea, you return to Eretedon.";
 }
 
-//Dungeon 4 (needs enemy generation)
+//Dungeon 4
 void fourthDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(2);
@@ -802,7 +802,14 @@ void fourthDungeon(Player& aPlayer)
          << aPlayer.name
          << ", I got some good news and some bad news."
          << "\nThe good news is that the note mentions something about a woman and its dated back around two years ago, it might be your sister."
-         << "\nThe bad news is that my mage friend informed me that this rune might be related to the appearence of ";
+         << "\nThe bad news is that my mage friend informed me that this rune might be related to the appearence of Gylbesdaym."
+         << "\nYou tell him about the hidden passage."
+         << "\nStorywriter: I see, maybe we should go check that out."
+         << "\nAs you two were about to head to the gate, you hear a massive explosion roar throughout the city."
+         << "\nYou both turn around to find the upper half of the Eretedon royal palace gone and the city districts nearby engulfed in flames."
+         << "\nA massive portal appears above the palace and countless demons appear out of it."
+         << "\nStorywriter: You go and help the guards, I'll go find the mage to help us."
+         << "\nYou head straight towards the palace through the main road while the storywriter goes to find the mage.";
 
     //Enemy Generation
     Enemy lesserDemon = EnemyGenerator("demon", 1);
@@ -811,10 +818,14 @@ void fourthDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, lesserDemon))
     {
         //Win
+        cout << "\n\nYou turn the demon into ash.";
+
     }
     else
     {
         //Lose
+        cout << "\n\nYou're speared through the chest.";
+
     }
 
     //Inventory
@@ -826,9 +837,12 @@ void fourthDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
+    cout << "\n\nYou find a locked chest in some rubble.";
     if(p.solve())
     {
             //Rewards
+            cout << "\n\nThe chest unlocks.";
+
     }
 
     //Enemy Generation
@@ -837,10 +851,14 @@ void fourthDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, lesserDemon))
     {
         //Win
+        cout << "You send the demon back to the other side.";
+
     }
     else
     {
         //Lose
+        cout << "You are pelted by fireballs.";
+
     }
 
     //Inventory
@@ -850,29 +868,44 @@ void fourthDungeon(Player& aPlayer)
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
 
+    //Story
+    cout << "\n\nYou find the royal guards fleeing from the palace."
+         << "\nYou enter through the palace remains and find a greater demon lord standing on top of what was once the throne room."
+         << "\nHe lets out a roar and charges at you.";
+
+
     //Boss
     Enemy demonLord = EnemyGenerator("boss", 4);
     if (battle_Sys(aPlayer, demonLord))
     {
         //Win
+        cout << "\n\nYou remove the demon lord's soul from this world.";
+        
     }
     else
     {
         //Lose
+        cout << "\n\nThe demon lord burns you to a crisp";
+
     }
 
     p = Puzzle(2);
 
     //Puzzle
     //Puzzle Story
+    cout << "\n\nYou spot the demon lord's loot chest, its locked.";
 
     if(p.solve())
     {
             //Rewards Unique Boss Item
+            cout << "\n\nYou unlock the chest.";
     }
+
+    //Story
+    cout << "\n\nYou pick up the broken horn as a trophy and head back to the guild.";
 }
 
-//Dungeon 5 (needs story and enemy generation)
+//Dungeon 5
 void fifthDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(2);
@@ -948,7 +981,7 @@ void fifthDungeon(Player& aPlayer)
     }
 }
 
-//Dungeon 6 (needs story and enemy generation)
+//Dungeon 6
 void sixthDungeon(Player& aPlayer)
 {
     string inventoryAnswer;
