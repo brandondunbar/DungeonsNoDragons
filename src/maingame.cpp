@@ -1165,7 +1165,7 @@ void sixthDungeon(Player& aPlayer)
     cout << "\n\nXanoroth: I will come for your soul, you'll never escape."
          << "\nWhat will you do?"
          << "\n1. Mercy"
-         << "\n2. Execute";
+         << "\n2. Execute\n";
 
     cin >> finalChoice;
 
