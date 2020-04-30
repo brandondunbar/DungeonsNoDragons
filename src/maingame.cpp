@@ -1037,6 +1037,8 @@ void fifthDungeon(Player& aPlayer)
 void sixthDungeon(Player& aPlayer)
 {
     string inventoryAnswer;
+    string playerAnswer;
+    int finalChoice;
 
     //Story
     cout << "\n\nAs you head towards the guild hall, a tear in time and space rips the area in half."
@@ -1073,18 +1075,73 @@ void sixthDungeon(Player& aPlayer)
          << "\nFamiliar voice: You're a failure, and failures deserved to be erased."
          << "\nBefore you even know what happened, Gylbesdaym's guts splatter on the walls and windows around you."
          << "\nIn front of you was your sister."
-         << "\n";
+         << "\nSister?: Its suprising that you made it this far, I expected you to have been killed along with the rest of the village 2 years ago."
+         << "\nYou: Who are you?"
+         << "\nSister?: Me? Oh you must mean this human shell that I took a few years ago."
+         << "\nThe demon sheds it's human form to present a grotesque crimson winged demon."
+         << "\n???: My name is Xanoroth, the Embodiment of Dispair."
+         << "\nXanoroth: It seems that my pet has failed, I guess I'll have to destroy your plane of existence myself."
+         << "\nYou: ";
+
+    cin >> playerAnswer;
+
+    cout << "\n\nXanoroth: Oh, I see that you aim to stop me. Your grave shall be where you stand."
+         << "\nHe unsheathes his blade which ignites the throne room ablaze just from sheer power."
+         << "\nXanoroth: Let us end this.";
 
     //Final Boss
     Enemy demonSister = EnemyGenerator("boss", 7);
     if (battle_Sys(aPlayer, demonSister))
     {
         //Win
+        cout << "\n\nYou destroy his sword and destroy his soul.";
     }
     {
         //Lose
+        cout << "\n\nYou're sliced in half and your soul is destroyed.";
+        return;
     }
 
     //Story
+    cout << "\n\nXanoroth: No, it can't be. I'm invincible."
+         << "\nYou: ";
+
+    cin >> playerAnswer;
+
+    cout << "\n\nXanoroth: I will come for your soul, you'll never escape."
+         << "\nWhat will you do?"
+         << "\n1. Mercy"
+         << "\n2. Execute";
+
+    cin >> finalChoice;
+
+    switch (finalChoice)
+    {
+        case 1:
+        {
+            cout << "\n\nYou walk away and out of the tear."
+                 << "\nIn the distance, you hear..."
+                 << "\nXanoroth: You fool!, You will regret sparing me."
+                 << "\n\nIt is said that Eretedon was wiped from the face of the planet a mere 3 months later."
+                 << "\nThe hero, "
+                 << aPlayer.name
+                 << ", was said to have been almost completely forgotten from history itself."
+                 << "\nThe end.";
+            
+            return;
+        }
+
+        case 2:
+        {
+            cout << "\n\nYou remove the demon's head and take it with you as proof."
+                 << "\nWith Xanoroth gone, the tear collapses on itself as you leave.\n"
+                 << aPlayer.name
+                 << " was known as the hero who saved the world after leaving the tear with head in hand."
+                 << "\nNo one knows where the hero has gone since then, but rumors have it that they wander the land, hunting the other 5 great beasts of the world."
+                 << "\nThe end.";
+
+            return;
+        }
+    }
 }
 
