@@ -76,7 +76,16 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 int choice;
                 cout << "\n\nWhich spell do you want to use?\n";
                 cin >> choice;
-                mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
+                
+                if (mainPlayer.current_mana < mainPlayer.spellbook[choice].cost)
+                {
+                    cout << "\n\nYou don't have enough mana";
+                }
+                else
+                {
+                    mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
+                }
+                
 
                 if (mainPlayer.spellbook[choice].name == "Slime Bomb")
                 {
