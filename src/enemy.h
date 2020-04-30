@@ -176,7 +176,7 @@ Enemy EnemyGenerator(string type, int tier){
                 generatedEnemy = Enemy("Zombie", "fighter", "undead");
                 generatedEnemy.weapon = Weapon("Rotten Scratch", 20, "Neutral");
                 generatedEnemy.learnSpell( Spell("Acrid Vomit", "Poison", "Toxic", 25, 10) );
-                generatedEnemy.armor = Armors["None"];
+                generatedEnemy.armor = Armors["Iron Armor"];
                 break;
                 }
             case 2:
