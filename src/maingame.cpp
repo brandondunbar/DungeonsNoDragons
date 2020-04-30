@@ -149,6 +149,7 @@ int main()
             mainPlayer.character_class = "Paladin";
             //Add items
             mainPlayer.weapon = Weapons["Dull Magic Sword"];
+            mainPlayer.learnSpell(Spells["Holy Beam"]);
             break;
 
         case 2:
