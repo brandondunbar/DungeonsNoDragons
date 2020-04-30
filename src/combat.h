@@ -34,6 +34,21 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
     //Dice
     Dice d;
 
+    if (anEnemy.name == "Leviathan"){
+        //Enemy attack
+        Spell spell = Spell("Extinction Ray", "death", "None", 40, 50);
+        
+        cout << "\n\nThe enemy used " << spell.name << endl;
+        anEnemy.deal_damage(mainPlayer, spell);
+
+        Buff def_debuff = Buff("Str debuff", "str", -15, 5);
+        mainPlayer.add_buff(def_debuff);
+
+        anEnemy.trigger_buffs();
+
+        pressAnyKey(os_name);
+    }
+
     while (mainPlayer.current_health > 0 && anEnemy.current_health > 0)
     {
         int enemy_Health;
