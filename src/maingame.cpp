@@ -379,7 +379,7 @@ void visitStore(Player& aPlayer)
     cout << "2) Mana Potion (restores 25 mana) - 5 gold\n";
     cout << "3) Bomb (does 10 damage) - 5 gold\n";
     cout << "4) Iron Armor (5 physical defense, 1 magical defense, neutral) - 25 gold\n";
-    cout << "5) Lightning Armor (10 physical defense, 10 magical defense, neutral) - 50 gold\n";
+    cout << "5) Lightning Armor (25 physical defense, 25 magical defense, neutral) - 100 gold\n";
     cout << "6) Iron Sword (10 damage, neutral) - 15 gold\n";
     cout << "7) Long Bow (10 damage, neutral) - 15 gold\n";
     cout << "8) Staff (20 damage, neutral) - 30 gold\n";
@@ -455,14 +455,14 @@ void visitStore(Player& aPlayer)
             }
             case 5:
             {
-                if (aPlayer.gold < 50)
+                if (aPlayer.gold < 100)
                 {
                     cout << "You do not have enough gold to purchase this item.\n";
                     break;
                 }
                 else
                 {
-                    aPlayer.gold -= 50;
+                    aPlayer.gold -= 100;
                     aPlayer.invArmors.push_back(Armors["Lightning Armor"]);
                     cout << "Thank you for your purchase!\n";
                     break;
@@ -614,7 +614,7 @@ void firstDungeon(Player& aPlayer)
     {
         //Win
         cout << "\n\nThe slime king liquifies as you deliver the final blow.";
-        cout << "After fighting the boss, you notice a slimy tome. You open the tome and learn a new spell, Slime Bomb\n";
+        cout << "After fighting the boss, you notice a slimy tome. \nYou open the tome and learn a new spell, Slime Bomb\n";
         aPlayer.learnSpell(Spell("Slime Bomb", "Neutral", "Disease", 15, 5));
     }
     else
@@ -629,7 +629,7 @@ void firstDungeon(Player& aPlayer)
     p = Puzzle(0);
 
     //Puzzle
-    cout << "\n\nA locked chest appears where the boss was once at.";
+    cout << "\n\nA locked chest appears where the boss was once at.\n";
     if(p.solve())
     {
             //Rewards Unique Boss Item
@@ -707,7 +707,7 @@ void secondDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    cout << "\n\nYou found a odd magic chest";
+    cout << "\n\nYou find an odd magic chest with a riddle. It reads: \n";
     if(p.solve())
     {
         //Standard puzzle reward
@@ -772,7 +772,7 @@ void secondDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle story
-    cout << "\n\nA locked chest falls on top of the lich's corpse.";
+    cout << "\n\nA locked chest falls on top of the lich's corpse with a riddle. It reads: \n";
     if(p.solve())
     {
         //Rewards Unique Boss Item
@@ -792,7 +792,7 @@ void secondDungeon(Player& aPlayer)
          << "\nYou spot a rune glowing in a corner near a table."
          << "\nYou approach it to find that it looks similar to the one in the cave."
          << "\nYou quicky sketch the mysterious rune onto some paper and destroy it"
-         << "\nYou return to Eretedon.";
+         << "\nYou return to Eretedon.\n";
 }
 
 //Dungeons 3
@@ -918,7 +918,7 @@ void thirdDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    cout << "\n\nYou spot a locked chest behind his throne.";
+    cout << "\n\nYou spot a locked chest behind his throne with a riddle on it. It reads: \n";
     p = Puzzle(1);
 
     if(p.solve())
@@ -997,7 +997,7 @@ void fourthDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    cout << "\n\nYou find a locked chest in some rubble.";
+    cout << "\n\nYou find a locked chest in some rubble with a riddle on it. It reads: \n";
     if(p.solve())
     {
         //Rewards
@@ -1067,7 +1067,7 @@ void fourthDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    cout << "\n\nYou spot the demon lord's loot chest, its locked.";
+    cout << "\n\nYou spot the demon lord's loot chest, its locked with a riddle. It reads: \n";
 
     if(p.solve())
     {
@@ -1137,7 +1137,7 @@ void fifthDungeon(Player& aPlayer)
         aPlayer.inventory();
     //Puzzle
     //Puzzle Story
-    cout << "\n\nYou find a complex dwarven mechanical door.";
+    cout << "\n\nYou find a complex dwarven mechanical door wih a riddle. It reads: \n";
 
     if(p.solve())
     {
@@ -1209,7 +1209,7 @@ void fifthDungeon(Player& aPlayer)
 
     //Puzzle
     //Puzzle Story
-    cout << "\n\nYou find an odd orb sealed by a mechanical lock.";
+    cout << "\n\nYou find an odd orb sealed by a mechanical lock and a riddle. It reads: \n";
     p = Puzzle(2);
 
     if(p.solve())
