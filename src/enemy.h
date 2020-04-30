@@ -233,8 +233,8 @@ Enemy EnemyGenerator(string type, int tier){
                 if (diceRoll > 10) {
 
                     generatedEnemy = Enemy("Orc Warrior", "fighter", "orc");
-                    generatedEnemy.weapon = Weapons["Rusty Great Sword"];
-                    generatedEnemy.armor = Armors["Iron Armor"];
+                    generatedEnemy.weapon = Weapons["Damascus Sword"];
+                    generatedEnemy.armor = Armors["Damascus Armor"];
 
                 } else {
 
@@ -243,7 +243,7 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy.learnSpell( Spells["Fireball"] );
                     generatedEnemy.learnSpell( Spells["Thunderbolt"] );
                     generatedEnemy.learnSpell( Spells["Ice Spike"] );
-                    generatedEnemy.armor = Armors["Iron Armor"];
+                    generatedEnemy.armor = Armors["Damascus Armor"];
 
                 }
 
@@ -258,7 +258,7 @@ Enemy EnemyGenerator(string type, int tier){
 
                     generatedEnemy = Enemy("Gith Archer", "archer", "gith");
                     generatedEnemy.weapon = Weapons["Longbow"];
-                    generatedEnemy.armor = Armors["Iron Armor"];
+                    generatedEnemy.armor = Armors["Gear Armor"];
 
                 } else {
 
@@ -267,7 +267,7 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy.learnSpell( Spells["Fireball"] );
                     generatedEnemy.learnSpell( Spells["Thunderbolt"] );
                     generatedEnemy.learnSpell( Spells["Ice Spike"] );
-                    generatedEnemy.armor = Armors["Iron Armor"];
+                    generatedEnemy.armor = Armors["Gear Armor"];
                 }
 
                 break;
@@ -281,7 +281,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Abyssal Chicken", "fighter", "demon");
                 generatedEnemy.weapon = Weapon("Cursed Talons", 40, "dark");
-                generatedEnemy.armor = Armors["None"];
+                generatedEnemy.armor = Armors["Damascus Armor"];
                 break;
                 }
 
@@ -292,8 +292,8 @@ Enemy EnemyGenerator(string type, int tier){
                 if (diceRoll > 6) {
 
                     generatedEnemy = Enemy("Demon Archer", "archer", "demon");
-                    generatedEnemy.weapon = Weapons["Longbow"];
-                    generatedEnemy.armor = Armors["Iron Armor"];
+                    generatedEnemy.weapon = Weapons["Void Sword"];
+                    generatedEnemy.armor = Armors["Damascus Armor"];
 
                 } else if ( 6 < diceRoll < 12 ) {
 
@@ -302,13 +302,13 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy.learnSpell( Spells["Fireball"] );
                     generatedEnemy.learnSpell( Spells["Lightning bolt"] );
                     generatedEnemy.learnSpell( Spells["Ice Spike"] );
-                    generatedEnemy.armor = Armors["Iron Armor"];
+                    generatedEnemy.armor = Armors["Damascus Armor"];
 
                 } else {
 
                     generatedEnemy = Enemy("Demon Warrior", "warrior", "demon");
                     generatedEnemy.weapon = Weapons["Great Sword"];
-                    generatedEnemy.armor = Armors["Iron Armor"];
+                    generatedEnemy.armor = Armors["Damascus Armor"];
 
                 }
 
@@ -319,7 +319,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Maurezhi", "fighter", "demon");
                 generatedEnemy.weapon = Weapon("Blasphemous Hook", 50, "dark");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Damascus Armor"];
 
                 break;
                 }
@@ -332,7 +332,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Animated Armor", "fighter", "mech");
                 generatedEnemy.weapon = Weapons["Great Sword"];
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Gear Armor"];
 
                 break;
                 }
@@ -341,7 +341,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Clockwork Golem", "fighter", "mech");
                 generatedEnemy.weapon = Weapons["Great Sword"];
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Gear Armor"];
 
                 break;
                 }
@@ -350,7 +350,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Warforge", "fighter", "mech");
                 generatedEnemy.weapon = Weapon("Mechanized Glaive", 25, "Neutral");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Gear Armor"];
 
                 break;
                 }
@@ -381,7 +381,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Orc Warlord", "boss", "orc");
                 generatedEnemy.weapon = Weapon("Bone Great Sword", 25, "Neutral");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Cursed Armor"];
 
                 break;
                 }
@@ -390,7 +390,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Orcus", "boss", "demon");
                 generatedEnemy.weapon = Weapon("Soul Scythe", 30, "Dark");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Damascus Armor"];
 
                 break;
                 }
@@ -399,7 +399,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Clockwork Behir", "boss", "construct");
                 generatedEnemy.weapon = Weapon("Sharpened Gear", 35, "Neutral");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Gear Armor"];
 
                 // Lightning Breath
                 // Magic Charged Lasers
@@ -410,7 +410,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Leviathan", "boss", "elemental");
                 generatedEnemy.weapon = Weapon("Petrified Bite", 40, "Neutral");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Void Armor"];
 
                 break;
                 }
@@ -419,7 +419,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Demon Boss", "boss", "demon");
                 generatedEnemy.weapon = Weapon("Cursed Warhammer of Damnation", 50, "Dark");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["Armor of a thousand souls"];
 
                 break;
                 }
