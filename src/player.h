@@ -14,6 +14,7 @@
 // Included Dependencies
 #include "character.h"
 #include "item.h"
+#include "dice.h"
 
 //=================================
 class Player : public Character {
