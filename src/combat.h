@@ -78,6 +78,24 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 cin >> choice;
                 mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
 
+                if (mainPlayer.spellbook[choice].name == "Slime Bomb")
+                {
+                    Buff slimeBomb = Buff("Slime Bomb", "dot", 10, 5);
+                    anEnemy.add_buff(slimeBomb);
+                }
+
+                if (mainPlayer.spellbook[choice].name == "Shout")
+                {
+                    Buff shout = Buff("Shout", "str", 5, 5);
+                    mainPlayer.add_buff(shout);
+                }
+
+                if (mainPlayer.spellbook[choice].name == "Shadow Banish")
+                {
+                    Buff banish = Buff("Shadow Banish", "str", -5, 3);
+                    anEnemy.add_buff(banish);
+                }
+
                 cout << "\n\nEnemy's current HP: "
                      << anEnemy.current_health;
 
