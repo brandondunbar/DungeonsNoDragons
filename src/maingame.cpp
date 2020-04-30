@@ -17,7 +17,8 @@ void fourthDungeon(Player& aPlayer);
 void fifthDungeon(Player& aPlayer);
 void sixthDungeon(Player& aPlayer);
 
-Enemy generateEnemy(int dungeon, int difficulty);
+const int MAX_HEALTH = 100;
+const int MAX_MANA = 100;
 
 //Dungeon Checks
 bool gameOver = false;
@@ -31,6 +32,8 @@ int main()
 {
     Player mainPlayer = Player("name", "class", "race");
     mainPlayer.gold = 20;
+    mainPlayer.health = MAX_HEALTH;
+    mainPlayer.mana = MAX_MANA;
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
@@ -168,8 +171,9 @@ int main()
         cout << "6) Enter the fourth dungeon\n";
         cout << "7) Enter the fifth dungeon\n";
         cout << "8) Enter the sixth dungeon\n";
-        cout << "9) Inventory\n";
-        cout << "10) Give up\n";
+        cout << "9) View your stats\n";
+        cout << "10) Inventory\n";
+        cout << "11) Give up\n";
         cin >> choice;
 
         switch (choice)
@@ -184,6 +188,9 @@ int main()
                 else
                 {
                     cout << "You visit the inn and rest for the night, restoring your health and mana.\n";
+                    mainPlayer.health = MAX_HEALTH;
+                    mainPlayer.mana = MAX_MANA;
+                    mainPlayer.gold -= 10;
                     break;
                 }
             }
@@ -297,12 +304,17 @@ int main()
             }
         case 9:
             {
+                mainPlayer.display();
+                break;
+            }
+        case 10:
+            {
                 //Work in progress, changes needed for the player to fully access their inventory
                 cout << "You check your gear\n";
                 mainPlayer.inventory();
                 break;
             }
-        case 10:
+        case 11:
             {
                 cout << "You leave the city with no clues to where your sister could be\n";
                 cout << "End of game.\n";
@@ -779,7 +791,7 @@ void thirdDungeon(Player& aPlayer)
     //Puzzle
     //Puzzle Story
     cout << "\n\nYou spot a locked chest behind his throne.";
-    Puzzle p = Puzzle(1);
+    p = Puzzle(1);
 
     if(p.solve())
     {
