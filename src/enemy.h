@@ -8,6 +8,7 @@
 // Included Dependencies
 #include "character.h"
 #include "item.h"
+#include "dice.h"
 
 
 //=================================
