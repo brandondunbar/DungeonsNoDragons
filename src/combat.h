@@ -32,8 +32,6 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
     //Dice
     Dice d;
 
-    anEnemy.display();
-
     while (mainPlayer.current_health > 0 && anEnemy.current_health > 0)
     {
         int enemy_Health;

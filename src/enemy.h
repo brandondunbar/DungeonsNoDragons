@@ -411,6 +411,8 @@ Enemy EnemyGenerator(string type, int tier){
     generatedEnemy.charisma = generateStat(elementIndex, tier);
     generatedEnemy.loot.push_back(generateLoot(elementIndex, tier));
 
+    generatedEnemy.initialize_stats();
+
     return generatedEnemy;
 
 }
