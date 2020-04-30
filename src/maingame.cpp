@@ -1370,7 +1370,7 @@ void sixthDungeon(Player& aPlayer)
                  << aPlayer.name
                  << ", was said to have been almost completely forgotten from history itself."
                  << "\nThe end.";
-            
+            gameOver = true;
             return;
         }
 
@@ -1382,7 +1382,7 @@ void sixthDungeon(Player& aPlayer)
                  << " was known as the hero who saved the world after leaving the tear with head in hand."
                  << "\nNo one knows where the hero has gone since then, but rumors have it that they wander the land, hunting the other 5 great beasts of the world."
                  << "\nThe end.";
-
+            gameOver = true;
             return;
         }
     }
