@@ -37,7 +37,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
     if (anEnemy.name == "Leviathan"){
         //Enemy attack
         Spell spell = Spell("Extinction Ray", "death", "None", 40, 50);
-        
+
         cout << "\n\nThe enemy used " << spell.name << endl;
         anEnemy.deal_damage(mainPlayer, spell);
 
@@ -49,7 +49,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
         pressAnyKey(os_name);
     }
 
-    while (mainPlayer.current_health > 0 && anEnemy.current_health > 0)
+    while (mainPlayer.current_health > 0)
     {
         int enemy_Health;
         int player_Choice;
@@ -94,7 +94,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 int choice;
                 cout << "\n\nWhich spell do you want to use?\n>>> ";
                 cin >> choice;
-                
+
                 if (mainPlayer.current_mana < mainPlayer.spellbook[choice].cost)
                 {
                     cout << "\n\nYou don't have enough mana";
@@ -103,7 +103,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 {
                     mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
                 }
-                
+
 
                 if (mainPlayer.spellbook[choice].name == "Slime Bomb")
                 {
@@ -206,11 +206,13 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
         case 7:
             {
                 anEnemy.display();
+                break;
             }
 
         case 8:
             {
                 mainPlayer.display();
+                break;
             }
 
         }
@@ -235,7 +237,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
             cout << "\n\nThe enemy used " << spell.name << endl;
             anEnemy.deal_damage(mainPlayer, spell);
             pressAnyKey(os_name);
-            
+
         }
         else
         {
