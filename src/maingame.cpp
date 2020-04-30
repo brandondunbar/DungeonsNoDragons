@@ -558,12 +558,12 @@ void firstDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, slimeKing))
     {
         //Win
-        cout << "\n\nThe slimeking liquifies as you deliver the final blow.";
+        cout << "\n\nThe slime king liquifies as you deliver the final blow.";
     }
     else
     {
         //Lose
-        cout << "Your jouney ends just as quickly as it began.";
+        cout << "Your journey ends just as quickly as it began.";
         return;
     }
 
@@ -641,12 +641,13 @@ void secondDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, zombie))
     {
         //Win
-        cout << "\n\nThe undead falls to the gound";
+        cout << "\n\nThe undead falls to the ground";
     }
     else
     {
         //Lose
         cout << "\n\nYour journey ends by the hands of the undead";
+        return;
     }
 
     //Inventory
@@ -657,27 +658,28 @@ void secondDungeon(Player& aPlayer)
         aPlayer.inventory();
 
     //Story
-    cout << "\n\nYou find a massive zombie in the center of the village."
-         << "\nIt looks your way and begins to charge at you.";
+    cout << "\n\nYou find a lich in the center of the village."
+         << "\nIt looks your way and begins to prepare it's spells.";
 
     //Boss
     Enemy undeadGiant = EnemyGenerator("boss", 2);
     if (battle_Sys(aPlayer, undeadGiant))
     {
         //Win
-        cout << "\n\nThe giant falls to the ground, breaking it leading to a hidden underground structure.";
+        cout << "\n\nThe lich dies, releasing it's magic which breaks the ground showing hidden underground structure.";
     }
     else
     {
         //Lose
-        cout << "\n\nThe giant grabs you and crushes you.";
+        cout << "\n\nThe lich smites you with a lightning bolt.";
+        return;
     }
 
     p = Puzzle(0);
 
     //Puzzle
     //Puzzle story
-    cout << "\n\nA locked chest falls on top of the giant undead's corpse.";
+    cout << "\n\nA locked chest falls on top of the lich's corpse.";
     if(p.solve())
     {
         //Rewards Unique Boss Item
@@ -754,12 +756,12 @@ void thirdDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, goblinWarrior))
     {
         //won battle
-        cout << "\n\nYou slay the goblin.";
+        cout << "\n\nYou slay the orc.";
     }
     else
     {
         //died
-        cout << "\n\nThe goblins overwhelm you.";
+        cout << "\n\nThe orcs overwhelm you.";
         return;
     }
 
@@ -771,7 +773,7 @@ void thirdDungeon(Player& aPlayer)
         aPlayer.inventory();
 
     //Story
-    cout << "\n\nYou break down the massive doors and find the goblin lord sitting arrogantly on his throne."
+    cout << "\n\nYou break down the massive doors and find the orc warlord sitting arrogantly on his throne."
          << "\nHe slowly stands up and you prepare for a fight.";
 
     //Boss
@@ -779,7 +781,7 @@ void thirdDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, goblinLord))
     {
         //won battle
-        cout << "\n\nThe goblin lord gets knocked through a wall, revealing a path deeper underground.";
+        cout << "\n\nThe orc warlord gets knocked through a wall, revealing a path deeper underground.";
     }
     else
     {
@@ -832,13 +834,14 @@ void fourthDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, lesserDemon))
     {
         //Win
-        cout << "\n\nYou turn the demon into ash.";
+        cout << "\n\nYou turn the abyssal chicken into ash.";
 
     }
     else
     {
         //Lose
-        cout << "\n\nYou're speared through the chest.";
+        cout << "\n\nYou're pierced through the chest.";
+        return;
 
     }
 
@@ -865,13 +868,14 @@ void fourthDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, lesserDemon))
     {
         //Win
-        cout << "You send the demon back to the other side.";
+        cout << "You destroy the demon.";
 
     }
     else
     {
         //Lose
         cout << "You are pelted by fireballs.";
+        return;
 
     }
 
@@ -893,13 +897,14 @@ void fourthDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, demonLord))
     {
         //Win
-        cout << "\n\nYou remove the demon lord's soul from this world.";
+        cout << "\n\nYou eliminate the demon lord's soul from this world.";
         
     }
     else
     {
         //Lose
         cout << "\n\nThe demon lord burns you to a crisp";
+        return;
 
     }
 
@@ -926,6 +931,15 @@ void fifthDungeon(Player& aPlayer)
     string inventoryAnswer;
 
     //Story
+    cout << "\n\nYou and the storywriter meet up at the guildhouse."
+         << "\nStorywriter: glad to see that you're safe but I'm going to have to stay here and help with the aftermath."
+         << "\nWe still don't know what lies in under the ruins but just don't do anything too crazy."
+         << "\nYou gear up and head back towards the ruins in the northwest."
+         << "\n\nYou arrive at the entrance to the depths."
+         << "\nAs you head further down, the air feels damp and cold."
+         << "\nYou eventually find an opening that leads to an ancient dwarven ruin. The markings nearby matches the words written on the note."
+         << "\nThe doors open before you even touch them."
+         << "\nYou enter inside the empty facility.";
 
     //Enemy Generation
     Enemy dwarf = EnemyGenerator("construct", 1);
@@ -934,10 +948,13 @@ void fifthDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, dwarf))
     {
         //won battle
+        cout << "\n\nThe suit of armor falls to the ground.";
     }
     else
     {
         //died
+        cout << "\n\nYou are slain by the suit of armor.";
+        return;
     }
 
 
@@ -949,10 +966,12 @@ void fifthDungeon(Player& aPlayer)
         aPlayer.inventory();
     //Puzzle
     //Puzzle Story
+    cout << "\n\nYou find a complex dwarven mechanical door.";
 
     if(p.solve())
     {
         //standard puzzle reward
+        cout << "\n\nThe door opens.";
     }
 
 
@@ -962,10 +981,12 @@ void fifthDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, dwarf))
     {
         //won battle
+        cout << "\n\nThe golem breaks apart.";
     }
     else
     {
         //died
+        cout << "\n\nYou're crushed by it's greatsword";
     }
 
     //Inventory
@@ -974,25 +995,44 @@ void fifthDungeon(Player& aPlayer)
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
+
+    //Story
+    cout << "\n\nYou enter the a dark room at the end of the room."
+         << "\nYou begin to hear clicks and hissing around you."
+         << "\nYou look up to find a pair of blue glowing eyes staring at you."
+         << "\nThe lights flicker on and you get a clear sight of the machine."
+         << "\nIt has a long body of a serpent and legs of a centepede. It's face resembles that of a crocodile."
+         << "\nIt craws around the walls quickly then lunges at you.";
+
     //Boss
     Enemy dwarfBoss = EnemyGenerator("boss", 5);
     if (battle_Sys(aPlayer, dwarfBoss))
     {
         //won battle
+        cout << "\n\nYou break the machine into multiple pieces.";
     }
     else
     {
         //died
+        cout << "\n\nIt vaporizes you with magic charged lasers.";
+        return;
     }
 
     //Puzzle
     //Puzzle Story
+    cout << "\n\nYou find an odd orb sealed by a mechanical lock.";
     p = Puzzle(2);
 
     if(p.solve())
     {
         //Rewards Unique Boss Item
+        cout << "\n\nYou open the orb.";
     }
+
+    //Story
+    cout << "\n\nYou also find a note near the machine."
+         << "It only has numbers on it, perhaps a date?"
+         << "You return to Eretedon";
 }
 
 //Dungeon 6
@@ -1001,17 +1041,26 @@ void sixthDungeon(Player& aPlayer)
     string inventoryAnswer;
 
     //Story
+    cout << "\n\nAs you head towards the guild hall, a tear in time and space rips the area in half."
+         << "\nGylbesdaym, the Eater of All, lets out a massive roar that shatters all the windows nearby and sends trees flying."
+         << "\nHe lets out a burst of pure magic that scorches half of the city into dust."
+         << "\nIt begins to charge another beam straight at you.";
 
     //Boss
     Enemy gylbesdaym = EnemyGenerator("boss", 6);
     if (battle_Sys(aPlayer, gylbesdaym))
     {
         //Win
+        cout << "\n\nGylbesdaym returns through the tear";
     }
     else
     {
         //Lose
+        cout << "\n\nGylbesdaym hits you with it's extinction ray.";
+        return;
     }
+
+    //Boss Drop
 
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
@@ -1019,6 +1068,14 @@ void sixthDungeon(Player& aPlayer)
 
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
+
+    //Story
+    cout << "\n\nYou follow Gylbesdaym through the portal to find yourself in a lavish throne room."
+         << "\nYou hear a familiar voice across the room."
+         << "\nFamiliar voice: You're a failure, and failures deserved to be erased."
+         << "\nBefore you even know what happened, Gylbesdaym's guts splatter on the walls and windows around you."
+         << "\nIn front of you was your sister."
+         << "\n";
 
     //Final Boss
     Enemy demonSister = EnemyGenerator("boss", 7);
