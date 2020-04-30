@@ -198,15 +198,19 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
         }
 
         //Enemy attack
-        if (d.roll() <= 10)
+        if (d.roll() <= 10 && anEnemy.spellbook.size() > 0)
         {
-            cout << "\n\nThe enemy used a physical attack.";
-            anEnemy.deal_damage(mainPlayer);
+            Dice spellDice = Dice(anEnemy.spellbook.size());
+            int spellChoice = spellDice.roll();
+            Spell spell = anEnemy.spellbook[spellChoice-1];
+            cout << "\n\nThe enemy used " << spell.name << endl;
+            anEnemy.deal_damage(mainPlayer, spell);
+            
         }
         else
         {
-            cout << "\n\nThe enemy used a magic attack.";
-            anEnemy.deal_damage(mainPlayer, Spells["Fireball"]);
+            cout << "\n\nThe enemy used a physical attack.";
+            anEnemy.deal_damage(mainPlayer);
         }
 
         anEnemy.trigger_buffs();
