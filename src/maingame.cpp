@@ -477,7 +477,8 @@ void firstDungeon(Player& aPlayer)
          << "\nThe location is the GreenHill Cave and the target is the slime king."
          << "\nYou push open the moss covered doors and head inside without hesitation.";
 
-    //Enemy Generation
+    //enemy generation
+    Enemy slime = EnemyGenerator("slime", 1);
 
     //Combat
     if (battle_Sys(aPlayer, slime))
@@ -508,8 +509,8 @@ void firstDungeon(Player& aPlayer)
         cout << "\n\nYou find a small pouch of coins nested next to a skeleton.";
         aPlayer.gold += 50;
     }
-
-    //Enemy Generation
+    //enemy generation
+    Enemy slime = EnemyGenerator("slime", 2);
 
     //Combat
     if (battle_Sys(aPlayer, slime))
@@ -535,8 +536,9 @@ void firstDungeon(Player& aPlayer)
     cout << "\n\nYou find a huge, moss covered door at the end of the cave."
          << "\nIts quite heavy but you manage to push it open and enter."
          << "\nYou spot at the other end of the room a giant slime.";
+    //boss generation
+    Enemy slimeKing = EnemyGenerator("boss", 1);
 
-    //Boss
     if (battle_Sys(aPlayer, slimeKing))
     {
         //Win
@@ -584,8 +586,8 @@ void secondDungeon(Player& aPlayer)
          << "\nStorywriter: I see, interesting. I'll see what I can find out about it."
          << "\n\n\nYou arrive at the closest village in the west to find no one around in the streets."
          << "\nYou decide to investigate.";
-
-    //Enemy Generation
+    //enemy generation
+    Enemy zombie = EnemyGenerator("undead", 1);
 
     //Battle
     if (battle_Sys(aPlayer, zombie))
@@ -616,8 +618,8 @@ void secondDungeon(Player& aPlayer)
         //Standard puzzle reward
         cout << "\n\nThe chest opens";
     }
-    
-    //Enemy Generation
+    //enemy generation
+    Enemy zombie = EnemyGenerator("undead", 2);
 
     //Battle
     if (battle_Sys(aPlayer, zombie))
@@ -643,6 +645,7 @@ void secondDungeon(Player& aPlayer)
          << "\nIt looks your way and begins to charge at you.";
 
     //Boss
+    Enemy undeadGiant = EnemyGenerator("boss", 2);
     if (battle_Sys(aPlayer, undeadGiant))
     {
         //Win
@@ -696,12 +699,13 @@ void thirdDungeon(Player& aPlayer)
          << "\n\nUpon arrival, you notice traces of goblins being in the area, you prepare for combat.";
 
     //Enemy Generation
+    Enemy miniGoblin = EnemyGenerator("greeny", 1);
 
     //Battle
     if (battle_Sys(aPlayer, miniGoblin))
     {
         //won battle
-        cout << "\n\nYo"
+        cout << "\n\nYo";
     }
     else
     {
@@ -725,7 +729,7 @@ void thirdDungeon(Player& aPlayer)
     
 
     //Enemy Generation
-
+    Enemy goblinWarrior = EnemyGenerator("greeny", 2);
     //Battle
     if (battle_Sys(aPlayer, goblinWarrior))
     {
@@ -743,6 +747,7 @@ void thirdDungeon(Player& aPlayer)
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
     //Boss
+    Enemy goblinLord = EnemyGenerator("boss", 3);
     if (battle_Sys(aPlayer, goblinLord))
     {
         //won battle
@@ -771,6 +776,7 @@ void fourthDungeon(Player& aPlayer)
     //Story
 
     //Enemy Generation
+    Enemy lesserDemon = EnemyGenerator("demon", 1);
 
     //Battle
     if (battle_Sys(aPlayer, lesserDemon))
@@ -797,7 +803,7 @@ void fourthDungeon(Player& aPlayer)
     }
 
     //Enemy Generation
-
+    Enemy lesserDemon = EnemyGenerator("demon", 2);
     //Battle
     if (battle_Sys(aPlayer, lesserDemon))
     {
@@ -816,6 +822,7 @@ void fourthDungeon(Player& aPlayer)
         aPlayer.inventory();
 
     //Boss
+    Enemy demonLord = EnemyGenerator("boss", 4);
     if (battle_Sys(aPlayer, demonLord))
     {
         //Win
@@ -845,6 +852,7 @@ void fifthDungeon(Player& aPlayer)
     //Story
 
     //Enemy Generation
+    Enemy dwarf = EnemyGenerator("construct", 1);
 
     //Battle
     if (battle_Sys(aPlayer, dwarf))
@@ -873,7 +881,7 @@ void fifthDungeon(Player& aPlayer)
     
 
     //Enemy Generation
-
+    Enemy dwarf = EnemyGenerator("construct", 2);
     //Battle
     if (battle_Sys(aPlayer, dwarf))
     {
@@ -891,6 +899,7 @@ void fifthDungeon(Player& aPlayer)
     if (inventoryAnswer == "y" || inventoryAnswer == "Y")
         aPlayer.inventory();
     //Boss
+    Enemy dwarfBoss = EnemyGenerator("boss", 5);
     if (battle_Sys(aPlayer, dwarfBoss))
     {
         //won battle
@@ -918,6 +927,7 @@ void sixthDungeon(Player& aPlayer)
     //Story
 
     //Boss
+    Enemy gylbesdaym = EnemyGenerator("boss", 6);
     if (battle_Sys(aPlayer, gylbesdaym))
     {
         //Win
@@ -935,6 +945,7 @@ void sixthDungeon(Player& aPlayer)
         aPlayer.inventory();
 
     //Final Boss
+    Enemy demonSister = EnemyGenerator("boss", 7);
     if (battle_Sys(aPlayer, demonSister))
     {
         //Win
