@@ -785,7 +785,7 @@ void thirdDungeon(Player& aPlayer)
     //Puzzle
     //Puzzle Story
     cout << "\n\nYou spot a locked chest behind his throne.";
-    Puzzle p = Puzzle(1);
+    p = Puzzle(1);
 
     if(p.solve())
     {
