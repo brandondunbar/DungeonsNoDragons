@@ -345,7 +345,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 5;
-                    aPlayer.inventory.push_back(Items["Health Potion"]);
+                    aPlayer.invItems.push_back(Items["Health Potion"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }
@@ -360,7 +360,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 5;
-                    aPlayer.inventory.push_back(Items["Mana Potion"]);
+                    aPlayer.invItems.push_back(Items["Mana Potion"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }
@@ -375,7 +375,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 5;
-                    aPlayer.inventory.push_back(Items["Bomb"]);
+                    aPlayer.invItems.push_back(Items["Bomb"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }
@@ -390,7 +390,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 20;
-                    aPlayer.inventory.push_back(Armors["Iron Armor"]);
+                    aPlayer.invArmors.push_back(Armors["Iron Armor"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }
@@ -405,7 +405,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 50;
-                    aPlayer.inventory.push_back(Armors["Lightning Armor"]);
+                    aPlayer.invArmors.push_back(Armors["Lightning Armor"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }
@@ -420,7 +420,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 15;
-                    aPlayer.inventory.push_back(Weapons["Iron Sword"]);
+                    aPlayer.invWeapons.push_back(Weapons["Iron Sword"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }
@@ -435,7 +435,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 15;
-                    aPlayer.inventory.push_back(Weapons["Long Bow"]);
+                    aPlayer.invWeapons.push_back(Weapons["Long Bow"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }
@@ -450,7 +450,7 @@ void visitStore(Player& aPlayer)
                 else
                 {
                     aPlayer.gold -= 30;
-                    aPlayer.inventory.push_back(Weapons["Staff"]);
+                    aPlayer.invWeapons.push_back(Weapons["Staff"]);
                     cout << "Thank you for your purchase!\n";
                     break;
                 }

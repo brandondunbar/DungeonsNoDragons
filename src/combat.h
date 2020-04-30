@@ -99,18 +99,18 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
             //Items
         case 4:
             {
-                if (mainPlayer.inventory.empty())
+                if (mainPlayer.invItems.empty())
                 {
                     cout << "Your inventory is empty.\n";
                     break;
                 }
                 int choice;
                 cout << "\n\nYou open your backpack.";
-                mainPlayer.display_inventory();
+                mainPlayer.display_items();
                 cout << "\nEnter which item to use: \n";
                 cin >> choice;
 
-                Item chosenItem = mainPlayer.inventory[choice];
+                Item chosenItem = mainPlayer.invItems[choice];
 
                 if (chosenItem.name == "Health Potion")
                 {
@@ -125,7 +125,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                     mainPlayer.deal_damage(anEnemy, chosenItem);
                 }
 
-                mainPlayer.inventory.erase(mainPlayer.inventory.begin() + choice);
+                mainPlayer.invItems.erase(mainPlayer.invItems.begin() + choice);
                 break;
             }
             //Intimidate
