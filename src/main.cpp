@@ -34,7 +34,7 @@ int main(){
     string race;
     cin >> race;
     
-    Player player_character = Player(name, character_class, race, 1);
+    Player player_character = Player(name, character_class, race);
     player_character.health = 20;
 
     // Weapon Test:
