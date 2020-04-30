@@ -187,6 +187,7 @@ void Player::inventory()
                 int itemChoice;
                 cout << "Which item do you want to use?\n\n>>> ";
                 display_items();
+                cout << invItems.size() << " - Go back\n";
                 cin >> itemChoice;
                 if (invItems[itemChoice].name == "Health Potion")
                 {
