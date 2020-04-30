@@ -580,7 +580,9 @@ void firstDungeon(Player& aPlayer)
     if(p.solve())
     {
             //Rewards Unique Boss Item
-            cout << "\n\nThe chest opens.";
+            cout << "\n\nThe chest opens.\n";
+            cout << "Inside, you find a slime armor and put it in your inventory.\n";
+            aPlayer.store(Armor("Slime Armor", 10, 10, "Neutral"));
     }
     else
     {
@@ -645,6 +647,9 @@ void secondDungeon(Player& aPlayer)
     {
         //Standard puzzle reward
         cout << "\n\nThe chest opens\n";
+        cout << "Inside, you find some gold and a health pot.\n";
+        aPlayer.gold += 25;
+        aPlayer.store(Item("Health Potion", "Potion"));
     }
     else
     {
@@ -702,8 +707,15 @@ void secondDungeon(Player& aPlayer)
     if(p.solve())
     {
         //Rewards Unique Boss Item
-        cout << "\n\nThe chest opens.";
+        cout << "\n\nThe chest opens.\n";
+        cout << "Inside you find a lich bane sword.\n";
+        aPlayer.store(Weapon("Lich Bane", 20, "Undead"));
     }
+    else
+    {
+        cout << "\n\nThe chest mysteriously disappears.\n";
+    }
+    
 
     //Story
     cout << "\n\nYou explore the underground structure a bit to find a mysterious rune."
@@ -767,6 +779,10 @@ void thirdDungeon(Player& aPlayer)
     {
         //standard puzzle reward
         cout << "\n\nYou break open the door.\n";
+        cout << "Just beyond the door you find some gold, a health pot, and a mana pot.\n";
+        aPlayer.gold += 30;
+        aPlayer.store(Item("Health Potion", "Potion"));
+        aPlayer.store(Item("Mana Potion", "Potion"));
     }
     else
     {
@@ -823,7 +839,8 @@ void thirdDungeon(Player& aPlayer)
     if(p.solve())
     {
         //Rewards Unique Boss Item
-        cout << "\n\nThe chest opens.";
+        cout << "\n\nThe chest opens. Inside you find an orc hammer.\n";
+        aPlayer.store(Weapon("Orc Hammer", 35, "Neutral"));
     }
     else
     {
@@ -888,9 +905,10 @@ void fourthDungeon(Player& aPlayer)
     cout << "\n\nYou find a locked chest in some rubble.";
     if(p.solve())
     {
-            //Rewards
-            cout << "\n\nThe chest unlocks.";
-
+        //Rewards
+        cout << "\n\nThe chest unlocks.";
+        cout << " Inside you find some gold.\n";
+        aPlayer.gold += 100;
     }
     else
     {
@@ -952,8 +970,9 @@ void fourthDungeon(Player& aPlayer)
 
     if(p.solve())
     {
-            //Rewards Unique Boss Item
-            cout << "\n\nYou unlock the chest.";
+        //Rewards Unique Boss Item
+        cout << "The chest magically opens and you find demon enchanted armor.\n";
+        aPlayer.store(Armor("Demon Armor", 30, 30, "Demonic"));
     }
     else
     {
@@ -1014,6 +1033,8 @@ void fifthDungeon(Player& aPlayer)
     {
         //standard puzzle reward
         cout << "\n\nThe door opens.";
+        cout << " Just beyond the door you find some gold.\n";
+        aPlayer.gold += 150;
     }
     else
     {
@@ -1073,7 +1094,8 @@ void fifthDungeon(Player& aPlayer)
     if(p.solve())
     {
         //Rewards Unique Boss Item
-        cout << "\n\nYou open the orb.";
+        cout << "\n\nYou open the orb. Inside you find powerful mechanical armor.\n";
+        aPlayer.store(Armor("Mechanical Armor", 60, 10, "Neutral"));
     }
     else
     {

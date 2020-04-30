@@ -22,9 +22,9 @@ class Player : public Character {
 
         Player(string _name, string _class, string _race);
 
-        bool store(Item _item);
-        bool store(Weapon _weapon);
-        bool store(Armor _armor);
+        bool store(const Item& _item);
+        bool store(const Weapon& _weapon);
+        bool store(const Armor& _armor);
 
         void equip(Weapon _weapon);
         void equip(Armor _armor);
@@ -51,21 +51,21 @@ Player::Player(string _name, string _class, string _race) : Character(
 
 // Store method(s)
 
-bool Player::store(Item _item){
+bool Player::store(const Item& _item){
 
     invItems.push_back(_item);
     return true;
 
 }
 
-bool Player::store(Weapon _weapon){
+bool Player::store(const Weapon& _weapon){
 
     invWeapons.push_back(_weapon);
     return true;
 
 }
 
-bool Player::store(Armor _armor){
+bool Player::store(const Armor& _armor){
 
     invArmors.push_back(_armor);
     return true;
