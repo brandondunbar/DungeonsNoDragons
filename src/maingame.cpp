@@ -505,7 +505,7 @@ void visitStore(Player& aPlayer)
                 return;
             }
         }
-        cout << "You have " << aPlayer.gold << " left.\n";
+        cout << "You have " << aPlayer.gold << " gold left.\n";
         cout << "What else do you want to purchase?\n";
         cin >> choice;
     }
