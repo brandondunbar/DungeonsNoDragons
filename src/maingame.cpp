@@ -241,6 +241,7 @@ int main()
                 if (hasDoneFirstDungeon)
                 {
                     cout << "You enter the dungeon, but the monsters are already slain.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else
@@ -255,11 +256,13 @@ int main()
                 if (hasDoneSecondDungeon)
                 {
                     cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else if (!hasDoneFirstDungeon)
                 {
                     cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else
@@ -274,11 +277,13 @@ int main()
                 if (hasDoneThirdDungeon)
                 {
                     cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else if (!hasDoneSecondDungeon)
                 {
                     cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else
@@ -293,11 +298,13 @@ int main()
                 if (hasDoneFourthDungeon)
                 {
                     cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else if (!hasDoneThirdDungeon)
                 {
                     cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else
@@ -312,11 +319,13 @@ int main()
                 if (hasDoneFifthDungeon)
                 {
                     cout << "You enter the dungeon, but the monsters are already slain. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else if (!hasDoneFourthDungeon)
                 {
                     cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else
@@ -331,6 +340,7 @@ int main()
                 if (!hasDoneFifthDungeon)
                 {
                     cout << "The dungeon is sealed with powerful magic. You head back to Eretedon.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else
@@ -350,18 +360,21 @@ int main()
                 //Work in progress, changes needed for the player to fully access their inventory
                 cout << "You check your gear\n";
                 mainPlayer.inventory();
+                pressAnyKey(os_name);
                 break;
             }
         case 11:
             {
                 cout << "You leave the city with no clues to where your sister could be\n";
                 cout << "End of game.\n";
+                pressAnyKey(os_name);
                 gameOver = true;
                 break;
             }
         default:
             {
                 cout << "Your character wanders around for a bit, gets lost, then finds his way back to the guild.\n";
+                pressAnyKey(os_name);
                 break;
             }
         }
