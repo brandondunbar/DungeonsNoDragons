@@ -108,7 +108,7 @@ int main()
          << "\n3.Scholar, a student of the arcane arts knowledgeable in ancient magecraft"
          << "\n4.Summoner, commands spirits to weaken foes"
          << "\n5.Marksman, a former hunter with unrivaled precision"
-         << "\n6.Thief, an agile cutpurse";
+         << "\n6.Thief, an agile cutpurse\n";
 
     int playerClass;
     cin >> playerClass;
