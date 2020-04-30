@@ -440,6 +440,7 @@ Enemy EnemyGenerator(string type, int tier){
         }
     }
 
+    // Generate enemy stats
     generatedEnemy.strength = generateStat(elementIndex, tier);
     generatedEnemy.constitution = generateStat(elementIndex, tier);
     generatedEnemy.dexterity = generateStat(elementIndex, tier);
@@ -448,8 +449,9 @@ Enemy EnemyGenerator(string type, int tier){
     generatedEnemy.charisma = generateStat(elementIndex, tier);
     generatedEnemy.loot.push_back(generateLoot(elementIndex, tier));
 
+    // Initialize health, mana, and current stats
     generatedEnemy.initialize_stats();
-    int healthModifier = elementIndex + tier;
+    int healthModifier = elementIndex * tier;
     generatedEnemy.base_health *= (healthModifier/10);
     generatedEnemy.initialize_stats();
 
