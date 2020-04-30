@@ -133,7 +133,7 @@ int main()
             mainPlayer.character_class = "Summoner";
             //Add items
             mainPlayer.weapon = Weapons["Pine Magic Staff"];
-            mainPlayer.learnSpell(Spells["Lightning Bolt"]);
+            mainPlayer.learnSpell(Spells["Lightning bolt"]);
             break;
 
         case 5:
