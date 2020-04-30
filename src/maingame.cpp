@@ -31,6 +31,8 @@ int main()
 {
     Player mainPlayer = Player("name", "class", "race");
     mainPlayer.gold = 20;
+    mainPlayer.health = 100;
+    mainPlayer.mana = 100;
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
@@ -168,8 +170,9 @@ int main()
         cout << "6) Enter the fourth dungeon\n";
         cout << "7) Enter the fifth dungeon\n";
         cout << "8) Enter the sixth dungeon\n";
-        cout << "9) Inventory\n";
-        cout << "10) Give up\n";
+        cout << "9) View your stats\n";
+        cout << "10) Inventory\n";
+        cout << "11) Give up\n";
         cin >> choice;
 
         switch (choice)
@@ -297,12 +300,17 @@ int main()
             }
         case 9:
             {
+                mainPlayer.display();
+                break;
+            }
+        case 10:
+            {
                 //Work in progress, changes needed for the player to fully access their inventory
                 cout << "You check your gear\n";
                 mainPlayer.inventory();
                 break;
             }
-        case 10:
+        case 11:
             {
                 cout << "You leave the city with no clues to where your sister could be\n";
                 cout << "End of game.\n";
