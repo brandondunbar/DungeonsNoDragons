@@ -130,12 +130,14 @@ int main()
             mainPlayer.character_class = "Scholar";
             //Add items
             mainPlayer.weapon = Weapons["Dusty Magic Tome"];
+            mainPlayer.learnSpell(Spells["Fireball"]);
             break;
 
         case 4:
             mainPlayer.character_class = "Summoner";
             //Add items
             mainPlayer.weapon = Weapons["Pine Magic Staff"];
+            mainPlayer.learnSpell(Spells["Lightning Bolt"]);
             break;
 
         case 5:
@@ -489,7 +491,8 @@ void firstDungeon(Player& aPlayer)
     //Story
     cout << "\n\nThe guild decides to give you a exterminate mission to assess your skill and experience."
          << "\nThe location is the GreenHill Cave and the target is the slime king."
-         << "\nYou push open the moss covered doors and head inside without hesitation.";
+         << "\nYou push open the moss covered doors and head inside without hesitation."
+         << "\nAfter a few steps you encounter a slime, and enter into combat.\n";
 
     //enemy generation
     Enemy slime = EnemyGenerator("slime", 1);
@@ -516,7 +519,8 @@ void firstDungeon(Player& aPlayer)
         aPlayer.inventory();
 
     //Puzzle
-    cout << "\n\nYou spot a door sealed by magic.";
+    cout << "\n\nYou spot a door sealed by magic.\n";
+    cout << "There is a puzzle imprinted on the door. It reads: \n";
     if(p.solve())
     {
             //Rewards gold
