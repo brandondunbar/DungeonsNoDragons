@@ -233,7 +233,7 @@ void Player::inventory()
             {
                 cout << "You are currently equipped with: \n";
                 cout << weapon.name << " " << "Damage: " << weapon.damage;
-                cout << "Your other weapons are: \n\n";
+                cout << "\nYour other weapons are: \n\n";
                 display_weapons();
                 cout << "Which weapon do you want to equip?\n>>> ";
                 int weaponChoice;
@@ -255,6 +255,7 @@ void Player::inventory()
             {
                 cout << "You are currently equipped with: \n";
                 cout << armor.name << " " << "Phys Def: " << armor.physical_defense << " " << "Magic Def: " << armor.magical_defense << endl;
+                cout << "\nYour other armors are: \n\n";
                 display_armors();
                 cout << "Which armor do you want to equip?\n>>> ";
                 int armorChoice;
