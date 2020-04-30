@@ -3,28 +3,6 @@
 
 using namespace std;
 
-#include "player.h"
-#include "enemy.h"
-#include "dice.h"
-#include "puzzle.h"
-#include "combat.h"
-
-void visitStore(Player& aPlayer);
-void firstDungeon(Player& aPlayer);
-void secondDungeon(Player& aPlayer);
-void thirdDungeon(Player& aPlayer);
-void fourthDungeon(Player& aPlayer);
-void fifthDungeon(Player& aPlayer);
-void sixthDungeon(Player& aPlayer);
-
-//Dungeon Checks
-bool gameOver = false;
-bool hasDoneFirstDungeon = false;
-bool hasDoneSecondDungeon = false;
-bool hasDoneThirdDungeon = false;
-bool hasDoneFourthDungeon = false;
-bool hasDoneFifthDungeon = false;
-
 string getOS(){
     /* This should return whether or not the OS is windows, so that the program determine
     * whether it should use system("pause") ((Windows)) or system("read") ((Mac/Linux)) */
@@ -48,6 +26,28 @@ void pressAnyKey(string os_name){
         system("read");
     }
 }
+
+#include "player.h"
+#include "enemy.h"
+#include "dice.h"
+#include "puzzle.h"
+#include "combat.h"
+
+void visitStore(Player& aPlayer);
+void firstDungeon(Player& aPlayer);
+void secondDungeon(Player& aPlayer);
+void thirdDungeon(Player& aPlayer);
+void fourthDungeon(Player& aPlayer);
+void fifthDungeon(Player& aPlayer);
+void sixthDungeon(Player& aPlayer);
+
+//Dungeon Checks
+bool gameOver = false;
+bool hasDoneFirstDungeon = false;
+bool hasDoneSecondDungeon = false;
+bool hasDoneThirdDungeon = false;
+bool hasDoneFourthDungeon = false;
+bool hasDoneFifthDungeon = false;
 
 int main()
 {
