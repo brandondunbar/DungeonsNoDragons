@@ -363,7 +363,7 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("King Slime", "boss", "slime");
                 generatedEnemy.weapon = Weapon("Slime Sword", 15, "Neutral");
-                generatedEnemy.armor = Armors["Iron Armor"];
+                generatedEnemy.armor = Armors["None"];
 
                 break;
                 }
