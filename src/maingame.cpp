@@ -193,7 +193,6 @@ int main()
 
     //Transition to city (story)
     cout << "\n\nAfter leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.\n";
-    pressAnyKey(os_name);
 
     while (!gameOver && mainPlayer.current_health > 0)
     {
@@ -219,6 +218,7 @@ int main()
                 if (mainPlayer.gold < 10)
                 {
                     cout << "You do not have enough gold to visit the inn.\n";
+                    pressAnyKey(os_name);
                     break;
                 }
                 else
@@ -226,6 +226,7 @@ int main()
                     cout << "You visit the inn and rest for the night, restoring your health and mana.\n";
                     mainPlayer.initialize_stats();
                     mainPlayer.gold -= 10;
+                    pressAnyKey(os_name);
                     break;
                 }
             }
@@ -340,6 +341,7 @@ int main()
         case 9:
             {
                 mainPlayer.display();
+                pressAnyKey(os_name);
                 break;
             }
         case 10:
@@ -1331,7 +1333,7 @@ void sixthDungeon(Player& aPlayer)
                  << "\nIn the distance, you hear...";
 
                  pressAnyKey(os_name);
-                 
+
             cout << "\nXanoroth: You fool!, You will regret sparing me."
                  << "\n\nIt is said that Eretedon was wiped from the face of the planet a mere 3 months later."
                  << "\nThe hero, "
