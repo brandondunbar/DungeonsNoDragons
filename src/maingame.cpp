@@ -159,7 +159,7 @@ int main()
     //End of character creation
 
     //Transition to city (story)
-    cout << "After leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.";
+    cout << "\n\nAfter leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.\n";
 
     while (!gameOver && mainPlayer.health > 0)
     {
