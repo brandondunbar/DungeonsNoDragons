@@ -379,7 +379,7 @@ void visitStore(Player& aPlayer)
     cout << "1) Health Potion (restores 25 health) - 5 gold\n";
     cout << "2) Mana Potion (restores 25 mana) - 5 gold\n";
     cout << "3) Bomb (does 10 damage) - 5 gold\n";
-    cout << "4) Iron Armor (5 physical defense, 1 magical defense, neutral) - 25 gold\n";
+    cout << "4) Iron Armor (10 physical defense, 5 magical defense, neutral) - 25 gold\n";
     cout << "5) Lightning Armor (25 physical defense, 25 magical defense, neutral) - 100 gold\n";
     cout << "6) Iron Sword (10 damage, neutral) - 15 gold\n";
     cout << "7) Long Bow (10 damage, neutral) - 15 gold\n";

@@ -19,8 +19,8 @@ std::map<std::string, Item> Items = {
 };
 std::map<std::string, Armor> Armors = {
     {"None", Armor("None", 0, 0, "Neutral")},
-    {"Iron Armor", Armor("Iron Armor", 5, 1, "Neutral")},
-    {"Lightning Armor", Armor("Lightning Armor", 25, 25, "Lightning")}
+    {"Iron Armor", Armor("Iron Armor", 10, 5, "Neutral")},
+    {"Lightning Armor", Armor("Lightning Armor", 25, 25, "Neutral")}
 };
 std::map<std::string, Spell> Spells = {
     {"Fireball", Spell("Fireball", "Fire", "Burn", 10, 10)},
