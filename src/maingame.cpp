@@ -554,6 +554,7 @@ void firstDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nYou get absorbed by the slime.";
         return;
     }
@@ -592,6 +593,7 @@ void firstDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nYou died from a slime.";
         return;
     }
@@ -620,6 +622,7 @@ void firstDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "Your journey ends just as quickly as it began.";
         return;
     }
@@ -693,6 +696,7 @@ void secondDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nYou're swarmed and killed";
         return;
     }
@@ -737,6 +741,7 @@ void secondDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nYour journey ends by the hands of the undead";
         return;
     }
@@ -764,6 +769,7 @@ void secondDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nThe lich smites you with a lightning bolt.";
         return;
     }
@@ -839,6 +845,7 @@ void thirdDungeon(Player& aPlayer)
     else
     {
         //died
+        gameOver = true;
         cout << "\n\nYou are killed by the goblin.";
         return;
     }
@@ -883,6 +890,7 @@ void thirdDungeon(Player& aPlayer)
     else
     {
         //died
+        gameOver = true;
         cout << "\n\nThe orcs overwhelm you.";
         return;
     }
@@ -912,6 +920,7 @@ void thirdDungeon(Player& aPlayer)
     else
     {
         //died
+        gameOver = true;
         cout << "\n\nYou are sliced in half by his massive blade.";
         return;
     }
@@ -983,9 +992,9 @@ void fourthDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nYou're pierced through the chest.";
         return;
-
     }
 
     //Inventory
@@ -1025,6 +1034,7 @@ void fourthDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "You are pelted by fireballs.";
         return;
 
@@ -1056,6 +1066,7 @@ void fourthDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nThe demon lord burns you to a crisp";
         return;
 
@@ -1124,6 +1135,7 @@ void fifthDungeon(Player& aPlayer)
     else
     {
         //died
+        gameOver = true;
         cout << "\n\nYou are slain by the suit of armor.";
         return;
     }
@@ -1165,6 +1177,7 @@ void fifthDungeon(Player& aPlayer)
     else
     {
         //died
+        gameOver = true;
         cout << "\n\nYou're crushed by it's greatsword";
     }
 
@@ -1201,6 +1214,7 @@ void fifthDungeon(Player& aPlayer)
     else
     {
         //died
+        gameOver = true;
         cout << "\n\nIt vaporizes you with magic charged lasers.";
         return;
     }
@@ -1260,6 +1274,7 @@ void sixthDungeon(Player& aPlayer)
     else
     {
         //Lose
+        gameOver = true;
         cout << "\n\nGylbesdaym hits you with it's extinction ray.";
         return;
     }
@@ -1306,6 +1321,7 @@ void sixthDungeon(Player& aPlayer)
     }
     {
         //Lose
+        gameOver = true;
         cout << "\n\nYou're sliced in half and your soul is destroyed.";
         return;
     }
