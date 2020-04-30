@@ -114,11 +114,17 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
                 if (chosenItem.name == "Health Potion")
                 {
-                    mainPlayer.health += 25;
+                    if (mainPlayer.health + 25 > 100)
+                        mainPlayer.health = 100;
+                    else
+                        mainPlayer.health += 25;
                 }
                 else if (chosenItem.name == "Mana Potion")
                 {
-                    mainPlayer.mana += 25;
+                    if (mainPlayer.mana + 25 > 100)
+                        mainPlayer.mana = 100;
+                    else
+                        mainPlayer.mana += 25;
                 }
                 else if (chosenItem.type == "Bomb")
                 {
