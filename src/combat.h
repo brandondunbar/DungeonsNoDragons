@@ -194,7 +194,8 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
 
         if (anEnemy.current_health <= 0)
         {
-            cout << "The enemy dropped " << anEnemy.loot[0].name << endl;
+            cout << "\nYou defeated the enemy in combat.\n";
+            cout << "Enemy dropped item: " << anEnemy.loot[0].name << endl;
             mainPlayer.store(anEnemy.loot[0]);
             return true;
         }
