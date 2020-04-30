@@ -568,6 +568,8 @@ void firstDungeon(Player& aPlayer)
     {
         //Win
         cout << "\n\nThe slime king liquifies as you deliver the final blow.";
+        cout << "After fighting the boss, you notice a slimy tome. You open the tome and learn a new spell, Slime Bomb\n";
+        aPlayer.learnSpell(Spell("Slime Bomb", "Neutral", "Disease", 15, 5));
     }
     else
     {
@@ -693,7 +695,9 @@ void secondDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, undeadGiant))
     {
         //Win
-        cout << "\n\nThe lich dies, releasing it's magic which breaks the ground showing hidden underground structure.";
+        cout << "\n\nThe lich dies, releasing it's magic which breaks the ground showing hidden underground structure.\n";
+        cout << "\nAfter fighting the lich, you pick up the lich's tome and learn a new spell, Thunderstorm.\n";
+        aPlayer.learnSpell(Spell("Thunderstorm", "Lightning", "Shock", 25, 10));
     }
     else
     {
@@ -825,7 +829,9 @@ void thirdDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, goblinLord))
     {
         //won battle
-        cout << "\n\nThe orc warlord gets knocked through a wall, revealing a path deeper underground.";
+        cout << "\n\nThe orc warlord gets knocked through a wall, revealing a path deeper underground.\n";
+        cout << "\n\nYou learn a new spell from the orc warlord, Shout.\n";
+        aPlayer.learnSpell(Spell("Shout", "Neutral", "Scared", 30, 10));
     }
     else
     {
@@ -955,7 +961,8 @@ void fourthDungeon(Player& aPlayer)
     {
         //Win
         cout << "\n\nYou eliminate the demon lord's soul from this world.";
-        
+        cout << "\nYou absorb his soul and learn a new spell, Shadow Banish.\n";
+        aPlayer.learnSpell(Spell("Shadow Banish", "Dark", "None", 50, 50));
     }
     else
     {
@@ -1081,6 +1088,9 @@ void fifthDungeon(Player& aPlayer)
     {
         //won battle
         cout << "\n\nYou break the machine into multiple pieces.";
+        cout << "The pieces of the machine form into a mechanical sword.\n";
+        cout << "You pick up the sword and place it in your inventory.\n";
+        aPlayer.store(Weapon("Mechanical Sword", 50, "Neutral"));
     }
     else
     {
@@ -1138,8 +1148,6 @@ void sixthDungeon(Player& aPlayer)
         cout << "\n\nGylbesdaym hits you with it's extinction ray.";
         return;
     }
-
-    //Boss Drop
 
     //Inventory
     cout << "\nDo you want to check your gear (y/n)?";
