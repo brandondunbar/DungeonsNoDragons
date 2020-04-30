@@ -67,11 +67,11 @@ void Enemy::display(){
 }
 
 
-int generateStat(string type){
+int generateStat(string type, int tier){
 
-    string types[] = [
+    string types[] = {
         "slime", "undead", "greeny", "demon", "construct", "boss"
-    ];
+    };
 
     int elementIndex = 0;
     for ( int i = 0; i < 5; i++ ) {
@@ -82,11 +82,13 @@ int generateStat(string type){
         }
     }
 
+    Dice d( tier * 5 );
+
     int stat_points = 0;
     for ( int i = 0; i <= elementIndex; i++ ){
-        stat_points += d.roll( sides = ( tier * 5 ) );
+        stat_points += d.roll();
     }
-    return stat_points
+    return stat_points;
 }
 
 
@@ -376,15 +378,14 @@ Enemy EnemyGenerator(string type, int tier){
 
     }    
 
-    generatedEnemy.strength = generateStat();
-    generatedEnemy.constitution = generateStat();
-    generatedEnemy.dexterity = generateStat();
-    generatedEnemy.intelligence = generateStat();
-    generatedEnemy.wisdom = generateStat();
-    generatedEnemy.charisma = generateStat();
+    generatedEnemy.strength = generateStat(type, tier);
+    generatedEnemy.constitution = generateStat(type, tier);
+    generatedEnemy.dexterity = generateStat(type, tier);
+    generatedEnemy.intelligence = generateStat(type, tier);
+    generatedEnemy.wisdom = generateStat(type, tier);
+    generatedEnemy.charisma = generateStat(type, tier);
 
     return generatedEnemy;
-
 
 }
 

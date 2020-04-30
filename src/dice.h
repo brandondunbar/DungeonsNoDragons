@@ -12,6 +12,7 @@ class Dice
 {
 public:
     Dice(int sides = 20);
+    
     int roll();
 private:
     std::mt19937 mt;
