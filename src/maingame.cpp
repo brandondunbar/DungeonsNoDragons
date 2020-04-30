@@ -17,7 +17,8 @@ void fourthDungeon(Player& aPlayer);
 void fifthDungeon(Player& aPlayer);
 void sixthDungeon(Player& aPlayer);
 
-Enemy generateEnemy(int dungeon, int difficulty);
+const int MAX_HEALTH = 100;
+const int MAX_MANA = 100;
 
 //Dungeon Checks
 bool gameOver = false;
@@ -31,8 +32,8 @@ int main()
 {
     Player mainPlayer = Player("name", "class", "race");
     mainPlayer.gold = 20;
-    mainPlayer.health = 100;
-    mainPlayer.mana = 100;
+    mainPlayer.health = MAX_HEALTH;
+    mainPlayer.mana = MAX_MANA;
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!"
          << "\nDungeons no Dragons is a text adventure game with mechanics inspired by Dungeons and Dragons."
@@ -187,6 +188,9 @@ int main()
                 else
                 {
                     cout << "You visit the inn and rest for the night, restoring your health and mana.\n";
+                    mainPlayer.health = MAX_HEALTH;
+                    mainPlayer.mana = MAX_MANA;
+                    mainPlayer.gold -= 10;
                     break;
                 }
             }
