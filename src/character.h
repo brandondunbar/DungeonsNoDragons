@@ -58,10 +58,10 @@ class Character {
         string name;
         string character_class;
         string race;
-        int current_health;
-        int current_mana;
-        int base_health;
-        int base_mana;
+        int current_health = 100;
+        int current_mana = 100;
+        int base_health = 100;
+        int base_mana = 100;
 
         // Base Stats
         int strength = 10, constitution = 10, dexterity = 10, intelligence = 10, wisdom = 10, charisma = 10;
