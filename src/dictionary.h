@@ -22,7 +22,7 @@ std::map<std::string, Armor> Armors = {
 };
 std::map<std::string, Spell> Spells = {
     {"Fireball", Spell("Fireball", "Fire", "Burn", 10, 10)},
-    {"Thunderbolt", Spell("Thunderbolt", "Lightning", "Shock", 15, 15)},
+    {"Lightning bolt", Spell("Lightning bolt", "Lightning", "Shock", 15, 15)},
     {"Ice Spike", Spell("Ice Spike", "Ice", "Freeze", 20, 10)}
 };
 std::map<std::string, Weapon> Weapons = {
