@@ -159,9 +159,9 @@ Enemy EnemyGenerator(string type, int tier){
 
                 string enemy_name = element + " Chuchu";
                 generatedEnemy = Enemy(enemy_name, "mage", "slime");
-                generatedEnemy.weapon = Weapon("Ooze Slash", 12, enemy_name);
+                generatedEnemy.weapon = Weapon("Ooze Slash", 7, enemy_name);
                 string spell_name = element + " Slime Ball";
-                generatedEnemy.learnSpell( Spell(spell_name, "Neutral", element, 15, 5) );
+                generatedEnemy.learnSpell( Spell(spell_name, "Neutral", element, 10, 5) );
                 generatedEnemy.armor = Armors["None"];
 
                 break;
