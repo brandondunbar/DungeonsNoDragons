@@ -99,6 +99,8 @@ Item generateLoot(int elementIndex, int tier){
 
     }
 
+    return loot;
+
 }
 
 
