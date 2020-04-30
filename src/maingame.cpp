@@ -108,7 +108,7 @@ int main()
          << "\n3.Scholar, a student of the arcane arts knowledgeable in ancient magecraft"
          << "\n4.Summoner, commands spirits to weaken foes"
          << "\n5.Marksman, a former hunter with unrivaled precision"
-         << "\n6.Thief, an agile cutpurse";
+         << "\n6.Thief, an agile cutpurse\n";
 
     int playerClass;
     cin >> playerClass;
@@ -159,7 +159,7 @@ int main()
     //End of character creation
 
     //Transition to city (story)
-    cout << "After leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.";
+    cout << "\n\nAfter leaving the tavern, the storywriter advises you to register at the guild and earn some gold before anything else.\n";
 
     while (!gameOver && mainPlayer.health > 0)
     {
@@ -1187,7 +1187,7 @@ void sixthDungeon(Player& aPlayer)
     cout << "\n\nXanoroth: I will come for your soul, you'll never escape."
          << "\nWhat will you do?"
          << "\n1. Mercy"
-         << "\n2. Execute";
+         << "\n2. Execute\n";
 
     cin >> finalChoice;
 
