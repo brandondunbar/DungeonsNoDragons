@@ -75,7 +75,7 @@ class Character {
         Weapon weapon;
         Armor armor;
 
-        void learnSpell(Spell& aSpell);
+        void learnSpell(const Spell& aSpell);
 
 };
 
@@ -365,7 +365,7 @@ void Character::buff_effect(Buff &buff, const int index_pos){
 
 }
 
-void Character::learnSpell(Spell& aSpell)
+void Character::learnSpell(const Spell& aSpell)
 {
     spellbook.push_back(aSpell);
 }

@@ -73,6 +73,8 @@ Enemy EnemyGenerator(string type, int tier){
         tier - 1, 2, or 3; 3 is strongest
     */
 
+    Dice d;
+
     Enemy generatedEnemy;
 
     if (type == "slime") {
