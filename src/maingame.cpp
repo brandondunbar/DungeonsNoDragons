@@ -828,7 +828,7 @@ void thirdDungeon(Player& aPlayer)
         //won battle
         cout << "\n\nThe orc warlord gets knocked through a wall, revealing a path deeper underground.\n";
         cout << "\n\nYou learn a new spell from the orc warlord, Shout.\n";
-        aPlayer.learnSpell(Spell("Shout", "Neutral", "Scared", 30, 10));
+        aPlayer.learnSpell(Spell("Shout", "Neutral", "Confidence", 30, 10));
     }
     else
     {
