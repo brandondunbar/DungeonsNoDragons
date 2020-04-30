@@ -673,13 +673,27 @@ void secondDungeon(Player& aPlayer)
          << "\nYou return to Eretedon.";
 }
 
-//Dungeons 3 (needs story and enemy generation)
+//Dungeons 3 (needs enemy generation)
 void thirdDungeon(Player& aPlayer)
 {
     Puzzle p = Puzzle(1);
     string inventoryAnswer;
 
     //Story
+    cout << "\n\nYou waited for the storywriter at the guild to ask him about the rune."
+         << "\nYou've waited for what feels like hours until he finally showed up with books in hand."
+         << "\nStorywriter: Ah "
+         << aPlayer.name
+         << ", I was looking for you. I've found something interesting about the note you gave me."
+         << "\nStorywriter: The language used for the note turns out to be ancient dwarven, an extinct language."
+         << "\nThats not all, its also encoded. The person who wrote this seemed well versed in the language."
+         << "\nI managed to translate a little bit of it."
+         << "\nIt says, the Castle of Green Stones."
+         << "\nI think it may be refering to the castle ruins northwest of the city, maybe you should check it out."
+         << "\nYou hand him the sketching of the rune and ask him about it."
+         << "\nStorywriter: I'm not to well-versed in magic but I know a mage who is, I'll ask him about it."
+         << "\nYou thank him and head northwest towards the ruins."
+         << "\n\nUpon arrival, you notice traces of goblins being in the area, you prepare for combat.";
 
     //Enemy Generation
 
@@ -687,6 +701,7 @@ void thirdDungeon(Player& aPlayer)
     if (battle_Sys(aPlayer, miniGoblin))
     {
         //won battle
+        cout << "\n\nYo"
     }
     else
     {
