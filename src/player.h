@@ -14,6 +14,7 @@
 // Included Dependencies
 #include "character.h"
 #include "item.h"
+#include "dice.h"
 
 //=================================
 class Player : public Character {
@@ -204,6 +205,14 @@ void Player::inventory()
                 else if (invItems[itemChoice].name == "Bomb")
                 {
                     cout << "You cannot use that item outside of combat.\n";
+                }
+                else if (invItems[itemChoice].name == "Gold Pouch")
+                {
+                    Dice d(100);
+                    int goldToGive = d.roll();
+                    cout << "You open the gold pouch and find " << goldToGive << " gold.\n";
+                    gold += goldToGive;
+                    invItems.erase(invItems.begin() + itemChoice);
                 }
             }
         }
