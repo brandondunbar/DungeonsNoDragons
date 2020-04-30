@@ -129,12 +129,14 @@ int main()
             mainPlayer.character_class = "Scholar";
             //Add items
             mainPlayer.weapon = Weapons["Dusty Magic Tome"];
+            mainPlayer.learnSpell(Spells["Fireball"]);
             break;
 
         case 4:
             mainPlayer.character_class = "Summoner";
             //Add items
             mainPlayer.weapon = Weapons["Pine Magic Staff"];
+            mainPlayer.learnSpell(Spells["Lightning Bolt"]);
             break;
 
         case 5:

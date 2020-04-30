@@ -67,6 +67,29 @@ void Enemy::display(){
 }
 
 
+int generateStat(string type){
+
+    string types[] = [
+        "slime", "undead", "greeny", "demon", "construct", "boss"
+    ];
+
+    int elementIndex = 0;
+    for ( int i = 0; i < 5; i++ ) {
+
+        if ( types[i] == type ) {
+            elementIndex = i;
+            break;
+        }
+    }
+
+    int stat_points = 0;
+    for ( int i = 0; i <= elementIndex; i++ ){
+        stat_points += d.roll( sides = ( tier * 5 ) );
+    }
+    return stat_points
+}
+
+
 Enemy EnemyGenerator(string type, int tier){
     /* Generates enemy based on type and tier
 
@@ -249,7 +272,7 @@ Enemy EnemyGenerator(string type, int tier){
                     generatedEnemy = Enemy("Demon Mage", "mage", "demon");
                     generatedEnemy.weapon = Weapons["Magic Tome"];
                     generatedEnemy.learnSpell( Spells["Fireball"] );
-                    generatedEnemy.learnSpell( Spells["Thunderbolt"] );
+                    generatedEnemy.learnSpell( Spells["Lightning bolt"] );
                     generatedEnemy.learnSpell( Spells["Ice Spike"] );
 
                 } else {
@@ -309,6 +332,8 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Lich", "boss", "undead");
                 generatedEnemy.weapon = Weapon("Ancient Great Sword", 20, "Neutral");
+
+                // Lightning magic
                 break;
                 }
             case 3:
@@ -329,6 +354,8 @@ Enemy EnemyGenerator(string type, int tier){
                 {
                 generatedEnemy = Enemy("Clockwork Behir", "boss", "construct");
                 generatedEnemy.weapon = Weapon("Sharpened Gear", 35, "Neutral");
+                // Lightning Breath
+                // Magic Charged Lasers
                 break;
                 }
 
@@ -347,7 +374,14 @@ Enemy EnemyGenerator(string type, int tier){
                 }
         }
 
-    }
+    }    
+
+    generatedEnemy.strength = generateStat();
+    generatedEnemy.constitution = generateStat();
+    generatedEnemy.dexterity = generateStat();
+    generatedEnemy.intelligence = generateStat();
+    generatedEnemy.wisdom = generateStat();
+    generatedEnemy.charisma = generateStat();
 
     return generatedEnemy;
 
