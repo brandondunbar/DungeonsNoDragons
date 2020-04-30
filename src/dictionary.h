@@ -14,7 +14,8 @@
 std::map<std::string, Item> Items = {
     {"Health Potion", Item("Health Potion", "Potion")},
     {"Mana Potion", Item("Mana Potion", "Potion")},
-    {"Bomb", Item("Bomb", "Bomb")}
+    {"Bomb", Item("Bomb", "Bomb")},
+    {"Gold Pouch", Item("Gold Pouch", "Gold Pouch")}
 };
 std::map<std::string, Armor> Armors = {
     {"Iron Armor", Armor("Iron Armor", 5, 1, "Neutral")},
