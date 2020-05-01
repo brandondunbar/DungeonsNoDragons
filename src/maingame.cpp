@@ -1317,9 +1317,12 @@ void sixthDungeon(Player& aPlayer)
          << "\nThe demon sheds it's human form to present a grotesque crimson winged demon."
          << "\n???: My name is Xanoroth, the Embodiment of Dispair."
          << "\nXanoroth: It seems that my pet has failed, I guess I'll have to destroy your plane of existence myself."
-         << "\nYou: ";
+         << "\nWhat will you say?\n";
 
     cin >> playerAnswer;
+
+    cout << "\nYou: "
+         << playerAnswer;
 
     cout << "\n\nXanoroth: Oh, I see that you aim to stop me. Your grave shall be where you stand."
          << "\nHe unsheathes his blade which ignites the throne room ablaze just from sheer power."
@@ -1344,9 +1347,12 @@ void sixthDungeon(Player& aPlayer)
 
     //Story
     cout << "\n\nXanoroth: No, it can't be. I'm invincible."
-         << "\nYou: ";
+         << "\nWhat will you say?\n";
 
     cin >> playerAnswer;
+
+    cout << "\nYou: "
+         << playerAnswer;
 
     cout << "\n\nXanoroth: I will come for your soul, you'll never escape."
          << "\nWhat will you do?"
