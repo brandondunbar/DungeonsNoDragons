@@ -86,7 +86,7 @@ Item generateLoot(int elementIndex, int tier){
 
         // Mana pot
         loot = Items["Mana Potion"];
-        
+
     } else if ( 11 <= itemRoll && itemRoll <= 15 ) {
 
         // Bomb
@@ -280,7 +280,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 1:
                 {
                 generatedEnemy = Enemy("Abyssal Chicken", "fighter", "demon");
-                generatedEnemy.weapon = Weapon("Cursed Talons", 40, "dark");
+                generatedEnemy.weapon = Weapon("Cursed Talons", 30, "dark");
                 generatedEnemy.armor = Armors["Damascus Armor"];
                 break;
                 }
@@ -331,7 +331,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 1:
                 {
                 generatedEnemy = Enemy("Animated Armor", "fighter", "mech");
-                generatedEnemy.weapon = Weapons["Great Sword"];
+                generatedEnemy.weapon = Weapons["Gear Sword"];
                 generatedEnemy.armor = Armors["Gear Armor"];
 
                 break;
@@ -340,7 +340,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 2:
                 {
                 generatedEnemy = Enemy("Clockwork Golem", "fighter", "mech");
-                generatedEnemy.weapon = Weapons["Great Sword"];
+                generatedEnemy.weapon = Weapons["Gear Sword"];
                 generatedEnemy.armor = Armors["Gear Armor"];
 
                 break;
@@ -389,7 +389,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 4:
                 {
                 generatedEnemy = Enemy("Orcus", "boss", "demon");
-                generatedEnemy.weapon = Weapon("Soul Scythe", 30, "Dark");
+                generatedEnemy.weapon = Weapon("Soul Scythe", 40, "Dark");
                 generatedEnemy.armor = Armors["Damascus Armor"];
 
                 break;
@@ -398,7 +398,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 5:
                 {
                 generatedEnemy = Enemy("Clockwork Behir", "boss", "construct");
-                generatedEnemy.weapon = Weapon("Sharpened Gear", 35, "Neutral");
+                generatedEnemy.weapon = Weapon("Sharpened Gear", 45, "Neutral");
                 generatedEnemy.armor = Armors["Gear Armor"];
 
                 // Lightning Breath
@@ -409,7 +409,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 6:
                 {
                 generatedEnemy = Enemy("Leviathan", "boss", "elemental");
-                generatedEnemy.weapon = Weapon("Petrified Bite", 40, "Neutral");
+                generatedEnemy.weapon = Weapon("Petrified Bite", 65, "Neutral");
                 generatedEnemy.armor = Armors["Void Armor"];
 
                 break;
@@ -418,14 +418,14 @@ Enemy EnemyGenerator(string type, int tier){
             case 7:
                 {
                 generatedEnemy = Enemy("Demon Boss", "boss", "demon");
-                generatedEnemy.weapon = Weapon("Cursed Warhammer of Damnation", 50, "Dark");
+                generatedEnemy.weapon = Weapon("Cursed Warhammer of Damnation", 80, "Dark");
                 generatedEnemy.armor = Armors["Armor of a thousand souls"];
 
                 break;
                 }
         }
 
-    }    
+    }
 
     string types[] = {
         "slime", "undead", "greeny", "demon", "construct", "boss"

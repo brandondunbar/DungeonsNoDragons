@@ -206,10 +206,11 @@ int Character::calculate_damage_to_receive(int damage, string element, string da
 
     if (damage < 0)
     {
+        cout << "\n0 damage dealt!\n";
         return 0;
     }
 
-    cout << damage << " dealt!" << endl;
+    cout << "\n" << damage << " damage dealt!\n" << endl;
 
     return damage;
 }
@@ -219,7 +220,6 @@ int Character::calculate_damage_to_receive(int damage, string element, string da
 bool Character::deal_damage(Character &target){
     /* Deals damage to target character, returns bool reflecting if target is killed */
 
-    cout << "About to deal damage with a weapon." << endl;
 
     int damage = calculate_damage_to_deal();
 

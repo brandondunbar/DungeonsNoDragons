@@ -55,7 +55,7 @@ int main()
     string os_name = getOS();
 
     Player mainPlayer = Player("name", "class", "race");
-    mainPlayer.gold = 20;
+    mainPlayer.gold = 50;
 
     //Intro sequence
     cout << "\n\nWelcome to Dungeons no Dragons!" << endl;
@@ -797,8 +797,8 @@ void secondDungeon(Player& aPlayer)
     {
         //Rewards Unique Boss Item
         cout << "\n\nThe chest opens.\n";
-        cout << "Inside you find a lich bane sword.\n";
-        aPlayer.store(Weapon("Lich Bane", 20, "Undead"));
+        cout << "Inside you find the legendary lich armor.\n";
+        aPlayer.store(Armor("Lich Armor", 30, 25, "Neutral"));
     }
     else
     {
@@ -1333,6 +1333,7 @@ void sixthDungeon(Player& aPlayer)
         //Win
         cout << "\n\nYou destroy his sword and destroy his soul.";
     }
+    else
     {
         //Lose
         gameOver = true;

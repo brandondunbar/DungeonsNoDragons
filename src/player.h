@@ -196,6 +196,7 @@ void Player::inventory()
                         current_health = base_health;
                     else
                         current_health += 25;
+                    cout << "You now have " << current_health << " health.\n";
                     invItems.erase(invItems.begin() + itemChoice);
                     pressAnyKey(os_name);
                 }
@@ -206,6 +207,7 @@ void Player::inventory()
                         current_mana = base_mana;
                     else
                         current_mana += 25;
+                    cout << "You now have " << current_mana << " mana.\n";
                     invItems.erase(invItems.begin() + itemChoice);
                     pressAnyKey(os_name);
                 }

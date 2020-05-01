@@ -96,7 +96,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 int choice;
                 cout << "\n\nWhich spell do you want to use?\n>>> ";
                 cin >> choice;
-                
+
                 if (choice == mainPlayer.spellbook.size())
                 {
                     attackingThisRound = false;
@@ -181,16 +181,28 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 if (chosenItem.name == "Health Potion")
                 {
                     if (mainPlayer.current_health + 25 > mainPlayer.base_health)
+                    {
                         mainPlayer.current_health = mainPlayer.base_health;
+                        cout << "Restored health to " << mainPlayer.base_health << endl;
+                    }
                     else
+                    {
                         mainPlayer.current_health += 25;
+                        cout << "Restored health to " << mainPlayer.current_health << endl;
+                    }
                 }
                 else if (chosenItem.name == "Mana Potion")
                 {
                     if (mainPlayer.current_mana + 25 > mainPlayer.base_mana)
+                    {
                         mainPlayer.current_mana = mainPlayer.base_mana;
+                        cout << "Restored mana to " << mainPlayer.base_mana << endl;
+                    }
                     else
+                    {
                         mainPlayer.current_mana += 25;
+                        cout << "Restored mana to " << mainPlayer.current_mana << endl;
+                    }
                 }
                 else if (chosenItem.type == "Bomb")
                 {
