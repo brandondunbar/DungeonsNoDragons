@@ -374,7 +374,6 @@ int main()
         default:
             {
                 cout << "Your character wanders around for a bit, gets lost, then finds his way back to the guild.\n";
-                pressAnyKey(os_name);
                 break;
             }
         }
