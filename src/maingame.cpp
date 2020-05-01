@@ -130,7 +130,7 @@ int main()
     cout << "\n\nHooded man: Oh I see, I'm a novice storywriter and I've run into a writers' block recently."
          << "\nI came hoping to find new inspiration."
          << "\nWhat did you do before coming here?";
-        
+
     pressAnyKey(os_name);
 
     cout << "\n\nClasses: "
@@ -651,14 +651,14 @@ void firstDungeon(Player& aPlayer)
     {
             //Rewards Unique Boss Item
             cout << "\n\nThe chest opens.\n";
-            cout << "Inside, you find a slime armor and put it in your inventory.\n";
-            aPlayer.store(Armor("Slime Armor", 10, 10, "Neutral"));
+            cout << "Inside, you find a slime covered sword and place it in your inventory.\n";
+            aPlayer.store(Weapon("Slime Covered Sword", 30, "Neutral"));
     }
     else
     {
         cout << "The chest disappears.\n";
     }
-    
+
 
     //Story
     cout << "\n\nYou find a mysterious rune on the floor and promptly erase it."
@@ -680,13 +680,13 @@ void secondDungeon(Player& aPlayer)
          << "\nStorywriter: Oh hey "
          << aPlayer.name
          << ", nice meeting you here.";
-    
+
     pressAnyKey(os_name);
 
     cout << "\nStorywriter: I've heard rumors of undead rising recently in nearby villages, it sounds suspicious."
          << "\nStorywriter: I was going to file an official request but I hope you can check it out for me."
          << "\nYou give him a thumbs up and tell the storywriter you'll head there right away.";
-    
+
     pressAnyKey(os_name);
 
     cout << "\nStorywriter: Alright, I'll tell the guild that you've gone to the villages, good luck."
@@ -694,7 +694,7 @@ void secondDungeon(Player& aPlayer)
          << "\nStorywriter: I see, interesting. I'll see what I can find out about it."
          << "\n\n\nYou arrive at the closest village in the west to find no one around in the streets."
          << "\nYou decide to investigate.";
-    
+
     pressAnyKey(os_name);
 
     cout << "\nAll of the sudden, an undead creature jumps out at you and you battle it.\n";
@@ -740,7 +740,7 @@ void secondDungeon(Player& aPlayer)
     }
 
     pressAnyKey(os_name);
-    
+
     cout << "When you look up you notice another zombie charging right at you, this one looks stronger\n";
     cout << "You engage in combat with it.\n";
     //enemy generation
@@ -804,7 +804,7 @@ void secondDungeon(Player& aPlayer)
     {
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
-    
+
     pressAnyKey(os_name);
 
     //Story
@@ -830,7 +830,7 @@ void thirdDungeon(Player& aPlayer)
          << "\nStorywriter: Ah "
          << aPlayer.name
          << ", I was looking for you. I've found something interesting about the note you gave me.";
-    
+
     pressAnyKey(os_name);
 
     cout << "\nStorywriter: The language used for the note turns out to be ancient dwarven, an extinct language."
@@ -838,7 +838,7 @@ void thirdDungeon(Player& aPlayer)
          << "\nI managed to translate a little bit of it."
          << "\nIt says, the Castle of Green Stones."
          << "\nI think it may be refering to the castle ruins northwest of the city, maybe you should check it out.";
-    
+
     pressAnyKey(os_name);
 
     cout << "\nYou hand him the sketching of the rune and ask him about it."
@@ -890,7 +890,7 @@ void thirdDungeon(Player& aPlayer)
     {
         cout << "The door seals completely shut.\n";
     }
-    
+
 
     cout << "\nA second, stronger goblin comes charging at you. You engage in combat.\n";
     //Enemy Generation
@@ -954,7 +954,7 @@ void thirdDungeon(Player& aPlayer)
     {
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
-    
+
     pressAnyKey(os_name);
 
     //Story
@@ -1032,7 +1032,7 @@ void fourthDungeon(Player& aPlayer)
     {
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
-    
+
     pressAnyKey(os_name);
 
     cout << "You look up and spot another demon charging right at you. This one looks stronger.\n\n";
@@ -1104,7 +1104,7 @@ void fourthDungeon(Player& aPlayer)
     {
         cout << "\n\nThe chest mysteriously disappears.\n";
     }
-    
+
     pressAnyKey(os_name);
 
     //Story
@@ -1176,7 +1176,7 @@ void fifthDungeon(Player& aPlayer)
     {
         cout << "\n\nThe door magically seals shut.\n";
     }
-    
+
     pressAnyKey(os_name);
 
     cout << "Next you run into a clockwork golem.\n";
@@ -1206,7 +1206,7 @@ void fifthDungeon(Player& aPlayer)
     cout << "\n\nYou enter the a dark room at the end of the room."
          << "\nYou begin to hear clicks and hissing around you."
          << "\nYou look up to find a pair of blue glowing eyes staring at you.";
-    
+
     pressAnyKey(os_name);
 
     cout << "\nThe lights flicker on and you get a clear sight of the machine."
@@ -1250,7 +1250,7 @@ void fifthDungeon(Player& aPlayer)
     {
         cout << "\n\nThe orb flies away.\n";
     }
-    
+
     pressAnyKey(os_name);
 
     //Story
@@ -1272,7 +1272,7 @@ void sixthDungeon(Player& aPlayer)
     //Story
     cout << "\n\nAs you head towards the guild hall, a tear in time and space rips the area in half."
          << "\nGylbesdaym, the Eater of All, lets out a massive roar that shatters all the windows nearby and sends trees flying.";
-    
+
     pressAnyKey(os_name);
 
     cout << "\nHe lets out a burst of pure magic that scorches half of the city into dust."
