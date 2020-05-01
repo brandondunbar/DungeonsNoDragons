@@ -110,6 +110,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 else
                 {
                     mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
+                    mainPlayer.current_mana -= mainPlayer.spellbook[choice].cost;
                 }
 
 

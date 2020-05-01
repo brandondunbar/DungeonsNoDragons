@@ -22,10 +22,10 @@ std::map<std::string, Armor> Armors = {
     {"Iron Armor", Armor("Iron Armor", 10, 5, "Neutral")},
     {"Lightning Armor", Armor("Lightning Armor", 25, 25, "Neutral")},
     {"Cursed Armor", Armor("Cursed Armor", 15, 15, "dark")},
-    {"Damascus Armor", Armor("Damascus Armor", 40, 40, "Neutral")},
-    {"Gear Armor", Armor("Gear Armor", 50, 50, "Neutral")},
-    {"Void Armor", Armor("Void Armor", 60, 60, "dark")},
-    {"Armor of a thousand souls", Armor("Armor of a thousand souls", 70, 70, "Neutral")}
+    {"Damascus Armor", Armor("Damascus Armor", 18, 18, "Neutral")},
+    {"Gear Armor", Armor("Gear Armor", 22, 22, "Neutral")},
+    {"Void Armor", Armor("Void Armor", 25, 25, "dark")},
+    {"Armor of a thousand souls", Armor("Armor of a thousand souls", 30, 30, "Neutral")}
 };
 std::map<std::string, Spell> Spells = {
     {"Fireball", Spell("Fireball", "Fire", "Burn", 10, 10)},
