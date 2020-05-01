@@ -28,9 +28,9 @@ std::map<std::string, Armor> Armors = {
     {"Armor of a thousand souls", Armor("Armor of a thousand souls", 35, 35, "Neutral")}
 };
 std::map<std::string, Spell> Spells = {
-    {"Fireball", Spell("Fireball", "Fire", "Burn", 10, 10)},
-    {"Lightning bolt", Spell("Lightning bolt", "Lightning", "Shock", 15, 15)},
-    {"Ice Spike", Spell("Ice Spike", "Ice", "Freeze", 20, 10)},
+    {"Fireball", Spell("Fireball", "Fire", "Burn", 15, 10)},
+    {"Lightning bolt", Spell("Lightning bolt", "Lightning", "Shock", 20, 15)},
+    {"Ice Spike", Spell("Ice Spike", "Ice", "Freeze", 27, 10)},
     {"Holy Beam", Spell("Holy Beam", "Holy", "None", 10, 5)}
 };
 std::map<std::string, Weapon> Weapons = {
@@ -44,7 +44,7 @@ std::map<std::string, Weapon> Weapons = {
     {"Short Bow", Weapon("Short Bow", 7, "Neutral")},
     {"Chipped Dual Daggers", Weapon("Chipped Dual Daggers", 4, "Neutral")},
     {"Steel Sword", Weapon("Steel Sword", 20, "Neutral")},
-    {"Damascus Sword", Weapon("Damascus Sword", 30, "Neutral")},
+    {"Damascus Sword", Weapon("Damascus Sword", 33, "Neutral")},
     {"Gear Sword", Weapon("Gear Sword", 35, "Neutral")},
     {"Void Sword", Weapon("Void Sword", 35, "Dark")},
     {"Sword of a thousand souls", Weapon("Sword of a thousand souls", 50, "Neutral")}

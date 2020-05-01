@@ -280,7 +280,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 1:
                 {
                 generatedEnemy = Enemy("Abyssal Chicken", "fighter", "demon");
-                generatedEnemy.weapon = Weapon("Cursed Talons", 30, "dark");
+                generatedEnemy.weapon = Weapon("Cursed Talons", 35, "dark");
                 generatedEnemy.armor = Armors["Damascus Armor"];
                 break;
                 }
@@ -398,7 +398,7 @@ Enemy EnemyGenerator(string type, int tier){
             case 5:
                 {
                 generatedEnemy = Enemy("Clockwork Behir", "boss", "construct");
-                generatedEnemy.weapon = Weapon("Sharpened Gear", 45, "Neutral");
+                generatedEnemy.weapon = Weapon("Sharpened Gear", 42, "Neutral");
                 generatedEnemy.armor = Armors["Gear Armor"];
 
                 // Lightning Breath
