@@ -37,7 +37,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
     if (anEnemy.name == "Leviathan"){
         //Enemy attack
         Spell spell = Spell("Extinction Ray", "death", "None", 40, 50);
-        
+
         cout << "\n\nThe enemy used " << spell.name << endl;
         anEnemy.deal_damage(mainPlayer, spell);
 
@@ -49,9 +49,9 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
         pressAnyKey(os_name);
     }
 
-    while (mainPlayer.current_health > 0 && anEnemy.current_health > 0)
+    while (mainPlayer.current_health > 0)
     {
-        int enemy_Health;
+        bool attackingThisRound = true;
         int player_Choice;
 
         //Combat Menu
@@ -86,15 +86,23 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 if (mainPlayer.spellbook.empty())
                 {
                     cout << "You have not learned any spells.\n";
+                    attackingThisRound = false;
                     break;
                 }
                 cout << "\n\nYou open your spellbook.";
 
                 mainPlayer.display_spellbook();
+                cout << "\t" << mainPlayer.spellbook.size() << " - Go back\n";
                 int choice;
                 cout << "\n\nWhich spell do you want to use?\n>>> ";
                 cin >> choice;
                 
+                if (choice == mainPlayer.spellbook.size())
+                {
+                    attackingThisRound = false;
+                    break;
+                }
+
                 if (mainPlayer.current_mana < mainPlayer.spellbook[choice].cost)
                 {
                     cout << "\n\nYou don't have enough mana";
@@ -103,7 +111,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 {
                     mainPlayer.deal_damage(anEnemy, mainPlayer.spellbook[choice]);
                 }
-                
+
 
                 if (mainPlayer.spellbook[choice].name == "Slime Bomb")
                 {
@@ -151,13 +159,21 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
                 if (mainPlayer.invItems.empty())
                 {
                     cout << "Your inventory is empty.\n";
+                    attackingThisRound = false;
                     break;
                 }
                 int choice;
                 cout << "\n\nYou open your backpack.";
                 mainPlayer.display_items();
+                cout << "\t" << mainPlayer.invItems.size() << " - Go back\n";
                 cout << "\nEnter which item to use: \n>>> ";
                 cin >> choice;
+
+                if (choice == mainPlayer.invItems.size())
+                {
+                    attackingThisRound = false;
+                    break;
+                }
 
                 Item chosenItem = mainPlayer.invItems[choice];
 
@@ -206,16 +222,18 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
         case 7:
             {
                 anEnemy.display();
+                break;
             }
 
         case 8:
             {
                 mainPlayer.display();
+                break;
             }
 
         }
-
-        mainPlayer.trigger_buffs();
+        if (attackingThisRound)
+            mainPlayer.trigger_buffs();
 
         if (anEnemy.current_health <= 0)
         {
@@ -227,7 +245,7 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
         }
 
         //Enemy attack
-        if (d.roll() <= 10 && anEnemy.spellbook.size() > 0)
+        if (d.roll() <= 10 && anEnemy.spellbook.size() > 0 && attackingThisRound)
         {
             Dice spellDice = Dice(anEnemy.spellbook.size());
             int spellChoice = spellDice.roll();
@@ -235,16 +253,16 @@ bool battle_Sys(Player& mainPlayer, Enemy& anEnemy)
             cout << "\n\nThe enemy used " << spell.name << endl;
             anEnemy.deal_damage(mainPlayer, spell);
             pressAnyKey(os_name);
-            
+
         }
-        else
+        else if (attackingThisRound)
         {
             cout << "\n\nThe enemy used a physical attack.";
             anEnemy.deal_damage(mainPlayer);
             pressAnyKey(os_name);
         }
-
-        anEnemy.trigger_buffs();
+        if (attackingThisRound)
+            anEnemy.trigger_buffs();
     }
 
     return false;

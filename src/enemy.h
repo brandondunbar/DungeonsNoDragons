@@ -159,9 +159,9 @@ Enemy EnemyGenerator(string type, int tier){
 
                 string enemy_name = element + " Chuchu";
                 generatedEnemy = Enemy(enemy_name, "mage", "slime");
-                generatedEnemy.weapon = Weapon("Ooze Slash", 12, enemy_name);
+                generatedEnemy.weapon = Weapon("Ooze Slash", 7, enemy_name);
                 string spell_name = element + " Slime Ball";
-                generatedEnemy.learnSpell( Spell(spell_name, "Neutral", element, 15, 5) );
+                generatedEnemy.learnSpell( Spell(spell_name, "Neutral", element, 10, 5) );
                 generatedEnemy.armor = Armors["None"];
 
                 break;
@@ -174,8 +174,8 @@ Enemy EnemyGenerator(string type, int tier){
             case 1:
                 {
                 generatedEnemy = Enemy("Zombie", "fighter", "undead");
-                generatedEnemy.weapon = Weapon("Rotten Scratch", 20, "Neutral");
-                generatedEnemy.learnSpell( Spell("Acrid Vomit", "Poison", "Toxic", 25, 10) );
+                generatedEnemy.weapon = Weapon("Rotten Scratch", 10, "Neutral");
+                generatedEnemy.learnSpell( Spell("Acrid Vomit", "Poison", "Toxic", 15, 10) );
                 generatedEnemy.armor = Armors["Iron Armor"];
                 break;
                 }
@@ -186,15 +186,15 @@ Enemy EnemyGenerator(string type, int tier){
                 if (diceRoll > 10) {
 
                     generatedEnemy = Enemy("Ghoul", "fighter", "spirit");
-                    generatedEnemy.weapon = Weapon("Phantasmal Scratch", 27, "Spirit");
-                    generatedEnemy.learnSpell( Spell("Spirit Ball", "None", "Spirit", 34, 10) );
+                    generatedEnemy.weapon = Weapon("Phantasmal Scratch", 15, "Spirit");
+                    generatedEnemy.learnSpell( Spell("Spirit Ball", "None", "Spirit", 20, 10) );
                     generatedEnemy.armor = Armors["None"];
 
                 } else {
 
                     generatedEnemy = Enemy("Wraith", "mage", "spirit");
-                    generatedEnemy.weapon = Weapon("Phantasmal Scratch", 35, "Spirit");
-                    generatedEnemy.learnSpell( Spell("Screech", "None", "Neutral", 37, 5));
+                    generatedEnemy.weapon = Weapon("Phantasmal Scratch", 15, "Spirit");
+                    generatedEnemy.learnSpell( Spell("Screech", "None", "Neutral", 20, 5));
                     generatedEnemy.armor = Armors["None"];
 
                 }

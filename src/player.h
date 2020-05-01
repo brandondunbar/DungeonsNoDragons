@@ -187,7 +187,7 @@ void Player::inventory()
                 int itemChoice;
                 cout << "Which item do you want to use?\n\n>>> ";
                 display_items();
-                cout << invItems.size() << " - Go back\n";
+                cout << "\t" << invItems.size() << " - Go back\n";
                 cin >> itemChoice;
                 if (invItems[itemChoice].name == "Health Potion")
                 {
@@ -235,15 +235,19 @@ void Player::inventory()
                 cout << weapon.name << " " << "Damage: " << weapon.damage;
                 cout << "\nYour other weapons are: \n\n";
                 display_weapons();
+                cout << "\t" << invWeapons.size() << " - Go back\n";
                 cout << "Which weapon do you want to equip?\n>>> ";
                 int weaponChoice;
                 cin >> weaponChoice;
-                Weapon oldWeapon = weapon;
-                weapon = invWeapons[weaponChoice];
-                invWeapons.erase(invWeapons.begin() + weaponChoice);
-                invWeapons.push_back(oldWeapon);
-                cout << weapon.name << " equipped." << endl;
-                pressAnyKey(os_name);
+                if (weaponChoice != invWeapons.size() && weaponChoice < invWeapons.size() && weaponChoice >= 0)
+                {
+                    Weapon oldWeapon = weapon;
+                    weapon = invWeapons[weaponChoice];
+                    invWeapons.erase(invWeapons.begin() + weaponChoice);
+                    invWeapons.push_back(oldWeapon);
+                    cout << weapon.name << " equipped." << endl;
+                    pressAnyKey(os_name);
+                }
             }
         }
         else if (choice == 4)
@@ -257,15 +261,19 @@ void Player::inventory()
                 cout << armor.name << " " << "Phys Def: " << armor.physical_defense << " " << "Magic Def: " << armor.magical_defense << endl;
                 cout << "\nYour other armors are: \n\n";
                 display_armors();
+                cout << "\t" << invArmors.size() << " - Go back\n";
                 cout << "Which armor do you want to equip?\n>>> ";
                 int armorChoice;
                 cin >> armorChoice;
-                Armor oldArmor = armor;
-                armor = invArmors[armorChoice];
-                invArmors.erase(invArmors.begin() + armorChoice);
-                invArmors.push_back(oldArmor);
-                cout << armor.name << " equipped." << endl;
-                pressAnyKey(os_name);
+                if (armorChoice != invArmors.size() && armorChoice < invArmors.size() && armorChoice >= 0)
+                {
+                    Armor oldArmor = armor;
+                    armor = invArmors[armorChoice];
+                    invArmors.erase(invArmors.begin() + armorChoice);
+                    invArmors.push_back(oldArmor);
+                    cout << armor.name << " equipped." << endl;
+                    pressAnyKey(os_name);
+                }
             }
         }
         else if (choice == 5)

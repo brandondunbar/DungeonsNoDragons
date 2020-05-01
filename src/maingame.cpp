@@ -777,7 +777,7 @@ void secondDungeon(Player& aPlayer)
         //Win
         cout << "\n\nThe lich dies, releasing it's magic which breaks the ground showing hidden underground structure.\n";
         cout << "\nAfter fighting the lich, you pick up the lich's tome and learn a new spell, Thunderstorm.\n";
-        aPlayer.learnSpell(Spell("Thunderstorm", "Lightning", "Shock", 25, 10));
+        aPlayer.learnSpell(Spell("Thunderstorm", "Lightning", "Shock", 35, 10));
     }
     else
     {
